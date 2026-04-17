@@ -17,13 +17,13 @@ YELLOW='\033[33m'
 CYAN='\033[36m'
 RESET='\033[0m'
 
-has_gum() { command -v gum &>/dev/null; }
 has_jq() { command -v jq &>/dev/null; }
+has_gum() { command -v gum &>/dev/null; }
 
 die() { echo -e "${BOLD}Error:${RESET} $1" >&2; exit 1; }
 
-# Ensure jq is available
-has_jq || die "jq is required. Install with: sudo apt install jq"
+has_jq  || die "jq is required. Install: brew install jq  /  sudo apt install jq"
+has_gum || die "gum is required. Install: brew install gum  /  go install github.com/charmbracelet/gum@latest"
 
 # Bootstrap accounts.json on first run
 if [[ ! -f "$ACCOUNTS_FILE" ]]; then
@@ -65,7 +65,7 @@ touch_account() {
 sync_metadata() {
     local id="$1"
     local auth_json
-    auth_json=$(claude auth status 2>/dev/null) || return 0
+    auth_json=$(gum spin --title "Syncing account info…" --show-output -- claude auth status 2>/dev/null) || return 0
 
     local email org_name sub_type
     email=$(echo "$auth_json" | jq -r '.email // ""')
@@ -99,8 +99,6 @@ sync_metadata() {
         tmp=$(jq --arg id "$id" --arg v "$org_name" '.[$id].identifier = $v' "$ACCOUNTS_FILE")
         echo "$tmp" > "$ACCOUNTS_FILE"
     fi
-
-    echo -e "${DIM}Synced metadata from claude auth status${RESET}"
 }
 
 # Get list of account IDs
@@ -119,12 +117,17 @@ get_cred_info() {
     fi
 }
 
-# Format relative time
+# Format relative time (GNU date and BSD date compatible)
 relative_time() {
     local ts="$1"
     [[ -z "$ts" ]] && echo "never" && return
     local then_epoch now_epoch diff
-    then_epoch=$(date -d "$ts" +%s 2>/dev/null) || { echo "unknown"; return; }
+    if then_epoch=$(date -d "$ts" +%s 2>/dev/null); then
+        :
+    else
+        local ts_stripped="${ts%+*}"; ts_stripped="${ts_stripped%Z}"
+        then_epoch=$(date -j -f "%Y-%m-%dT%H:%M:%S" "$ts_stripped" +%s 2>/dev/null) || { echo "unknown"; return; }
+    fi
     now_epoch=$(date +%s)
     diff=$(( now_epoch - then_epoch ))
     if (( diff < 60 )); then echo "just now"
@@ -142,6 +145,7 @@ account_line() {
     local name username desc last_used cred_info marker
     name=$(get_meta "$id" "identifier")
     username=$(get_meta "$id" "username")
+    desc=$(get_meta "$id" "description")
     last_used=$(get_meta "$id" "lastUsed")
     cred_info=$(get_cred_info "$id")
     [[ -z "$name" ]] && name="Account $id"
@@ -154,6 +158,7 @@ account_line() {
 
     local line="${marker}${id}: ${name}"
     [[ -n "$username" ]] && line+=" (${username})"
+    [[ -n "$desc" ]] && line+=" — ${desc}"
     line+=" - ${cred_info}"
     line+=" · $(relative_time "$last_used")"
     echo "$line"
@@ -212,9 +217,8 @@ do_sync_info() {
     active=$(get_active)
     [[ -z "$active" ]] && die "No active account"
 
-    echo -e "${CYAN}Fetching account info...${RESET}"
     local auth_json
-    auth_json=$(claude auth status 2>/dev/null) || die "Failed to get auth status"
+    auth_json=$(gum spin --title "Fetching account info…" --show-output -- claude auth status 2>/dev/null) || die "Failed to get auth status"
 
     sync_metadata "$active"
 
@@ -243,42 +247,19 @@ do_menu() {
         lines+=("$(account_line "$id")")
     done
 
-    # Add action items to the menu
     lines+=("──────────────────────────────────")
     lines+=("⟳ Sync account info")
     lines+=("⬇ Import current session")
     lines+=("+ Add new account")
     lines+=("✎ Edit account")
+    lines+=("✗ Remove account")
 
     local header="Claude Account Switcher"
     [[ -n "$active" ]] && header+=" │ Active: $(get_meta "$active" "identifier")"
 
     local choice
-    if has_gum; then
-        choice=$(printf '%s\n' "${lines[@]}" | gum choose --header "$header" --cursor-prefix "▸ " --unselected-prefix "  ") || exit 0
-    else
-        # Fallback: plain select
-        echo -e "${BOLD}${header}${RESET}"
-        echo "────────────────────────────────────"
-        for i in "${!lines[@]}"; do
-            echo -e "${lines[$i]}"
-        done
-        echo "────────────────────────────────────"
-        read -rp "Select account, 's' to sync, 'i' to import, 'a' to add, 'e' to edit: " choice_num
-        [[ -z "$choice_num" ]] && exit 0
-        if [[ "$choice_num" == "s" ]]; then do_sync_info; return; fi
-        if [[ "$choice_num" == "i" ]]; then do_import; return; fi
-        if [[ "$choice_num" == "a" ]]; then do_add; return; fi
-        if [[ "$choice_num" == "e" ]]; then
-            read -rp "Edit which account? [$(IFS=,; echo "${ids[*]}")]: " edit_id
-            [[ -n "$edit_id" ]] && do_edit "$edit_id"
-            return
-        fi
-        do_switch "$choice_num"
-        return
-    fi
+    choice=$(printf '%s\n' "${lines[@]}" | gum choose --header "$header" --cursor-prefix "▸ " --unselected-prefix "  ") || exit 0
 
-    # Handle selection
     case "$choice" in
         *"Sync account info"*)
             do_sync_info
@@ -290,15 +271,18 @@ do_menu() {
             do_add
             ;;
         *"Edit account"*)
-            # Show a second menu to pick which account to edit
-            local edit_choice
+            local edit_choice edit_id
             edit_choice=$(printf '%s\n' "${lines[@]}" | grep -P '^\s*\*?\s*\d+:' | gum choose --header "Edit which account?" --cursor-prefix "▸ " --unselected-prefix "  ") || return
-            local edit_id
             edit_id=$(echo "$edit_choice" | grep -oP '^\s*\*?\s*\K\d+(?=:)')
             [[ -n "$edit_id" ]] && do_edit "$edit_id"
             ;;
+        *"Remove account"*)
+            local remove_choice remove_id
+            remove_choice=$(printf '%s\n' "${lines[@]}" | grep -P '^\s*\*?\s*\d+:' | gum choose --header "Remove which account?" --cursor-prefix "▸ " --unselected-prefix "  ") || return
+            remove_id=$(echo "$remove_choice" | grep -oP '^\s*\*?\s*\K\d+(?=:)')
+            [[ -n "$remove_id" ]] && do_remove "$remove_id"
+            ;;
         *"─"*)
-            # Separator selected, ignore
             ;;
         *)
             local selected_id
@@ -313,17 +297,15 @@ do_login() {
     local id="$1"
     local cred_file="$DATA_DIR/account${id}.credentials.json"
 
-    # Create empty credentials file if it doesn't exist (new account)
     [[ -f "$cred_file" ]] || echo '{}' > "$cred_file"
 
-    # Point symlink at this account's file
     rm -f "$CRED_LINK"
     ln -s "$cred_file" "$CRED_LINK"
 
-    echo -e "${CYAN}Launching Claude login for account $id...${RESET}"
+    echo -e "${CYAN}Launching Claude login for account $id…${RESET}"
     echo -e "${DIM}Complete the OAuth flow in your browser.${RESET}"
 
-    # Run claude login — tokens write through symlink into the account file
+    # Tokens write through the symlink into the account file
     claude login
 
     touch_account "$id"
@@ -333,36 +315,25 @@ do_login() {
 
 # Add a new account
 do_add() {
-    # Find next available ID
     local max_id=0
     for id in $(get_account_ids); do
         (( id > max_id )) && max_id=$id
     done
     local new_id=$(( max_id + 1 ))
 
-    local name="" username="" description=""
-
-    if has_gum; then
-        name=$(gum input --placeholder "Identifier (e.g. Work, Personal)" --header "New Account #$new_id")
-        username=$(gum input --placeholder "Username/email (optional)" --header "Username")
-        description=$(gum input --placeholder "Description (optional)" --header "Description")
-    else
-        read -rp "Identifier (e.g. Work, Personal): " name
-        read -rp "Username/email (optional): " username
-        read -rp "Description (optional): " description
-    fi
+    local name username description
+    name=$(gum input --placeholder "Identifier (e.g. Work, Personal)" --header "New Account #$new_id")
+    username=$(gum input --placeholder "Username/email (optional)" --header "Username")
+    description=$(gum input --placeholder "Description (optional)" --header "Description")
 
     [[ -z "$name" ]] && name="Account $new_id"
 
-    # Add to accounts.json
     local tmp
     tmp=$(jq --arg id "$new_id" --arg name "$name" --arg user "$username" --arg desc "$description" \
         '.[$id] = {"identifier": $name, "username": $user, "description": $desc, "lastUsed": ""}' "$ACCOUNTS_FILE")
     echo "$tmp" > "$ACCOUNTS_FILE"
 
     echo -e "${GREEN}Created account $new_id ($name)${RESET}"
-
-    # Launch login
     do_login "$new_id"
 }
 
@@ -372,19 +343,9 @@ do_edit() {
     [[ $(jq --arg id "$id" 'has($id)' "$ACCOUNTS_FILE") == "true" ]] || die "Account $id not found"
 
     local name username description
-
-    if has_gum; then
-        name=$(gum input --value "$(get_meta "$id" "identifier")" --header "Identifier for account $id")
-        username=$(gum input --value "$(get_meta "$id" "username")" --header "Username")
-        description=$(gum input --value "$(get_meta "$id" "description")" --header "Description")
-    else
-        read -rp "Identifier [$(get_meta "$id" "identifier")]: " name
-        read -rp "Username [$(get_meta "$id" "username")]: " username
-        read -rp "Description [$(get_meta "$id" "description")]: " description
-        [[ -z "$name" ]] && name=$(get_meta "$id" "identifier")
-        [[ -z "$username" ]] && username=$(get_meta "$id" "username")
-        [[ -z "$description" ]] && description=$(get_meta "$id" "description")
-    fi
+    name=$(gum input --value "$(get_meta "$id" "identifier")" --header "Identifier for account $id")
+    username=$(gum input --value "$(get_meta "$id" "username")" --header "Username")
+    description=$(gum input --value "$(get_meta "$id" "description")" --header "Description")
 
     local tmp
     tmp=$(jq --arg id "$id" --arg name "$name" --arg user "$username" --arg desc "$description" \
@@ -394,47 +355,59 @@ do_edit() {
     echo -e "${GREEN}Updated account $id${RESET}"
 }
 
+# Remove an account
+do_remove() {
+    local id="$1"
+    [[ $(jq --arg id "$id" 'has($id)' "$ACCOUNTS_FILE") == "true" ]] || die "Account $id not found"
+
+    local active
+    active=$(get_active)
+    [[ "$id" == "$active" ]] && die "Account $id is currently active — switch to another account first."
+
+    local name
+    name=$(get_meta "$id" "identifier")
+
+    gum confirm "Remove account $id ($name)?" || { echo "Aborted."; return; }
+
+    local cred_file="$DATA_DIR/account${id}.credentials.json"
+    [[ -f "$cred_file" ]] && rm -f "$cred_file"
+
+    local tmp
+    tmp=$(jq --arg id "$id" 'del(.[$id])' "$ACCOUNTS_FILE")
+    echo "$tmp" > "$ACCOUNTS_FILE"
+
+    echo -e "${GREEN}Removed account $id ($name)${RESET}"
+}
+
 # Import current active session as a new account
 do_import() {
     local src="$CRED_LINK"
-
-    # Accept a raw credentials file path or fall back to the live one
     [[ -f "$src" ]] || die "No credentials found at $src — are you logged in?"
 
-    # Find next available ID
     local max_id=0
     for id in $(get_account_ids); do
         (( id > max_id )) && max_id=$id
     done
     local new_id=$(( max_id + 1 ))
 
-    # Prompt for identifier
-    local name=""
-    if has_gum; then
-        name=$(gum input --placeholder "Identifier (e.g. Work, Personal)" --header "Import current session as Account #$new_id")
-    else
-        read -rp "Identifier (e.g. Work, Personal): " name
-    fi
+    local name
+    name=$(gum input --placeholder "Identifier (e.g. Work, Personal)" --header "Import current session as Account #$new_id")
     [[ -z "$name" ]] && name="Account $new_id"
 
-    # Copy credentials into data dir
     local cred_file="$DATA_DIR/account${new_id}.credentials.json"
     cp "$src" "$cred_file"
 
-    # Create account entry
     local tmp
     tmp=$(jq --arg id "$new_id" --arg name "$name" \
         '.[$id] = {"identifier": $name, "username": "", "description": "", "lastUsed": ""}' "$ACCOUNTS_FILE")
     echo "$tmp" > "$ACCOUNTS_FILE"
 
-    # Point symlink at the new copy
     rm -f "$CRED_LINK"
     ln -s "$cred_file" "$CRED_LINK"
 
     touch_account "$new_id"
     sync_metadata "$new_id"
 
-    local name
     name=$(get_meta "$new_id" "identifier")
     echo -e "${GREEN}Imported current session as account $new_id ($name)${RESET}"
 }
@@ -465,17 +438,22 @@ case "${1:-}" in
         [[ -z "${2:-}" ]] && die "Usage: claude-switch edit <account-number>"
         do_edit "$2"
         ;;
+    remove)
+        [[ -z "${2:-}" ]] && die "Usage: claude-switch remove <account-number>"
+        do_remove "$2"
+        ;;
     help|-h|--help)
         echo -e "${BOLD}claude-switch${RESET} — Claude account manager"
         echo ""
         echo "  claude-switch              Interactive account menu"
         echo "  claude-switch <N>          Switch to account N"
         echo "  claude-switch status       Show all accounts and active"
-        echo "  claude-switch info         Fetch and display active account info"
+        echo "  claude-switch info/sync    Fetch and display active account info"
         echo "  claude-switch login <N>    Login/refresh account N credentials"
         echo "  claude-switch import       Import current logged-in session as an account"
         echo "  claude-switch add          Add a new account"
         echo "  claude-switch edit <N>     Edit account N metadata"
+        echo "  claude-switch remove <N>   Remove account N (cannot be active)"
         echo "  claude-switch help         Show this help"
         ;;
     [0-9]*)
