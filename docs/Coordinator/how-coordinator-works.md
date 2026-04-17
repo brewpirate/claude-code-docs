@@ -2,6 +2,28 @@
 
 Coordinator mode is a multi-agent orchestration layer that transforms Claude Code into a supervisor managing teams of worker agents.
 
+## Coordinator architecture
+
+```mermaid
+graph LR
+    U[User] <-->|messages| COORD[Coordinator\nyou / Claude]
+
+    COORD -->|Agent tool\nself-contained prompt| W1[Worker A\nResearch]
+    COORD -->|Agent tool\nself-contained prompt| W2[Worker B\nImplementation]
+    COORD -->|Agent tool\nself-contained prompt| W3[Worker C\nVerification]
+
+    W1 -->|task-notification| COORD
+    W2 -->|task-notification| COORD
+    W3 -->|task-notification| COORD
+
+    W1 <-.->|read/write| S[.claude/scratchpad/\nshared context\nrequires tengu_scratch]
+    W2 <-.->|read/write| S
+    W3 <-.->|read/write| S
+
+    COORD -->|SendMessage| W1
+    COORD -->|TaskStop| W2
+```
+
 ## Activation flow
 
 1. **Compile-time gate**: Build must include `COORDINATOR_MODE` feature flag

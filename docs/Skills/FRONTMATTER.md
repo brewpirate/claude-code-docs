@@ -148,6 +148,8 @@ Legend: **✅** = applies, **—** = not applicable. "Agent" = subagents. "Comma
   ```
 - **Notes:** **Discrepancy**: Docs describe this as a boolean; source.ts types it as `string | null` and parses it as a string-boolean (env-var style). Only literal `true` or string `"true"` are treated as true; YAML `true` becomes the boolean, which does not match.
 
+  > **Practical note for beginners:** Always write `user-invocable: "true"` with quotes around `true`. Without quotes, YAML converts it to a boolean that the parser does not recognize, silently leaving the field ignored. This is the most common reason a newly created skill doesn't appear in the `/` menu.
+
 ### `disable-model-invocation`
 - **Applies to:** Skills
 - **Type:** boolean (stored as string `"true"` or `"false"`)
@@ -160,7 +162,7 @@ Legend: **✅** = applies, **—** = not applicable. "Agent" = subagents. "Comma
   disable-model-invocation: true
   ---
   ```
-- **Notes:** Documented and critical but not a named typed property in `FrontmatterData`. Only literal `true` or string `"true"` are treated as true.
+- **Notes:** Documented and critical but not a named typed property in `FrontmatterData`. Only literal `true` or string `"true"` are treated as true. The same string-boolean parsing applies as `user-invocable` — write `disable-model-invocation: "true"` (with quotes) to avoid silent failure.
 
 ### `model`
 - **Applies to:** Skills, Subagents, Slash commands

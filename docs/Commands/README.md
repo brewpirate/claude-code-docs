@@ -1,5 +1,7 @@
 # Claude Code Built-in Slash Commands
 
+> **New here?** You don't need to know all 97 commands. The ★ markers below highlight the 15 commands you'll use most often as a junior developer. Start with `/help`, `/config`, and `/clear`.
+
 Per-section reference for every built-in slash command dispatched by the Claude Code CLI.
 
 ## Table of Contents
@@ -42,6 +44,8 @@ Per-section reference for every built-in slash command dispatched by the Claude 
 
 ## Quick reference — documented commands
 
+★ = commonly used by junior developers; start with these
+
 | Command | Aliases | Category | Arguments | Disabler env var | Gating/condition |
 |---------|---------|----------|-----------|------------------|------------------|
 | `/add-dir` | — | Session Management | `<path>` | — | — |
@@ -52,29 +56,29 @@ Per-section reference for every built-in slash command dispatched by the Claude 
 | `/btw` | — | Session Management | `<question>` | — | — |
 | `/chrome` | — | IDE | none | — | — |
 | `/claude-api` | — | Session Management [Skill] | none | `CLAUDE_CODE_DISABLE_CLAUDE_API_SKILL` | Auto-activates with `anthropic` or `@anthropic-ai/sdk` imports |
-| `/clear` | `/reset`, `/new` | Session Management | none | — | — |
+| `/clear` ★ | `/reset`, `/new` | Session Management | none | — | — |
 | `/color` | — | Session Management | `[color\|default]` | — | Colors: `red`, `blue`, `green`, `yellow`, `purple`, `orange`, `pink`, `cyan` |
 | `/compact` | — | Session Management | `[instructions]` | `DISABLE_COMPACT` | — |
-| `/config` | `/settings` | Session Management | none | — | — |
+| `/config` ★ | `/settings` | Session Management | none | — | — |
 | `/context` | — | Memory/Context | none | — | — |
 | `/copy` | — | Session Management | `[N]` | — | — |
-| `/cost` | — | Diagnostics | none | — | — |
+| `/cost` ★ | — | Diagnostics | none | — | — |
 | `/debug` | — | Diagnostics [Skill] | `[description]` | — | Requires `claude --debug` flag or manual activation |
 | `/desktop` | `/app` | IDE | none | — | macOS and Windows only |
 | `/diff` | — | IDE | none | — | — |
 | `/doctor` | — | Diagnostics | none | `DISABLE_DOCTOR_COMMAND` | — |
 | `/effort` | — | Session Management | `[level\|auto]` | `CLAUDE_CODE_DISABLE_FAST_MODE` | Levels: `low`, `medium`, `high`, `xhigh`, `max`, `auto` |
-| `/exit` | `/quit` | Session Management | none | — | — |
+| `/exit` ★ | `/quit` | Session Management | none | — | — |
 | `/export` | — | Session Management | `[filename]` | — | — |
 | `/extra-usage` | — | Account | none | — | — |
 | `/fast` | — | Session Management | `[on\|off]` | `CLAUDE_CODE_DISABLE_FAST_MODE` | — |
-| `/feedback` | `/bug` | Help | `[report]` | `DISABLE_FEEDBACK_COMMAND`, `DISABLE_BUG_COMMAND` | — |
+| `/feedback` ★ | `/bug` | Help | `[report]` | `DISABLE_FEEDBACK_COMMAND`, `DISABLE_BUG_COMMAND` | — |
 | `/focus` | — | Session Management | none | — | Fullscreen rendering only |
 | `/heapdump` | — | Diagnostics | none | — | — |
-| `/help` | — | Help | none | — | — |
+| `/help` ★ | — | Help | none | — | — |
 | `/hooks` | — | Plugin Mgmt | none | — | — |
 | `/ide` | — | IDE | none | — | — |
-| `/init` | — | Memory/Context | none | — | Set `CLAUDE_CODE_NEW_INIT=1` for interactive flow |
+| `/init` ★ | — | Memory/Context | none | — | Set `CLAUDE_CODE_NEW_INIT=1` for interactive flow |
 | `/insights` | — | Diagnostics | none | — | — |
 | `/install-github-app` | — | IDE/GitHub | none | `DISABLE_INSTALL_GITHUB_APP_COMMAND` | — |
 | `/install-slack-app` | — | IDE/Integrations | none | — | — |
@@ -84,11 +88,11 @@ Per-section reference for every built-in slash command dispatched by the Claude 
 | `/logout` | — | Account | none | `DISABLE_LOGOUT_COMMAND` | — |
 | `/loop` | `/proactive` | Session Management [Skill] | `[interval] [prompt]` | — | — |
 | `/mcp` | — | Plugin Mgmt | none | — | — |
-| `/memory` | — | Memory/Context | none | `CLAUDE_CODE_DISABLE_AUTO_MEMORY` | Disabler only affects auto-memory, not the command |
+| `/memory` ★ | — | Memory/Context | none | `CLAUDE_CODE_DISABLE_AUTO_MEMORY` | Disabler only affects auto-memory, not the command |
 | `/mobile` | `/ios`, `/android` | Account | none | — | — |
-| `/model` | — | Session Management | `[model]` | — | — |
+| `/model` ★ | — | Session Management | `[model]` | — | — |
 | `/passes` | — | Account | none | — | Only visible if account is eligible |
-| `/permissions` | `/allowed-tools` | Plugin Mgmt | none | — | — |
+| `/permissions` ★ | `/allowed-tools` | Plugin Mgmt | none | — | — |
 | `/plan` | — | Session Management | `[description]` | — | — |
 | `/plugin` | — | Plugin Mgmt | none | — | — |
 | `/powerup` | — | Help | none | — | — |
@@ -99,16 +103,16 @@ Per-section reference for every built-in slash command dispatched by the Claude 
 | `/remote-control` | `/rc` | IDE | none | — | — |
 | `/remote-env` | — | IDE | none | — | — |
 | `/rename` | — | Session Management | `[name]` | — | — |
-| `/resume` | `/continue` | Session Management | `[session]` | — | — |
+| `/resume` ★ | `/continue` | Session Management | `[session]` | — | — |
 | `/review` | — | IDE | `[PR]` | — | — |
-| `/rewind` | `/checkpoint`, `/undo` | Session Management | none | `CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING` | Disabler affects checkpointing feature |
+| `/rewind` ★ | `/checkpoint`, `/undo` | Session Management | none | `CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING` | Disabler affects checkpointing feature |
 | `/sandbox` | — | Session Management | none | — | Supported platforms only |
 | `/schedule` | `/routines` | Team | `[description]` | — | — |
 | `/security-review` | — | Diagnostics | none | — | — |
 | `/setup-bedrock` | — | Account | none | — | Only visible with `CLAUDE_CODE_USE_BEDROCK=1` |
 | `/setup-vertex` | — | Account | none | — | Only visible with `CLAUDE_CODE_USE_VERTEX=1` |
 | `/simplify` | — | Diagnostics [Skill] | `[focus]` | — | — |
-| `/skills` | — | Help | none | — | Press `t` to sort by token count |
+| `/skills` ★ | — | Help | none | — | Press `t` to sort by token count |
 | `/stats` | — | Diagnostics | none | — | — |
 | `/status` | — | Diagnostics | none | — | Works while Claude is responding |
 | `/statusline` | — | IDE | none | — | — |

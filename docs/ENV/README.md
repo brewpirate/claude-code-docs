@@ -1,5 +1,7 @@
 # Environment Variables
 
+> **New here?** You only need 5 variables to get started: `ANTHROPIC_API_KEY` (required — your auth), `CLAUDE_CODE_DEBUG` (debugging), `ANTHROPIC_MODEL` (model selection), `CLAUDE_CODE_DISABLE_AUTO_MEMORY` (privacy — disables memory logging), `CLAUDE_CODE_VERBOSE` (verbose output). The other 500+ variables are for advanced configuration, enterprise deployments, and feature gating. Don't be intimidated by the size of this reference.
+
 Per-section reference for every environment variable recognized by Claude Code CLI v2.1.100.
 
 > **Source / attribution:** The original variable list was compiled by [@unkn0wncode](https://gist.github.com/unkn0wncode) in [this gist](https://gist.github.com/unkn0wncode/f87295d055dd0f0e8082358a0b5cc467). This expanded documentation adds types, defaults, examples, precedence notes, and cross-references.

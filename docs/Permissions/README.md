@@ -1,5 +1,7 @@
 # Claude Code Permission Rules
 
+> **New here?** Start with [GettingStarted/first-permission-rule.md](../GettingStarted/first-permission-rule.md) to learn how to add your first allow/deny rule in 2 minutes. The sections below are the full reference — you don't need all 10 sections to get started.
+
 Reference for the permission rule grammar, evaluation model, and related subsystems. Rules gate which tool invocations Claude can run automatically vs. require user approval vs. block entirely.
 
 ## Table of Contents
