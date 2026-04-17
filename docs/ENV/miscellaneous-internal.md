@@ -97,6 +97,34 @@
 - **Description:** Set permission mode for Claude-in-Chrome extension.
 - **Example:** `export CLAUDE_CHROME_PERMISSION_MODE=unrestricted`
 
+### `CLAUDE_CODE_COORDINATOR_MODE`
+- **Type:** Boolean (truthy values activate)
+- **Default:** unset
+- **Description:** Activates coordinator mode — Claude Code's multi-agent orchestration layer. Gated at compile time by `COORDINATOR_MODE` flag. Session resume auto-flips this env var to match the mode the session was created in. See [Coordinator/](../Coordinator/README.md).
+- **Example:** `export CLAUDE_CODE_COORDINATOR_MODE=1`
+- **Related:** `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`, `CLAUDE_CODE_TASK_LIST_ID`
+
+### `CLAUDE_NOTIFICATION_CHANNEL`
+- **Type:** Enum (string)
+- **Default:** `auto`
+- **Allowed values:** `auto`, `iterm2`, `iterm2_with_bell`, `kitty`, `osascript`, `notify-send`, `command`, `bell`
+- **Description:** Selects the desktop notification mechanism. `auto` picks the best available for the terminal. `osascript` is macOS-only; `notify-send` is Linux-only; `iterm2*` and `kitty` require those specific terminals. `command` runs a configured shell command. `bell` writes `\a` to the terminal.
+- **Example:** `export CLAUDE_NOTIFICATION_CHANNEL=kitty`
+
+### `UDS_INBOX`
+- **Type:** Boolean (truthy values activate)
+- **Default:** unset
+- **Description:** Enables a Unix Domain Socket inbox for inter-process messaging between concurrent Claude Code sessions. When set (and not in `--bare` mode), Claude Code spawns a UDS listener at startup. Socket path exported to child processes via `CLAUDE_CODE_MESSAGING_SOCKET`. Internal infrastructure — primarily ant-only.
+- **Example:** `export UDS_INBOX=1`
+- **Related:** `CLAUDE_CODE_MESSAGING_SOCKET`
+
+### `CLAUDE_CODE_MESSAGING_SOCKET`
+- **Type:** String (filesystem path)
+- **Default:** set by Claude Code when `UDS_INBOX` is active
+- **Description:** Path to the UDS inbox socket, populated by the parent Claude Code process when `UDS_INBOX` is set. Child processes read this env var to connect back to the parent's messaging server. Users should NOT set this directly.
+- **Example:** `/tmp/claude-code-messaging-<pid>.sock` (auto-generated)
+- **Related:** `UDS_INBOX`
+
 ---
 
 [← Back to env/README.md](./README.md)
