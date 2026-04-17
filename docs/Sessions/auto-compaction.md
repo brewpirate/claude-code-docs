@@ -2,6 +2,24 @@
 
 Automatic conversation compression when context window approaches capacity.
 
+## Compaction flow
+
+```mermaid
+flowchart TD
+    A[New turn: count tokens] --> B{conversation_tokens +\nreserved_output_tokens\n> effective_window?}
+    B -->|No| CONTINUE[Continue normally]
+    B -->|Yes| C[Pause user input]
+    C --> D[Call compaction API\nto summarize history]
+    D --> E{Success?}
+    E -->|No| F{Retry count\n>= 2?}
+    F -->|No| D
+    F -->|Yes| ABANDON[Abandon compaction\nSession continues without it]
+    E -->|Yes| G[Restore up to 5 recent files\n5k tokens each]
+    G --> H[Restore skill and MCP definitions\nup to 25k tokens total]
+    H --> I[Write SummaryMessage\nto transcript JSONL]
+    I --> J[Resume session\nwith compressed history]
+```
+
 ## Compaction trigger
 
 Auto-compaction is triggered when:

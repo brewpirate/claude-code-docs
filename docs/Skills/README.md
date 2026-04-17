@@ -1,5 +1,7 @@
 # Claude Code Skills
 
+> **New here?** Start with [GettingStarted/first-skill.md](../GettingStarted/first-skill.md) for a step-by-step tutorial that walks you through creating your first skill. The sections below are the full reference for all 29 frontmatter fields and 14 bundled skills.
+
 Reference for the Claude Code skill system — both the YAML frontmatter schema used by skill, agent, command, memory, and output-style files, and the catalog of bundled skills shipped with the CLI.
 
 ## Table of Contents

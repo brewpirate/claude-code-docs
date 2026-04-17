@@ -1,5 +1,31 @@
 # How event hooks work
 
+## Hook event lifecycle
+
+```mermaid
+sequenceDiagram
+    participant C as Claude
+    participant CC as Claude Code
+    participant H as Hook Handler
+    participant T as Tool
+
+    C->>CC: Request tool call (e.g. Bash)
+    CC->>CC: Find matching PreToolUse hooks
+    CC->>H: Run handler with JSON input on stdin
+    alt Handler exits 2 (block)
+        H-->>CC: exit 2
+        CC-->>C: Tool call blocked
+    else Handler exits 0 (proceed)
+        H-->>CC: exit 0
+        CC->>T: Execute tool
+        T-->>CC: Tool result
+        CC->>H: Run PostToolUse handlers
+        H-->>CC: exit 0
+        CC-->>C: Tool result returned
+    end
+```
+
+> **What "blocking" means:** Exit code 0 = proceed normally. Exit code 2 = Claude stops and does not execute the tool. This is how you'd prevent Claude from running `rm -rf` commands or overwriting protected files. Any exit code other than 2 (including exit 1) is treated as "proceed."
 
 - **Lifecycle events:** Hook events fire at specific points in the session—before/after tool use, permission checks, session start/end, file changes, subagent dispatch, compaction, and MCP elicitation. Each event is named after what triggered it (e.g., `PreToolUse` fires before any tool runs).
 

@@ -1,10 +1,18 @@
 # Claude Code Documentation
 
+> **New here?** Start with [GettingStarted/](./GettingStarted/) for guided tutorials, learning paths, and a first-10-minutes checklist. The reference tables below cover every detail once you're oriented.
+
 Local reference for Claude Code CLI v2.1.x — every env var, settings key, slash command, tool, skill, hook, permission rule, CLI flag, plugin-manifest field, Agent SDK type, memory location, transcript path, keybinding, bridge protocol field, and cost-tracking mechanism — cross-referenced against the official docs and the `claude-code-main` source snapshot.
 
 ## Hubs
 
 Each hub is a self-contained reference: `README.md` (intro + TOC + Overview table + Quick Reference + See Also) + per-section files + back-links. Uniform shape across all seventeen hubs.
+
+### Start here
+
+| Hub | Description | Entries |
+|-----|-------------|---------|
+| [GettingStarted/](./GettingStarted/) | Tutorials for new users — learning paths, first skill, first permission rule, first hook, feature gates guide. | 5 guides |
 
 ### Configuration surface
 
@@ -58,16 +66,16 @@ Remote sessions, bridges, and enterprise-only transport.
 |-----|-------------|---------|
 | [Bridge/](./Bridge/) | CCR v1/v2 bridge — WebSocket vs SSE transport, 6-layer feature gating, session-token refresh, trusted device tokens, keep-alive frames, upstream proxy (CCR containers), remote session protocol. | 11 sections |
 
-## Placeholder topics (URL-only stubs)
+## Reference-only stubs
 
-These files contain only pointers to official docs; they have not been expanded with local source cross-reference.
+These files link to external docs. Local content has been added for CHANNELS.md, Changelog.md, and Agents/.
 
-| File | Points to |
-|------|-----------|
-| [CHANNELS.md](./CHANNELS.md) | <https://code.claude.com/docs/en/channels-reference> (also see [Settings/channel-communication.md](./Settings/channel-communication.md)) |
-| [Changelog.md](./Changelog.md) | <https://code.claude.com/docs/en/changelog> + [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md) |
-| [Checkpointing.md](./Checkpointing.md) | <https://code.claude.com/docs/en/checkpointing> (also see [Sessions/](./Sessions/) for local behavior) |
-| [Agents/](./Agents/) | Empty — subagents are covered within [Skills/FRONTMATTER.md](./Skills/FRONTMATTER.md), [Coordinator/](./Coordinator/), and [Agent SDK/](./Agent%20SDK/). |
+| File | Notes |
+|------|-------|
+| [CHANNELS.md](./CHANNELS.md) | Channels overview + 3 settings keys. External reference: <https://code.claude.com/docs/en/channels-reference> |
+| [Changelog.md](./Changelog.md) | Changelog links + silent migration notes. External: <https://code.claude.com/docs/en/changelog> |
+| [Checkpointing.md](./Checkpointing.md) | URL-only stub. See [Sessions/](./Sessions/) for local session behavior. External: <https://code.claude.com/docs/en/checkpointing> |
+| [Agents/](./Agents/) | Expanded hub — subagent overview, definition methods, and how-subagents-work guide. |
 
 ## Notable easter eggs & undocumented features
 

@@ -4,6 +4,33 @@ Claude Code maintains memory across sessions through four complementary systems,
 
 ## The four memory systems
 
+```mermaid
+graph TD
+    A[Session starts] --> B[1 - MEMORY.md\n.claude/MEMORY.md\nProject-local, manual]
+    A --> C[2 - Auto-memory logs\n~/.claude/memory/YYYY/MM/\nUser-global, automatic]
+    A --> D[3 - Session memory\n~/.claude/sessionMemory.md\nCurrent session only\nRequires tengu_session_memory]
+    A --> E[4 - Command history\n~/.claude/history.jsonl\nLast 100 prompts per project]
+
+    B -->|Read first\napplied to all reasoning| CTX[Claude context window]
+    C -->|Sonnet selects up to 5\nmost relevant files| CTX
+    D -->|Injected if flag enabled| CTX
+    E -->|Available for up-arrow recall| CTX
+
+    style B fill:#d4edda
+    style C fill:#cce5ff
+    style D fill:#fff3cd
+    style E fill:#f8d7da
+```
+
+| System | Scope | Lifespan | Manual or auto? |
+|--------|-------|----------|----------------|
+| MEMORY.md | Project | Until deleted | Manual |
+| Auto-memory logs | User global | Indefinite | Automatic |
+| Session memory | User global | Current session | Automatic (gated) |
+| Command history | User global | Configurable | Automatic |
+
+## The four memory systems
+
 ### 1. MEMORY.md entrypoint
 
 Every project's `.claude/` directory can contain a `MEMORY.md` file. This is a user-maintained index of important facts about the project—goals, architecture decisions, patterns, known issues. When Claude loads project context, it reads this file first and applies it to all subsequent reasoning. MEMORY.md is the most explicit, user-controlled form of memory.

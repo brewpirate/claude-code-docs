@@ -2,6 +2,42 @@
 
 The Bridge enables Claude Code to execute in remote environments (Cloud Container Runtime / CCR) and viewer-only sessions, extending from the local CLI to cloud-hosted agents. Two transport protocols exist: WebSocket (v1, legacy) and Server-Sent Events / SSE (v2, modern).
 
+## Bridge transport protocols
+
+```mermaid
+sequenceDiagram
+    participant CL as Client\n(Browser/Viewer)
+    participant BR as Bridge Server\n(CCR)
+    participant CC as Claude Code\n(Remote Agent)
+    participant API as Claude API
+
+    rect rgb(200, 230, 255)
+        Note over CL,CC: CCR v1 — WebSocket (legacy)
+        CL->>BR: WS /v1/sessions/ws/{id}/subscribe
+        BR-->>CL: auth handshake
+        loop Bidirectional frames
+            CC->>BR: text_delta, tool_use events
+            BR->>CL: forwarded frames
+            CL->>BR: control_request, interrupt
+            BR->>CC: forwarded commands
+        end
+    end
+
+    rect rgb(220, 255, 220)
+        Note over CL,CC: CCR v2 — SSE + POST (modern)
+        CL->>BR: GET /v1/sessions/{id}/stream (SSE)
+        BR-->>CL: SSE stream open
+        loop Server pushes events
+            CC->>API: query
+            API-->>CC: response
+            CC->>BR: POST event
+            BR->>CL: SSE event frame
+        end
+        CL->>BR: POST /v1/sessions/{id}/event
+        BR->>CC: forwarded command
+    end
+```
+
 ## CCR v1: WebSocket Transport
 
 **Classic remote control** uses a persistent WebSocket connection to the Bridge server.

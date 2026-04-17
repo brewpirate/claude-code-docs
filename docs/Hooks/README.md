@@ -1,5 +1,7 @@
 # Claude Code Hook Events
 
+> **New here?** Start with [GettingStarted/first-hook.md](../GettingStarted/first-hook.md) to create a working hook in under 10 minutes. Once your first hook is working, sections 1-3 below cover everything you need. Skip sections 4 (Matcher semantics), 5 (Scope & configuration), 6 (Security model), and 7 (Additional subsystems) until you need them.
+
 Reference for Claude Code's event hook system — lifecycle events, handler types (command / http / prompt / agent), matcher syntax, and security model. Configure in `settings.json` or in skill/agent frontmatter.
 
 ## Table of Contents
