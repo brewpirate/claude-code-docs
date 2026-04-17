@@ -1,6 +1,6 @@
 # Claude Code Built-in Tools
 
-Per-section reference for every built-in tool dispatched by Claude Code. Generated from [./BUILT_IN.md](./BUILT_IN.md).
+Per-section reference for every built-in tool dispatched by Claude Code.
 
 ## Table of Contents
 
@@ -44,11 +44,54 @@ Per-section reference for every built-in tool dispatched by Claude Code. Generat
 | 15 | [Permissions & tool access control](./permissions-tool-access-control.md) | Allow/ask/deny rules, the permission model, and per-tool gating via settings.json. | 0 |
 | 16 | [Related references](./related-references.md) | Cross-links to other docs in this repo (Commands, Skills, ENV, Settings). | 0 |
 
+## Quick reference — built-in tools
+
+| Tool | Class | Side effect | Gating | Purpose |
+|------|-------|------------|--------|---------|
+| `Read` | Filesystem | Read-only | Always | Read file contents, including images and notebooks |
+| `Write` | Filesystem | Writes | Permission | Create or overwrite files |
+| `Edit` | Filesystem | Writes | Permission | Make targeted edits to specific lines |
+| `NotebookEdit` | Filesystem | Writes | Permission | Modify Jupyter notebook cells |
+| `Glob` | Filesystem | Read-only | Always | Find files by glob pattern matching |
+| `Grep` | Filesystem | Read-only | Always | Search for patterns in file contents |
+| `Bash` | Shell | Executes | Permission | Run shell commands (POSIX/Bash) |
+| `PowerShell` | Shell | Executes | Permission | Run PowerShell commands (opt-in) |
+| `LSP` | Code intelligence | Read-only | Always | Jump to definitions, find references, type info |
+| `WebFetch` | Network | Read-only | Permission | Fetch and parse content from URLs |
+| `WebSearch` | Network | Read-only | Permission | Perform web searches (US only) |
+| `Agent` | Orchestration | Spawns | Always | Spawn a subagent with isolated context |
+| `Skill` | Orchestration | Spawns | Permission | Execute a skill from the skill registry |
+| `CronCreate` | Scheduling | Spawns | Always | Schedule a one-time or recurring prompt |
+| `CronDelete` | Scheduling | Spawns | Always | Cancel a scheduled task |
+| `CronList` | Scheduling | Read-only | Always | List all scheduled tasks |
+| `TaskCreate` | Task management | Spawns | Always | Create a task in the task list |
+| `TaskGet` | Task management | Read-only | Always | Get details for a specific task |
+| `TaskList` | Task management | Read-only | Always | List all tasks with status |
+| `TaskUpdate` | Task management | Writes | Always | Update task status, details, or delete |
+| `TaskStop` | Task management | Executes | Always | Kill a running background task |
+| `TaskOutput` | Task management | Read-only | Always | (Deprecated) Get output from a background task |
+| `EnterPlanMode` | Session | None | Always | Switch to plan mode (design before code) |
+| `ExitPlanMode` | Session | Writes | Permission | Present plan and exit plan mode |
+| `EnterWorktree` | Session | Spawns | Always | Create or switch to a git worktree |
+| `ExitWorktree` | Session | None | Always | Exit a worktree and return to main |
+| `Monitor` | Shell | Executes | Permission | Run command in background, feed output back |
+| `SendMessage` | Orchestration | None | Always | Message a teammate or resume a subagent |
+| `TeamCreate` | Orchestration | Spawns | Feature-flag | Create an agent team with multiple teammates |
+| `TeamDelete` | Orchestration | Executes | Feature-flag | Disband a team and clean up resources |
+| `AskUserQuestion` | Session | None | Always | Ask multiple-choice questions |
+| `Config` | Session | Writes | Always | Get or modify settings |
+| `ToolSearch` | Meta | Read-only | Feature-flag | Search for and load deferred tools |
+| `ListMcpResources` | MCP | Read-only | Always | List resources exposed by MCP servers |
+| `ReadMcpResource` | MCP | Read-only | Always | Read a specific MCP resource by URI |
+| `TodoWrite` | Task management | Writes | Always | Manage session task checklist (non-interactive) |
+| `RemoteTrigger` | Remote | Executes | Entrypoint | Trigger a remote session or API call |
+| `BriefTool` | Session | None | Feature-flag | Enable brief/compact output mode |
+| `SleepTool` | Meta | None | Internal | Sleep for a duration (testing/internal) |
+
 ## See Also
 
-- [./BUILT_IN.md](./BUILT_IN.md) — single-file consolidated reference.
-- [../Commands/BUILT_IN.md](../Commands/BUILT_IN.md) — companion reference for built-in slash commands.
-- [../Skills/BUILT_IN.md](../Skills/BUILT_IN.md) — companion reference for bundled skills.
+- [../Commands/README.md](../Commands/README.md) — companion reference for built-in slash commands.
+- [../Skills/README.md](../Skills/README.md) — companion reference for bundled skills.
 - [../Skills/FRONTMATTER.md](../Skills/FRONTMATTER.md) — frontmatter schema for skills, agents, and commands.
 - [../ENV/README.md](../ENV/README.md) — environment variables (many tools are feature-flag gated here).
 - Official docs: <https://code.claude.com/docs/en/tools-reference>
