@@ -51,7 +51,7 @@ Reference for the permission rule grammar, evaluation model, and related subsyst
 | `WebSearch` | no pattern | `WebSearch` | N/A | Rule name only; no specifier. Controls WebSearch tool access. |
 | `Agent` | subagent type name | `Agent(Explore)`, `Agent(my-custom-agent)` | No literal wildcard; exact name match | Deny rules block subagent invocation. |
 | `Skill` | skill name | `Skill(validate-sql)` | No literal wildcard; exact name match | Gated like other tools when invoked via Skill tool. |
-| `mcp__*` | MCP server and tool | `mcp__slack__*`, `mcp__slack__slack_send_message` | `*` for all tools on a server | Literal `mcp__server__tool` or wildcard `mcp__server__*`. See [Rule grammar—MCP patterns](#mcp-patterns). |
+| `mcp__*` | MCP server and tool | `mcp__slack__*`, `mcp__slack__slack_send_message` | `*` for all tools on a server | Literal `mcp__server__tool` or wildcard `mcp__server__*`. See [MCP patterns](/claude-code-docs/permissions/overview/). |
 | `Monitor`, `Config`, `TodoWrite`, etc. | no pattern (if not documented otherwise) | `Monitor` | N/A | Tool-specific. Most do not accept patterns; apply to all uses. |
 
 ## See Also

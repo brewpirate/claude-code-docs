@@ -31,7 +31,7 @@ flowchart TD
   - `disable-model-invocation: true` — Claude cannot invoke; only users can invoke via `/skill-name`
   - `disableModelInvocation: false` (default) — Claude can load and invoke the skill automatically when relevant
 - **Aliases**: Some skills have aliases (alternative names). For example, `/loop` also responds to `/proactive`.
-- **Exposed as slash commands**: A subset of bundled skills are also listed in the [Commands reference](/en/commands), marked as **[Skill]**, and can be invoked directly. Examples: `/batch`, `/simplify`, `/loop`, `/debug`, `/claude-api`.
+- **Exposed as slash commands**: A subset of bundled skills are also listed in the [Commands reference](https://code.claude.com/docs/en/commands), marked as **[Skill]**, and can be invoked directly. Examples: `/batch`, `/simplify`, `/loop`, `/debug`, `/claude-api`.
 
 ---
 

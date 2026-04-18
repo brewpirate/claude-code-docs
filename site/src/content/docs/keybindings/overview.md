@@ -123,6 +123,6 @@ All shipped bindings by key, with context, action, feature gate (if any), and pl
 ## See Also
 
 - [../Settings/ui-display.md](/claude-code-docs/settings/ui-display/) — UI display settings that affect key behavior.
-- [../Commands/](../Commands/) — built-in commands including `/keybindings`.
+- [Commands](/claude-code-docs/cli/overview/) — built-in commands including `/keybindings`.
 - [../ENV/README.md](/claude-code-docs/env/overview/) — environment variables for terminal detection.
 - Official docs: https://code.claude.com/docs/en/keyboard-shortcuts

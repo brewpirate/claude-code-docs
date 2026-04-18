@@ -58,7 +58,7 @@ Reference for the Claude Code skill system — both the YAML frontmatter schema 
 ## See Also
 
 - [./FRONTMATTER.md](/claude-code-docs/skills/overview/) — frontmatter schema reference.
-- [./source.ts](./source.ts) — local copy of the Claude Code frontmatter parser (authoritative for parse behavior).
+- `source.ts` — local copy of the Claude Code frontmatter parser (authoritative for parse behavior).
 - [../Commands/README.md](/claude-code-docs/cli/overview/) — companion reference for built-in slash commands (several are `[Skill]`-backed).
 - [../Tools/README.md](/claude-code-docs/tools/overview/) — companion reference for built-in tools (the Skill tool dispatches skills).
 - [../ENV/README.md](/claude-code-docs/env/overview/) — environment variables (several skills are gated by `CLAUDE_CODE_ENABLE_*` flags).
