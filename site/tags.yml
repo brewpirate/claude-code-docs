@@ -1,0 +1,50 @@
+tags:
+  cli:
+    label: CLI
+    description: Command-line flags, subcommands, and invocation modes.
+    color: "#4385be"
+
+  environment:
+    label: Environment Variables
+    description: Environment variables recognized by Claude Code.
+    color: "#879a39"
+
+  settings:
+    label: Settings
+    description: settings.json configuration keys.
+    color: "#8b7ec8"
+
+  hooks:
+    label: Hooks
+    description: Event hooks and lifecycle automation.
+    color: "#da702c"
+
+  skills:
+    label: Skills
+    description: Built-in and custom slash command skills.
+    color: "#d0a215"
+
+  tools:
+    label: Tools
+    description: Built-in tools available to Claude.
+    color: "#3aa99f"
+
+  agent-sdk:
+    label: Agent SDK
+    description: SDK for building custom agents.
+    color: "#ce5d97"
+
+  permissions:
+    label: Permissions
+    description: Permission rules and access control.
+    color: "#d14d41"
+
+  plugins:
+    label: Plugins
+    description: Plugin system for packaging and sharing extensions.
+    color: "#879a39"
+
+  getting-started:
+    label: Getting Started
+    description: Tutorials and onboarding guides for new users.
+    color: "#4385be"
