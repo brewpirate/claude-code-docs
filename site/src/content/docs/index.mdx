@@ -14,33 +14,17 @@ hero:
       icon: external
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 ## Reference Hubs
 
-<CardGrid stagger>
-  <Card title="Getting Started" icon="rocket" href="/claude-code-docs/getting-started/overview/">
-    Tutorials for new users — learning paths, first skill, first permission rule, first hook, feature gates guide.
-  </Card>
-  <Card title="CLI" icon="laptop" href="/claude-code-docs/cli/overview/">
-    `claude` command-line flags, subcommands, invocation modes. Includes hidden flags from the source tree.
-  </Card>
-  <Card title="Environment Variables" icon="setting" href="/claude-code-docs/env/overview/">
-    Every environment variable recognized by Claude Code — 500+ vars across 21 sections.
-  </Card>
-  <Card title="Settings" icon="document" href="/claude-code-docs/settings/overview/">
-    `settings.json` key reference — auth, model, permissions, sandbox, plugins, MCP, hooks, UI, worktree.
-  </Card>
-  <Card title="Hooks" icon="puzzle" href="/claude-code-docs/hooks/overview/">
-    Event hooks system — how to wire shell commands to Claude Code lifecycle events.
-  </Card>
-  <Card title="Skills" icon="star" href="/claude-code-docs/skills/overview/">
-    Built-in and custom skills — how bundled skills work and how to add your own.
-  </Card>
-  <Card title="Tools" icon="magnifier" href="/claude-code-docs/tools/overview/">
-    Every tool available to Claude — filesystem, shell, network, MCP, orchestration.
-  </Card>
-  <Card title="Agent SDK" icon="seti:json" href="/claude-code-docs/agent-sdk/overview/">
-    SDK for building custom agents — session lifecycle, message protocol, streaming events.
-  </Card>
+<CardGrid>
+  <LinkCard title="Getting Started" href="/claude-code-docs/getting-started/overview/" description="Tutorials for new users — learning paths, first skill, first permission rule, first hook, feature gates guide." />
+  <LinkCard title="CLI" href="/claude-code-docs/cli/overview/" description="claude command-line flags, subcommands, invocation modes. Includes hidden flags from the source tree." />
+  <LinkCard title="Environment Variables" href="/claude-code-docs/env/overview/" description="Every environment variable recognized by Claude Code — 500+ vars across 21 sections." />
+  <LinkCard title="Settings" href="/claude-code-docs/settings/overview/" description="settings.json key reference — auth, model, permissions, sandbox, plugins, MCP, hooks, UI, worktree." />
+  <LinkCard title="Hooks" href="/claude-code-docs/hooks/overview/" description="Event hooks system — how to wire shell commands to Claude Code lifecycle events." />
+  <LinkCard title="Skills" href="/claude-code-docs/skills/overview/" description="Built-in and custom skills — how bundled skills work and how to add your own." />
+  <LinkCard title="Tools" href="/claude-code-docs/tools/overview/" description="Every tool available to Claude — filesystem, shell, network, MCP, orchestration." />
+  <LinkCard title="Agent SDK" href="/claude-code-docs/agent-sdk/overview/" description="SDK for building custom agents — session lifecycle, message protocol, streaming events." />
 </CardGrid>
