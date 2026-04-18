@@ -1,6 +1,12 @@
 ---
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 import { PageTags } from 'starlight-tags/components';
+import { Breadcrumbs } from 'astro-breadcrumbs';
+import 'astro-breadcrumbs/breadcrumbs.css';
 ---
+
+<Breadcrumbs linkTextFormat="capitalized" indexText="Home">
+  <span slot="separator" aria-hidden="true">›</span>
+</Breadcrumbs>
 <Default {...Astro.props} />
 <PageTags layout="block" variant="ghost" size="small" showIcon={false} />
