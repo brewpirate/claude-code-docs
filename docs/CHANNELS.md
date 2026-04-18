@@ -61,7 +61,7 @@ Channels are a research preview feature. If you're getting started with Claude C
 
 If channels aren't working and you expect them to:
 1. Check that `channelsEnabled: true` is in your settings
-2. Confirm your account has access to the channels preview
+2. Confirm your account has access to the channels preview — if access was recently revoked (e.g., plan downgrade or managed policy change), Claude Code shows a **channel downgrade dialog** at startup notifying you
 3. For channel plugins, check with your workspace admin — `allowedChannelPlugins` requires managed settings
 
 ---

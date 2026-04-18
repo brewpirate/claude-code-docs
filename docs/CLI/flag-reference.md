@@ -468,7 +468,7 @@
 - **Settings.json equivalent:** None
 - **Description:** MCP servers whose channel notifications Claude should listen for in this session. Space-separated list of `plugin:<name>@<marketplace>` entries. Requires Claude.ai authentication.
 - **Example:** `claude --channels plugin:my-notifier@my-marketplace`
-- **Notes:** Research preview. Requires `KAIROS_CHANNELS` feature flag.
+- **Notes:** Research preview. Gated by the `KAIROS_CHANNELS` feature flag, which is part of the internal **KAIROS** system (the same system that gates the `/brief` command via `KAIROS_BRIEF`). Contact your workspace admin or account manager for access.
 
 #### `--dangerously-load-development-channels`
 - **Short form:** None
