@@ -34,6 +34,10 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: '.claude Directory',
+          slug: 'claude-directory',
+        },
+        {
           label: 'Getting Started',
           items: [
             { label: 'Overview', slug: 'getting-started/overview' },
