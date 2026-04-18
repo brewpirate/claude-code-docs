@@ -18,6 +18,7 @@
     "starlight-plugin-icons": "^1.1.6",
     "starlight-tags": "^1.0.1",
     "starlight-theme-flexoki": "^0.2.2",
+    "starlight-theme-rose-pine": "^0.2.0",
     "unocss": "^66.6.8"
   },
   "devDependencies": {

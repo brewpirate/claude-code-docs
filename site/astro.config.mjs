@@ -6,6 +6,7 @@ import starlightTagsPlugin from 'starlight-tags';
 import starlightLinksValidator from 'starlight-links-validator';
 import UnoCSS from 'unocss/astro';
 import { starlightIconsPlugin, starlightIconsIntegration } from 'starlight-plugin-icons';
+import starlightRosePine from 'starlight-theme-rose-pine'
 
 export default defineConfig({
   site: 'https://brewpirate.github.io',
@@ -24,10 +25,11 @@ export default defineConfig({
         src: './src/assets/logo.svg',
       },
       plugins: [
+        starlightRosePine(),
         starlightIconsPlugin({ sidebar: false }),
-        starlightThemeFlexoki({
-          accentColor: 'orange',
-        }),
+//        starlightThemeFlexoki({
+//          accentColor: 'orange',
+//        }),
         starlightTagsPlugin(),
         starlightLinksValidator(),
       ],
