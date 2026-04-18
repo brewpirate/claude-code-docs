@@ -69,7 +69,7 @@
 - **Gating:** —
 - **Description:** "Manage agent configurations" ([code.claude.com](https://code.claude.com/docs/en/commands))
 - **Example:** `/agents`
-- **Notes:** View and configure subagents and agent teams.
+- **Notes:** Opens an interactive panel to browse and manage subagents loaded from `.claude/agents/`, installed plugins, and `agents` settings.json definitions. Plugin-provided agents appear here (as noted in the plugin manifest reference). When `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` is enabled, `/agents` is also the coordination interface for managing concurrent team workers alongside the task list infrastructure.
 
 ---
 
