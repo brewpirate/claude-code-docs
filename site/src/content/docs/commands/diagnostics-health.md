@@ -1,5 +1,6 @@
 ---
 title: "Diagnostics & Health"
+tags: [cli]
 ---
 
 # Diagnostics & Health

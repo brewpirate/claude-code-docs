@@ -1,5 +1,6 @@
 ---
 title: "Plugin policy"
+tags: [plugins, settings]
 ---
 
 # Plugin policy

@@ -1,5 +1,6 @@
 ---
 title: "Providers"
+tags: [environment]
 ---
 
 # Providers

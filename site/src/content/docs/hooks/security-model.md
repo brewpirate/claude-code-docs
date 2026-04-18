@@ -1,5 +1,6 @@
 ---
 title: "Security Model"
+tags: [hooks, settings]
 ---
 
 # Security model

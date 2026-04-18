@@ -1,5 +1,6 @@
 ---
 title: "Plugin directory layout"
+tags: [plugins, settings]
 ---
 
 # Plugin directory layout

@@ -1,5 +1,6 @@
 ---
 title: "Startup Recovery"
+tags: [cli]
 ---
 
 # Startup Recovery

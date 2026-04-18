@@ -1,5 +1,6 @@
 ---
 title: "Hook Integration"
+tags: [agent-sdk]
 ---
 
 # Hook integration

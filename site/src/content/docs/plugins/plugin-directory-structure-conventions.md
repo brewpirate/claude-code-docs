@@ -1,5 +1,6 @@
 ---
 title: "Plugin directory structure conventions"
+tags: [plugins, settings]
 ---
 
 # Plugin directory structure conventions

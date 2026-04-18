@@ -1,5 +1,6 @@
 ---
 title: "History and Pastes"
+tags: [settings]
 ---
 
 # History and Pastes

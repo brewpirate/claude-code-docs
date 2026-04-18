@@ -1,5 +1,6 @@
 ---
 title: "Additional resources"
+tags: [plugins, settings]
 ---
 
 # Additional resources

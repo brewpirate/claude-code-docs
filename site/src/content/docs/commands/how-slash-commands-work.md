@@ -1,5 +1,6 @@
 ---
 title: "How slash commands work"
+tags: [cli]
 ---
 
 # How slash commands work

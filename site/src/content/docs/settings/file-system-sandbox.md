@@ -1,5 +1,6 @@
 ---
 title: "File System Sandbox"
+tags: [settings]
 ---
 
 # File System Sandbox

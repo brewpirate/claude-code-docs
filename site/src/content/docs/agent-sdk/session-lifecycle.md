@@ -1,5 +1,6 @@
 ---
 title: "Session Lifecycle"
+tags: [agent-sdk]
 ---
 
 # Session lifecycle

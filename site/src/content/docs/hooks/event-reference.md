@@ -1,5 +1,6 @@
 ---
 title: "Event Reference"
+tags: [hooks, settings]
 ---
 
 # Event reference

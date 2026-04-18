@@ -1,5 +1,6 @@
 ---
 title: "Filesystem Tools"
+tags: [tools]
 ---
 
 # Filesystem tools

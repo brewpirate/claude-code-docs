@@ -1,5 +1,6 @@
 ---
 title: "Subagents"
+tags: [settings]
 ---
 
 # Subagents

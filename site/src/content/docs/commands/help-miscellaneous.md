@@ -1,5 +1,6 @@
 ---
 title: "Help & Miscellaneous"
+tags: [cli]
 ---
 
 # Help & Miscellaneous

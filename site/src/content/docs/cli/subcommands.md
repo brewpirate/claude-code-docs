@@ -1,5 +1,6 @@
 ---
 title: "Subcommands"
+tags: [cli]
 ---
 
 # Subcommands

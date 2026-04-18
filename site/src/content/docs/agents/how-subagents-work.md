@@ -1,5 +1,6 @@
 ---
 title: "How Subagents Work"
+tags: [agent-sdk]
 ---
 
 # How Subagents Work

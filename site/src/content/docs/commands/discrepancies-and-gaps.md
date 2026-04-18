@@ -1,5 +1,6 @@
 ---
 title: "Discrepancies and Gaps"
+tags: [cli]
 ---
 
 # Discrepancies and Gaps

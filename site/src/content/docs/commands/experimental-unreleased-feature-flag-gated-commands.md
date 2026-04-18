@@ -1,5 +1,6 @@
 ---
 title: "Experimental / Unreleased / Feature-Flag-Gated Commands"
+tags: [cli]
 ---
 
 # Experimental / Unreleased / Feature-Flag-Gated Commands

@@ -1,5 +1,6 @@
 ---
 title: "Chat Bindings"
+tags: [cli]
 ---
 
 # Chat Bindings

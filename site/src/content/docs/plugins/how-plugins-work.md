@@ -1,5 +1,6 @@
 ---
 title: "How plugins work"
+tags: [plugins, settings]
 ---
 
 # How plugins work

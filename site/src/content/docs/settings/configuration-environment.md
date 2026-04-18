@@ -1,5 +1,6 @@
 ---
 title: "Configuration & Environment"
+tags: [settings]
 ---
 
 # Configuration & Environment

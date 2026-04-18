@@ -1,5 +1,6 @@
 ---
 title: "Network & Web Tools"
+tags: [tools]
 ---
 
 # Network & web tools

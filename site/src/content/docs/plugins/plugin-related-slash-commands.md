@@ -1,5 +1,6 @@
 ---
 title: "Plugin-related slash commands"
+tags: [plugins, settings]
 ---
 
 # Plugin-related slash commands

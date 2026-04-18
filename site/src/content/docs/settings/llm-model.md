@@ -1,5 +1,6 @@
 ---
 title: "LLM & Model"
+tags: [settings]
 ---
 
 # LLM & Model

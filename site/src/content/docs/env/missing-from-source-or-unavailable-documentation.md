@@ -1,5 +1,6 @@
 ---
 title: "Missing From Source or Unavailable Documentation"
+tags: [environment]
 ---
 
 # Missing From Source or Unavailable Documentation

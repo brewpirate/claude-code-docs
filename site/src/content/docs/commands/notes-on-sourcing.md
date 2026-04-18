@@ -1,5 +1,6 @@
 ---
 title: "Notes on Sourcing"
+tags: [cli]
 ---
 
 # Notes on Sourcing

@@ -1,6 +1,7 @@
 ---
 title: "Permissions Overview"
 description: "How Claude Code permissions and security rules work"
+tags: [permissions, settings]
 ---
 
 # Claude Code Permission Rules

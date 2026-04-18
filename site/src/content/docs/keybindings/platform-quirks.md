@@ -1,5 +1,6 @@
 ---
 title: "Platform Quirks"
+tags: [cli]
 ---
 
 # Platform Quirks

@@ -1,5 +1,6 @@
 ---
 title: "How Sessions Work"
+tags: [cli]
 ---
 
 # How Sessions Work

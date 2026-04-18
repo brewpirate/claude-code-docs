@@ -1,5 +1,6 @@
 ---
 title: "Context, Compaction, Session Resume"
+tags: [environment]
 ---
 
 # Context, Compaction, Session Resume

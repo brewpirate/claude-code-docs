@@ -1,5 +1,6 @@
 ---
 title: "Additional Hook Subsystems"
+tags: [hooks, settings]
 ---
 
 # Additional hook subsystems (internal)

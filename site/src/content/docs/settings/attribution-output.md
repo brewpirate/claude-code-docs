@@ -1,5 +1,6 @@
 ---
 title: "Attribution & Output"
+tags: [settings]
 ---
 
 # Attribution & Output

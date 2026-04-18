@@ -1,5 +1,6 @@
 ---
 title: "Security & Sandboxing"
+tags: [environment]
 ---
 
 # Security & Sandboxing

@@ -1,5 +1,6 @@
 ---
 title: "Account & Subscription"
+tags: [cli]
 ---
 
 # Account & Subscription

@@ -1,5 +1,6 @@
 ---
 title: "Claude Code Built-in Slash Commands"
+tags: [cli]
 ---
 
 # Claude Code Built-in Slash Commands

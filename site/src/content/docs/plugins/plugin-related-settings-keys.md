@@ -1,5 +1,6 @@
 ---
 title: "Plugin-related settings keys"
+tags: [plugins, settings]
 ---
 
 # Plugin-related settings keys

@@ -1,5 +1,6 @@
 ---
 title: "Configuration"
+tags: [agent-sdk]
 ---
 
 # Configuration

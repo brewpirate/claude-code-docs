@@ -1,5 +1,6 @@
 ---
 title: "Related subsystems (referenced by name)"
+tags: [plugins, settings]
 ---
 
 # Related subsystems (referenced by name)

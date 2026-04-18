@@ -1,5 +1,6 @@
 ---
 title: "Removed / Deprecated Commands"
+tags: [cli]
 ---
 
 # Removed / Deprecated Commands

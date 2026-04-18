@@ -1,5 +1,6 @@
 ---
 title: "Environment-Driven Behavior"
+tags: [cli]
 ---
 
 # Environment-driven behavior

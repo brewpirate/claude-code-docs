@@ -1,5 +1,6 @@
 ---
 title: "Telemetry / Misc"
+tags: [settings]
 ---
 
 # Telemetry / Misc

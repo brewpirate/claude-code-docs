@@ -1,5 +1,6 @@
 ---
 title: "UI & Display"
+tags: [settings]
 ---
 
 # UI & Display

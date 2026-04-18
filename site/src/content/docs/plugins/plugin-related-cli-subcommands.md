@@ -1,5 +1,6 @@
 ---
 title: "Plugin-related CLI subcommands"
+tags: [plugins, settings]
 ---
 
 # Plugin-related CLI subcommands

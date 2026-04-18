@@ -1,5 +1,6 @@
 ---
 title: "Memory & Context"
+tags: [cli]
 ---
 
 # Memory & Context

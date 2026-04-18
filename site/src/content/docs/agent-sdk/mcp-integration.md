@@ -1,5 +1,6 @@
 ---
 title: "MCP Integration"
+tags: [agent-sdk]
 ---
 
 # MCP integration

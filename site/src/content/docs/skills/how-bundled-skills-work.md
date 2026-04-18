@@ -1,5 +1,6 @@
 ---
 title: "How Bundled Skills Work"
+tags: [skills, cli]
 ---
 
 # How bundled skills work

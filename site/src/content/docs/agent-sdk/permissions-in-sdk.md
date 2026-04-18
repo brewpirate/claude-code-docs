@@ -1,5 +1,6 @@
 ---
 title: "Permissions in SDK"
+tags: [agent-sdk]
 ---
 
 # Permissions in SDK

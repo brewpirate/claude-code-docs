@@ -1,5 +1,6 @@
 ---
 title: "Storage Paths"
+tags: [settings]
 ---
 
 # Storage Paths

@@ -1,5 +1,6 @@
 ---
 title: "Agents, Plans, Tasks"
+tags: [environment]
 ---
 
 # Agents, Plans, Tasks

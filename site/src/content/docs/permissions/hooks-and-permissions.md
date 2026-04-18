@@ -1,5 +1,6 @@
 ---
 title: "Hooks and permissions"
+tags: [permissions, settings]
 ---
 
 # Hooks and permissions

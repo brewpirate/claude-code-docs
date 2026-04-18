@@ -1,5 +1,6 @@
 ---
 title: "Session Resume"
+tags: [cli]
 ---
 
 # Session Resume

@@ -1,5 +1,6 @@
 ---
 title: "Internal Undocumented Bundled Skills"
+tags: [skills, cli]
 ---
 
 # Internal / undocumented bundled skills

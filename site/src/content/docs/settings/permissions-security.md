@@ -1,5 +1,6 @@
 ---
 title: "Permissions & Security"
+tags: [settings]
 ---
 
 # Permissions & Security

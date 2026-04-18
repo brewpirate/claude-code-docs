@@ -1,5 +1,6 @@
 ---
 title: "Dialog & Menu Bindings"
+tags: [cli]
 ---
 
 # Dialog & Menu Bindings

@@ -1,5 +1,6 @@
 ---
 title: "Flag Reference"
+tags: [cli]
 ---
 
 # Flag reference

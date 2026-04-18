@@ -1,5 +1,6 @@
 ---
 title: "Auto-mode classifiers"
+tags: [permissions, settings]
 ---
 
 # Auto-mode classifiers

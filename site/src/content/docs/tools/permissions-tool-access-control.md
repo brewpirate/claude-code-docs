@@ -1,5 +1,6 @@
 ---
 title: "Permissions & Tool Access Control"
+tags: [tools]
 ---
 
 # Permissions & tool access control

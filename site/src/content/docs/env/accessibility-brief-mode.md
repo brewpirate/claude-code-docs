@@ -1,5 +1,6 @@
 ---
 title: "Accessibility & Brief Mode"
+tags: [environment]
 ---
 
 # Accessibility & Brief Mode

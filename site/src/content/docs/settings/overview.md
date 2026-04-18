@@ -1,6 +1,7 @@
 ---
 title: "Settings Overview"
 description: "settings.json key reference"
+tags: [settings]
 ---
 
 # Claude Code `settings.json` Reference

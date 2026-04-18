@@ -1,5 +1,6 @@
 ---
 title: "Memory & Context"
+tags: [settings]
 ---
 
 # Memory & Context

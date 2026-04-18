@@ -1,5 +1,6 @@
 ---
 title: "Additional / Undocumented Commands"
+tags: [cli]
 ---
 
 # Additional / Undocumented Commands

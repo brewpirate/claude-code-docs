@@ -1,5 +1,6 @@
 ---
 title: "Testing & Benchmarks"
+tags: [environment]
 ---
 
 # Testing & Benchmarks

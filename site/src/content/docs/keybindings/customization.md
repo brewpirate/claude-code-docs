@@ -1,5 +1,6 @@
 ---
 title: "Customization"
+tags: [cli]
 ---
 
 # Customization

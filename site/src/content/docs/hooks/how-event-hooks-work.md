@@ -1,5 +1,6 @@
 ---
 title: "How Event Hooks Work"
+tags: [hooks, settings]
 ---
 
 # How event hooks work

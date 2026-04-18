@@ -1,5 +1,6 @@
 ---
 title: "Team, Scheduling, Multi-Agent"
+tags: [cli]
 ---
 
 # Team, Scheduling, Multi-Agent

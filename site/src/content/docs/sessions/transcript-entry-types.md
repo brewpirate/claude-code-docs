@@ -1,5 +1,6 @@
 ---
 title: "Transcript Entry Types"
+tags: [cli]
 ---
 
 # Transcript Entry Types

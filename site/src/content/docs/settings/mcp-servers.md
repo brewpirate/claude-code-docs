@@ -1,5 +1,6 @@
 ---
 title: "MCP Servers"
+tags: [settings]
 ---
 
 # MCP Servers

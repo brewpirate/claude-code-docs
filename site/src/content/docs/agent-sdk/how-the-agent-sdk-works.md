@@ -1,5 +1,6 @@
 ---
 title: "How the Agent SDK Works"
+tags: [agent-sdk]
 ---
 
 # How the Agent SDK works
