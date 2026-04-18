@@ -29,4 +29,4 @@ These may be unreleased or in beta. Check the source constants for current featu
 
 ---
 
-[← Back to Skills/README.md](./README.md)
+[← Back to Skills/README.md](/claude-code-docs/skills/overview/)

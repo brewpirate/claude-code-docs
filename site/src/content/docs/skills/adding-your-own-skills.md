@@ -16,4 +16,4 @@ See [FRONTMATTER.md](FRONTMATTER.md) for the complete frontmatter schema and [th
 
 ---
 
-[← Back to Skills/README.md](./README.md)
+[← Back to Skills/README.md](/claude-code-docs/skills/overview/)

@@ -11,7 +11,7 @@ Think of subagents as workers: the main session is the manager, subagents are sp
 
 ## Table of Contents
 
-1. [How subagents work](./how-subagents-work.md)
+1. [How subagents work](/claude-code-docs/agents/overview/)
 
 ## Overview
 
@@ -63,7 +63,7 @@ claude --agents '[{"name":"reviewer","prompt":"Review this code for security iss
 
 ### 3. Agent SDK
 
-For embedding in external applications — see [Agent SDK/README.md](../Agent%20SDK/README.md).
+For embedding in external applications — see [Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/).
 
 ---
 
@@ -83,7 +83,7 @@ These fields only apply to agent files (not skills or commands):
 | `isolation` | enum string | Isolation level — `none`, `container`, `worktree`. |
 | `color` | enum string | Color used in the UI to identify this agent's output. |
 
-Full field definitions: [Skills/FRONTMATTER.md](../Skills/FRONTMATTER.md) (the same frontmatter schema applies to agents).
+Full field definitions: [Skills/FRONTMATTER.md](/claude-code-docs/skills/overview/) (the same frontmatter schema applies to agents).
 
 ---
 
@@ -120,12 +120,12 @@ Agents run in parallel by default. The parent session receives results as `<task
 
 ## See also
 
-- [How subagents work](./how-subagents-work.md) — spawning, context, and result flow
-- [Skills/FRONTMATTER.md](../Skills/FRONTMATTER.md) — all 29 frontmatter fields (agents share the same schema)
-- [Coordinator/README.md](../Coordinator/README.md) — multi-agent coordinator mode (advanced)
-- [Agent SDK/README.md](../Agent%20SDK/README.md) — embedding agents in external apps
-- [GettingStarted/README.md](../GettingStarted/README.md) — general getting started guide
+- [How subagents work](/claude-code-docs/agents/overview/) — spawning, context, and result flow
+- [Skills/FRONTMATTER.md](/claude-code-docs/skills/overview/) — all 29 frontmatter fields (agents share the same schema)
+- [Coordinator/README.md](/claude-code-docs/agents/overview/) — multi-agent coordinator mode (advanced)
+- [Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/) — embedding agents in external apps
+- [GettingStarted/README.md](/claude-code-docs/getting-started/overview/) — general getting started guide
 
 ---
 
-[← Back to docs/README.md](../README.md)
+[← Back to docs/README.md](/claude-code-docs/agents/overview/)

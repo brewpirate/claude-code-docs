@@ -168,4 +168,4 @@ hooks:
 
 ---
 
-[← Back to Hooks/README.md](./README.md)
+[← Back to Hooks/README.md](/claude-code-docs/hooks/overview/)

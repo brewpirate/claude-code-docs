@@ -35,4 +35,4 @@ flowchart TD
 
 ---
 
-[← Back to Skills/README.md](./README.md)
+[← Back to Skills/README.md](/claude-code-docs/skills/overview/)

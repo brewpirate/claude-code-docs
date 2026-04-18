@@ -176,4 +176,4 @@ Subcommands are standalone workflows that don't launch the interactive REPL (exc
 
 ---
 
-[← Back to CLI/README.md](./README.md)
+[← Back to CLI/README.md](/claude-code-docs/cli/overview/)

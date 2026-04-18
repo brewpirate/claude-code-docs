@@ -189,10 +189,10 @@ Review the code changes without executing any commands. Read-only analysis only.
 
 ## Next steps
 
-- See [Skills/FRONTMATTER.md](../Skills/FRONTMATTER.md) for all 29 frontmatter fields
-- See [Skills/adding-your-own-skills.md](../Skills/adding-your-own-skills.md) for all the places skills can live on disk
-- See [Skills/publicly-documented-bundled-skills.md](../Skills/publicly-documented-bundled-skills.md) for the 14 skills that ship with Claude Code (good examples to read)
+- See [Skills/FRONTMATTER.md](/claude-code-docs/skills/overview/) for all 29 frontmatter fields
+- See [Skills/adding-your-own-skills.md](/claude-code-docs/skills/adding-your-own-skills/) for all the places skills can live on disk
+- See [Skills/publicly-documented-bundled-skills.md](/claude-code-docs/skills/publicly-documented-bundled-skills/) for the 14 skills that ship with Claude Code (good examples to read)
 
 ---
 
-[← Back to GettingStarted/README.md](./README.md)
+[← Back to GettingStarted/README.md](/claude-code-docs/getting-started/overview/)

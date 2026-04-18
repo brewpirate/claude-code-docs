@@ -65,8 +65,8 @@ Most of `.claude/settings.json` is honored by the SDK. Key settings:
 - Caching and context options
 - Tool availability toggles
 
-See [Settings/README.md](../Settings/README.md) for full reference.
+See [Settings/README.md](/claude-code-docs/settings/overview/) for full reference.
 
 ---
 
-[← Back to Agent SDK/README.md](./README.md)
+[← Back to Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/)

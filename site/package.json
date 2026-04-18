@@ -12,6 +12,7 @@
     "astro": "^6.1.7",
     "astro-mermaid": "^2.0.1",
     "mermaid": "^11.14.0",
+    "starlight-links-validator": "^0.23.0",
     "starlight-tags": "^1.0.1",
     "starlight-theme-flexoki": "^0.2.2"
   }

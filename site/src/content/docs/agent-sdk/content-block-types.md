@@ -16,4 +16,4 @@ Messages carry content in blocks, each typed by `type` field:
 
 ---
 
-[← Back to Agent SDK/README.md](./README.md)
+[← Back to Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/)

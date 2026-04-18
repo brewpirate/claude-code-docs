@@ -26,4 +26,4 @@ The async generator pauses if the consumer doesn't read fast enough, providing i
 
 ---
 
-[← Back to Agent SDK/README.md](./README.md)
+[← Back to Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/)

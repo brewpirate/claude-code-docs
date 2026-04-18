@@ -29,4 +29,4 @@ Hooks are a high-trust primitive. A hook that runs arbitrary shell code can read
 
 ---
 
-[← Back to Hooks/README.md](./README.md)
+[← Back to Hooks/README.md](/claude-code-docs/hooks/overview/)

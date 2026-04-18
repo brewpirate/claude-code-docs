@@ -63,4 +63,4 @@ This local reference covers Claude Code CLI v2.1.x. It is a snapshot — not upd
 
 ---
 
-[← Back to docs/README.md](./README.md)
+[← Back to docs/README.md](/claude-code-docs//overview/)

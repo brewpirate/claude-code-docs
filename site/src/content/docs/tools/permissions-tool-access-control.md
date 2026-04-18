@@ -19,4 +19,4 @@ See [Permissions](/en/permissions) on code.claude.com for complete rules syntax 
 
 ---
 
-[← Back to Tools/README.md](./README.md)
+[← Back to Tools/README.md](/claude-code-docs/tools/overview/)

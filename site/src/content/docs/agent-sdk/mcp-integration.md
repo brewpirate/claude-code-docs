@@ -30,4 +30,4 @@ Per-session in `options.mcpServers` or global in `.mcp.json` (loaded when `setti
 
 ---
 
-[← Back to Agent SDK/README.md](./README.md)
+[← Back to Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/)

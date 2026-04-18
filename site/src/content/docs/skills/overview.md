@@ -5,7 +5,7 @@ description: "Built-in and custom skills for Claude Code"
 
 # Claude Code Skills
 
-> **New here?** Start with [GettingStarted/first-skill.md](../GettingStarted/first-skill.md) for a step-by-step tutorial that walks you through creating your first skill. The sections below are the full reference for all 29 frontmatter fields and 14 bundled skills.
+> **New here?** Start with [GettingStarted/first-skill.md](/claude-code-docs/getting-started/first-skill/) for a step-by-step tutorial that walks you through creating your first skill. The sections below are the full reference for all 29 frontmatter fields and 14 bundled skills.
 
 Reference for the Claude Code skill system — both the YAML frontmatter schema used by skill, agent, command, memory, and output-style files, and the catalog of bundled skills shipped with the CLI.
 
@@ -13,15 +13,15 @@ Reference for the Claude Code skill system — both the YAML frontmatter schema 
 
 **Frontmatter schema**
 
-1. [Frontmatter reference](./FRONTMATTER.md)
+1. [Frontmatter reference](/claude-code-docs/skills/overview/)
 
 **Bundled skills catalog**
 
-2. [How bundled skills work](./how-bundled-skills-work.md)
-3. [Publicly-documented bundled skills](./publicly-documented-bundled-skills.md)
-4. [Internal / undocumented bundled skills](./internal-undocumented-bundled-skills.md)
-5. [Discrepancies & notes](./discrepancies-notes.md)
-6. [Adding your own skills](./adding-your-own-skills.md)
+2. [How bundled skills work](/claude-code-docs/skills/how-bundled-skills-work/)
+3. [Publicly-documented bundled skills](/claude-code-docs/skills/publicly-documented-bundled-skills/)
+4. [Internal / undocumented bundled skills](/claude-code-docs/skills/internal-undocumented-bundled-skills/)
+5. [Discrepancies & notes](/claude-code-docs/skills/overview/)
+6. [Adding your own skills](/claude-code-docs/skills/adding-your-own-skills/)
 
 ## Overview
 
@@ -29,12 +29,12 @@ Reference for the Claude Code skill system — both the YAML frontmatter schema 
 
 | # | Document | Description | Entries |
 |---|----------|-------------|---------|
-| 1 | [Frontmatter reference](./FRONTMATTER.md) | Complete YAML frontmatter schema for skills, subagents, slash commands, memory files, and output styles. Every field with type, default, example, and source.ts discrepancy notes. | 29 fields |
-| 2 | [How bundled skills work](./how-bundled-skills-work.md) | Registration, prompt builders, isEnabled gating, reference file extraction, and the user/model invocation model. | narrative |
-| 3 | [Publicly-documented bundled skills](./publicly-documented-bundled-skills.md) | Catalog of bundled skills grouped by purpose — code operations, session, integrations, configuration, developer. | 14 skills |
-| 4 | [Internal / undocumented bundled skills](./internal-undocumented-bundled-skills.md) | Ant-only and feature-flag-gated bundled skills that don't appear in public docs. | 6 skills (cross-listed) |
-| 5 | [Discrepancies & notes](./discrepancies-notes.md) | Doc-vs-source mismatches, non-skill support files in bundled/, gating summary, and wiring caveats. | narrative |
-| 6 | [Adding your own skills](./adding-your-own-skills.md) | Where user, project, plugin, and managed skills live on disk, plus pointer to the frontmatter schema. | narrative |
+| 1 | [Frontmatter reference](/claude-code-docs/skills/overview/) | Complete YAML frontmatter schema for skills, subagents, slash commands, memory files, and output styles. Every field with type, default, example, and source.ts discrepancy notes. | 29 fields |
+| 2 | [How bundled skills work](/claude-code-docs/skills/how-bundled-skills-work/) | Registration, prompt builders, isEnabled gating, reference file extraction, and the user/model invocation model. | narrative |
+| 3 | [Publicly-documented bundled skills](/claude-code-docs/skills/publicly-documented-bundled-skills/) | Catalog of bundled skills grouped by purpose — code operations, session, integrations, configuration, developer. | 14 skills |
+| 4 | [Internal / undocumented bundled skills](/claude-code-docs/skills/internal-undocumented-bundled-skills/) | Ant-only and feature-flag-gated bundled skills that don't appear in public docs. | 6 skills (cross-listed) |
+| 5 | [Discrepancies & notes](/claude-code-docs/skills/overview/) | Doc-vs-source mismatches, non-skill support files in bundled/, gating summary, and wiring caveats. | narrative |
+| 6 | [Adding your own skills](/claude-code-docs/skills/adding-your-own-skills/) | Where user, project, plugin, and managed skills live on disk, plus pointer to the frontmatter schema. | narrative |
 
 ## Quick reference — bundled skills
 
@@ -57,9 +57,9 @@ Reference for the Claude Code skill system — both the YAML frontmatter schema 
 
 ## See Also
 
-- [./FRONTMATTER.md](./FRONTMATTER.md) — frontmatter schema reference.
+- [./FRONTMATTER.md](/claude-code-docs/skills/overview/) — frontmatter schema reference.
 - [./source.ts](./source.ts) — local copy of the Claude Code frontmatter parser (authoritative for parse behavior).
-- [../Commands/README.md](../Commands/README.md) — companion reference for built-in slash commands (several are `[Skill]`-backed).
-- [../Tools/README.md](../Tools/README.md) — companion reference for built-in tools (the Skill tool dispatches skills).
-- [../ENV/README.md](../ENV/README.md) — environment variables (several skills are gated by `CLAUDE_CODE_ENABLE_*` flags).
+- [../Commands/README.md](/claude-code-docs/cli/overview/) — companion reference for built-in slash commands (several are `[Skill]`-backed).
+- [../Tools/README.md](/claude-code-docs/tools/overview/) — companion reference for built-in tools (the Skill tool dispatches skills).
+- [../ENV/README.md](/claude-code-docs/env/overview/) — environment variables (several skills are gated by `CLAUDE_CODE_ENABLE_*` flags).
 - Official docs: <https://code.claude.com/docs/en/skills>

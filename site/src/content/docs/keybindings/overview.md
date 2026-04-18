@@ -9,14 +9,14 @@ Reference for keyboard shortcuts shipped with Claude Code, platform quirks, and 
 
 ## Table of Contents
 
-1. [How keybindings work](./how-keybindings-work.md)
-2. [Global bindings](./global-bindings.md)
-3. [Chat bindings](./chat-bindings.md)
-4. [Navigation bindings](./navigation-bindings.md)
-5. [Dialog & menu bindings](./dialog-bindings.md)
-6. [Platform quirks](./platform-quirks.md)
-7. [Customization](./customization.md)
-8. [Discrepancies & notes](./discrepancies-notes.md)
+1. [How keybindings work](/claude-code-docs/keybindings/overview/)
+2. [Global bindings](/claude-code-docs/keybindings/overview/)
+3. [Chat bindings](/claude-code-docs/keybindings/overview/)
+4. [Navigation bindings](/claude-code-docs/keybindings/overview/)
+5. [Dialog & menu bindings](/claude-code-docs/keybindings/overview/)
+6. [Platform quirks](/claude-code-docs/keybindings/overview/)
+7. [Customization](/claude-code-docs/keybindings/overview/)
+8. [Discrepancies & notes](/claude-code-docs/keybindings/overview/)
 
 ## Overview
 
@@ -122,7 +122,7 @@ All shipped bindings by key, with context, action, feature gate (if any), and pl
 
 ## See Also
 
-- [../Settings/ui-display.md](../Settings/ui-display.md) — UI display settings that affect key behavior.
+- [../Settings/ui-display.md](/claude-code-docs/settings/ui-display/) — UI display settings that affect key behavior.
 - [../Commands/](../Commands/) — built-in commands including `/keybindings`.
-- [../ENV/README.md](../ENV/README.md) — environment variables for terminal detection.
+- [../ENV/README.md](/claude-code-docs/env/overview/) — environment variables for terminal detection.
 - Official docs: https://code.claude.com/docs/en/keyboard-shortcuts
