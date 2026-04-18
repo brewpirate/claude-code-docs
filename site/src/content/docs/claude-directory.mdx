@@ -4,7 +4,7 @@ description: "Every file Claude Code reads from your project and home directory 
 tags: [reference]
 ---
 
-import { FileTree, Tabs, TabItem } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
 
 # .claude Directory
 
@@ -18,12 +18,12 @@ If you set `CLAUDE_CONFIG_DIR`, every `~/.claude` path on this page lives under 
 
 ## Project files
 
-Files that live in your project root and `.claude/` folder. Most should be committed so your whole team shares them.
+Files in your project root and `.claude/` folder. Commit most of these so your whole team shares them.
 
 <FileTree>
 
 - your-project/
-  - **CLAUDE.md** Project instructions loaded into context every session
+  - **CLAUDE.md** Project instructions loaded every session
   - .mcp.json Team-shared MCP server configuration
   - .worktreeinclude Gitignored files to copy into new worktrees
   - **.claude/**
@@ -46,20 +46,6 @@ Files that live in your project root and `.claude/` folder. Most should be commi
         - MEMORY.md Claude writes and maintains this automatically
 
 </FileTree>
-
-| File | When it loads | Reference |
-|------|--------------|-----------|
-| `CLAUDE.md` | Every session, alongside `~/.claude/CLAUDE.md` | [Memory](/claude-code-docs/memory/overview/) |
-| `.mcp.json` | Session start — connects team MCP servers | [Settings → MCP Servers](/claude-code-docs/settings/mcp-servers/) |
-| `.worktreeinclude` | When Claude creates a git worktree | [Sessions](/claude-code-docs/sessions/overview/) |
-| `.claude/settings.json` | Overrides `~/.claude/settings.json` | [Settings](/claude-code-docs/settings/overview/) |
-| `.claude/settings.local.json` | Highest user-editable priority (gitignored) | [Settings](/claude-code-docs/settings/overview/) |
-| `.claude/rules/*.md` | Session start (no `paths:`) or when a matching file enters context (`paths:`) | [Memory](/claude-code-docs/memory/overview/) |
-| `.claude/skills/<name>/SKILL.md` | On `/name` invocation or Claude auto-match | [Skills](/claude-code-docs/skills/overview/) |
-| `.claude/commands/*.md` | On `/name` invocation | [Skills](/claude-code-docs/skills/adding-your-own-skills/) |
-| `.claude/output-styles/*.md` | Session start when selected via `outputStyle` setting | [Settings](/claude-code-docs/settings/overview/) |
-| `.claude/agents/*.md` | When you `@mention` or Claude delegates | [Agents](/claude-code-docs/agents/overview/) |
-| `.claude/agent-memory/<name>/MEMORY.md` | Into the subagent system prompt at start | [Agents](/claude-code-docs/agents/how-subagents-work/) |
 
 ---
 
@@ -88,41 +74,29 @@ Files in your home directory. These apply to every project and are never committ
 
 </FileTree>
 
-| File | When it loads | Reference |
-|------|--------------|-----------|
-| `~/.claude.json` | Session start — app state, OAuth, personal MCP servers | [Settings](/claude-code-docs/settings/overview/) |
-| `~/.claude/CLAUDE.md` | Every session, alongside project `CLAUDE.md` | [Memory](/claude-code-docs/memory/overview/) |
-| `~/.claude/settings.json` | Your defaults; project `settings.json` overrides matching keys | [Settings](/claude-code-docs/settings/overview/) |
-| `~/.claude/keybindings.json` | Session start; hot-reloaded on edit | [Keybindings](/claude-code-docs/keybindings/overview/) |
-| `~/.claude/projects/*/memory/` | `MEMORY.md` index at session start; topic files on demand | [Memory → Auto Memory](/claude-code-docs/memory/auto-memory/) |
-| `~/.claude/rules/*.md` | Session start or when a matching file enters context | [Memory](/claude-code-docs/memory/overview/) |
-| `~/.claude/skills/` | On `/name` invocation or auto-match, in every project | [Skills](/claude-code-docs/skills/adding-your-own-skills/) |
-| `~/.claude/output-styles/` | Session start when selected via `outputStyle` | [Settings](/claude-code-docs/settings/overview/) |
-| `~/.claude/agents/` | When you `@mention` or Claude delegates, in every project | [Agents](/claude-code-docs/agents/overview/) |
-
 ---
 
-## Full file reference
+## File reference
 
-| File | Scope | Committed | What it does | Reference |
-|------|-------|-----------|--------------|-----------|
-| `CLAUDE.md` | Project + global | ✓ | Instructions loaded every session | [Memory](/claude-code-docs/memory/overview/) |
-| `rules/*.md` | Project + global | ✓ | Topic-scoped instructions, optionally path-gated | [Memory](/claude-code-docs/memory/overview/) |
-| `settings.json` | Project + global | ✓ | Permissions, hooks, env vars, model defaults | [Settings](/claude-code-docs/settings/overview/) |
-| `settings.local.json` | Project only | gitignored | Personal overrides, auto-gitignored | [Settings](/claude-code-docs/settings/overview/) |
-| `.mcp.json` | Project only | ✓ | Team-shared MCP servers | [Settings → MCP Servers](/claude-code-docs/settings/mcp-servers/) |
-| `.worktreeinclude` | Project only | ✓ | Gitignored files to copy into new worktrees | [Sessions](/claude-code-docs/sessions/overview/) |
-| `skills/<name>/SKILL.md` | Project + global | ✓ | Reusable prompts invoked with `/name` or auto-invoked | [Skills](/claude-code-docs/skills/overview/) |
-| `commands/*.md` | Project + global | ✓ | Single-file prompts; same mechanism as skills (legacy) | [Skills](/claude-code-docs/skills/adding-your-own-skills/) |
-| `output-styles/*.md` | Project + global | ✓ | Custom system-prompt sections | [Settings](/claude-code-docs/settings/overview/) |
-| `agents/*.md` | Project + global | ✓ | Subagent definitions with their own prompt and tools | [Agents](/claude-code-docs/agents/overview/) |
-| `agent-memory/<name>/` | Project + global | ✓ | Persistent memory for subagents | [Agents](/claude-code-docs/agents/how-subagents-work/) |
-| `~/.claude.json` | Global only | local | App state, OAuth, UI toggles, personal MCP servers | [Settings](/claude-code-docs/settings/overview/) |
-| `~/.claude/projects/*/memory/` | Global only | local | Auto memory: Claude's notes across sessions | [Memory → Auto Memory](/claude-code-docs/memory/auto-memory/) |
-| `~/.claude/keybindings.json` | Global only | local | Custom keyboard shortcuts | [Keybindings](/claude-code-docs/keybindings/overview/) |
+| File | What it does | Hub |
+|------|--------------|-----|
+| `CLAUDE.md` | Instructions loaded every session | [Memory](/claude-code-docs/memory/overview/) |
+| `rules/*.md` | Topic-scoped instructions, optionally path-gated | [Memory](/claude-code-docs/memory/overview/) |
+| `settings.json` | Permissions, hooks, env vars, model defaults | [Settings](/claude-code-docs/settings/overview/) |
+| `settings.local.json` | Personal overrides, auto-gitignored | [Settings](/claude-code-docs/settings/overview/) |
+| `.mcp.json` | Team-shared MCP servers (project root) | [Settings → MCP](/claude-code-docs/settings/mcp-servers/) |
+| `.worktreeinclude` | Gitignored files copied into new worktrees | [Sessions](/claude-code-docs/sessions/overview/) |
+| `skills/<name>/SKILL.md` | Reusable prompts invoked with `/name` or auto-invoked | [Skills](/claude-code-docs/skills/overview/) |
+| `commands/*.md` | Single-file prompts — same as skills (legacy) | [Skills](/claude-code-docs/skills/adding-your-own-skills/) |
+| `output-styles/*.md` | Custom system-prompt sections | [Settings](/claude-code-docs/settings/overview/) |
+| `agents/*.md` | Subagent definitions with their own prompt and tools | [Agents](/claude-code-docs/agents/overview/) |
+| `agent-memory/<name>/` | Persistent memory for subagents | [Agents](/claude-code-docs/agents/how-subagents-work/) |
+| `~/.claude.json` | App state, OAuth, UI toggles, personal MCP servers | [Settings](/claude-code-docs/settings/overview/) |
+| `~/.claude/projects/*/memory/` | Auto memory: Claude's notes across sessions | [Memory → Auto Memory](/claude-code-docs/memory/auto-memory/) |
+| `~/.claude/keybindings.json` | Custom keyboard shortcuts | [Keybindings](/claude-code-docs/keybindings/overview/) |
 
 :::note[Settings precedence]
-Managed settings deployed by your organization take precedence over everything, CLI flags like `--permission-mode` override `settings.json` for that session, and some environment variables override their equivalent setting. See the [Settings overview](/claude-code-docs/settings/overview/) for the full precedence order.
+Managed settings deployed by your organization take precedence over everything. CLI flags like `--permission-mode` override `settings.json` for that session. See the [Settings overview](/claude-code-docs/settings/overview/) for the full precedence order.
 :::
 
 ---
@@ -133,7 +107,7 @@ Run these slash commands to inspect what is active in the current session.
 
 | Command | Shows |
 |---------|-------|
-| `/context` | Token usage by category: system prompt, memory files, skills, MCP tools, messages |
+| `/context` | Token usage: system prompt, memory, skills, MCP tools, messages |
 | `/memory` | Which `CLAUDE.md` and rules files loaded, plus auto-memory entries |
 | `/agents` | Configured subagents and their settings |
 | `/hooks` | Active hook configurations |
@@ -142,38 +116,31 @@ Run these slash commands to inspect what is active in the current session.
 | `/permissions` | Current allow and deny rules |
 | `/doctor` | Installation and configuration diagnostics |
 
-Start with `/context` for an overview, then use the specific command for the area you want to investigate.
+Start with `/context` for an overview, then the specific command for what you want to investigate.
 
 ---
 
 ## Application data
 
-Beyond config you author, `~/.claude` holds data Claude Code writes during sessions. These files are plaintext — anything that passes through a tool (file contents, command output, pasted text) lands in a transcript on disk.
+`~/.claude` also holds data Claude Code writes during sessions. These files are plaintext — file contents, command output, and pasted text all land in a transcript on disk.
 
-### Cleaned up automatically
+**Cleaned up automatically** (deleted on startup once older than [`cleanupPeriodDays`](/claude-code-docs/settings/overview/), default 30 days):
 
-Deleted on startup once older than [`cleanupPeriodDays`](/claude-code-docs/settings/overview/) (default: 30 days).
+- `projects/<project>/<session>.jsonl` — full conversation transcript
+- `projects/<project>/<session>/tool-results/` — large tool outputs
+- `file-history/<session>/` — pre-edit snapshots for checkpoint restore
+- `plans/` — plan files from plan mode
+- `debug/` — debug logs (only written with `--debug` or `/debug`)
+- `paste-cache/`, `image-cache/` — large pastes and attached images
 
-| Path under `~/.claude/` | Contents |
-|-------------------------|---------|
-| `projects/<project>/<session>.jsonl` | Full transcript: every message, tool call, and result |
-| `projects/<project>/<session>/tool-results/` | Large tool outputs spilled to separate files |
-| `file-history/<session>/` | Pre-edit snapshots used for checkpoint restore |
-| `plans/` | Plan files written during plan mode |
-| `debug/` | Per-session debug logs (only with `--debug` or `/debug`) |
-| `paste-cache/`, `image-cache/` | Contents of large pastes and attached images |
-| `session-env/` | Per-session environment metadata |
+**Kept until you delete them:**
 
-### Kept until you delete them
-
-| Path under `~/.claude/` | Contents |
-|-------------------------|---------|
-| `history.jsonl` | Every prompt you've typed, with timestamp and project path |
-| `stats-cache.json` | Aggregated token and cost counts shown by `/cost` |
-| `backups/` | Timestamped copies of `~/.claude.json` from config migrations |
+- `history.jsonl` — every prompt you've typed, with timestamp and project
+- `stats-cache.json` — token and cost totals shown by `/cost`
+- `backups/` — timestamped copies of `~/.claude.json` from config migrations
 
 :::caution[Plaintext storage]
-Transcripts and history are not encrypted at rest. If a tool reads a `.env` file or a command prints a credential, that value lands in `projects/<project>/<session>.jsonl`. Lower `cleanupPeriodDays` to reduce retention, or set `CLAUDE_CODE_SKIP_PROMPT_HISTORY` to skip writing transcripts entirely.
+If a tool reads a `.env` file or a command prints a credential, that value lands in the session transcript. Lower `cleanupPeriodDays` to reduce retention, or set `CLAUDE_CODE_SKIP_PROMPT_HISTORY` to skip writing transcripts entirely.
 :::
 
 Do not delete `~/.claude.json`, `~/.claude/settings.json`, or `~/.claude/plugins/` — those hold your auth, preferences, and installed plugins.
