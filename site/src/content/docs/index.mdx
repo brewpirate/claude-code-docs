@@ -1,16 +1,16 @@
 ---
-title: Zen Claude Documentation
+title: Claude Code Documentation
 description: Comprehensive reference for Claude Code CLI v2.1.x — every env var, setting, hook, skill, tool, and more.
 template: splash
 hero:
   tagline: Local reference for Claude Code CLI — every env var, settings key, slash command, tool, skill, hook, permission rule, and more — cross-referenced and organized into seventeen reference hubs.
   actions:
     - text: Get Started
-      link: /zen-claude/getting-started/overview/
+      link: /claude-code-docs/getting-started/overview/
       icon: right-arrow
       variant: primary
     - text: View on GitHub
-      link: https://github.com/brewpirate/zen-claude
+      link: https://github.com/brewpirate/claude-code-docs
       icon: external
 ---
 
@@ -19,28 +19,28 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## Reference Hubs
 
 <CardGrid stagger>
-  <Card title="Getting Started" icon="rocket">
+  <Card title="Getting Started" icon="rocket" href="/claude-code-docs/getting-started/overview/">
     Tutorials for new users — learning paths, first skill, first permission rule, first hook, feature gates guide.
   </Card>
-  <Card title="CLI" icon="laptop">
+  <Card title="CLI" icon="laptop" href="/claude-code-docs/cli/overview/">
     `claude` command-line flags, subcommands, invocation modes. Includes hidden flags from the source tree.
   </Card>
-  <Card title="Environment Variables" icon="setting">
+  <Card title="Environment Variables" icon="setting" href="/claude-code-docs/env/overview/">
     Every environment variable recognized by Claude Code — 500+ vars across 21 sections.
   </Card>
-  <Card title="Settings" icon="document">
+  <Card title="Settings" icon="document" href="/claude-code-docs/settings/overview/">
     `settings.json` key reference — auth, model, permissions, sandbox, plugins, MCP, hooks, UI, worktree.
   </Card>
-  <Card title="Hooks" icon="puzzle">
+  <Card title="Hooks" icon="puzzle" href="/claude-code-docs/hooks/overview/">
     Event hooks system — how to wire shell commands to Claude Code lifecycle events.
   </Card>
-  <Card title="Skills" icon="star">
+  <Card title="Skills" icon="star" href="/claude-code-docs/skills/overview/">
     Built-in and custom skills — how bundled skills work and how to add your own.
   </Card>
-  <Card title="Tools" icon="magnifier">
+  <Card title="Tools" icon="magnifier" href="/claude-code-docs/tools/overview/">
     Every tool available to Claude — filesystem, shell, network, MCP, orchestration.
   </Card>
-  <Card title="Agent SDK" icon="seti:json">
+  <Card title="Agent SDK" icon="seti:json" href="/claude-code-docs/agent-sdk/overview/">
     SDK for building custom agents — session lifecycle, message protocol, streaming events.
   </Card>
 </CardGrid>

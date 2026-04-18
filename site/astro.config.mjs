@@ -1,22 +1,28 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeFlexoki from 'starlight-theme-flexoki';
 
 export default defineConfig({
   site: 'https://brewpirate.github.io',
-  base: '/zen-claude',
+  base: '/claude-code-docs',
   integrations: [
     starlight({
-      title: 'Zen Claude Docs',
+      title: 'Claude Code Docs',
       description: 'Comprehensive reference for Claude Code CLI — every env var, setting, hook, skill, tool, and more.',
       logo: {
-        alt: 'Zen Claude',
+        alt: 'Claude Code Docs',
         src: './src/assets/logo.svg',
       },
+      plugins: [
+        starlightThemeFlexoki({
+          accentColor: 'orange',
+        }),
+      ],
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/brewpirate/zen-claude' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/brewpirate/claude-code-docs' },
       ],
       editLink: {
-        baseUrl: 'https://github.com/brewpirate/zen-claude/edit/main/docs/',
+        baseUrl: 'https://github.com/brewpirate/claude-code-docs/edit/main/docs/',
       },
       sidebar: [
         {

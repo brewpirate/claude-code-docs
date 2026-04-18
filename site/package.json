@@ -1,5 +1,5 @@
 {
-  "name": "zen-claude-docs",
+  "name": "claude-code-docs",
   "type": "module",
   "version": "0.1.0",
   "scripts": {
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.38.3",
-    "astro": "^6.1.7"
+    "astro": "^6.1.7",
+    "starlight-theme-flexoki": "^0.2.2"
   }
 }
