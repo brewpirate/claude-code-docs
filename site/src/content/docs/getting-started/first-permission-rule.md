@@ -176,11 +176,11 @@ For permission rules that apply to one project, use `.claude/settings.json`.
 
 ## Next steps
 
-- [Permissions/rule-grammar.md](../Permissions/rule-grammar.md) — full rule syntax reference
-- [Permissions/permission-modes.md](../Permissions/permission-modes.md) — all 6 modes explained
-- [Permissions/rule-scopes.md](../Permissions/rule-scopes.md) — how managed/project/user rules interact
-- [Settings/permissions-security.md](../Settings/permissions-security.md) — all permission-related settings keys
+- [Permissions/rule-grammar.md](/claude-code-docs/permissions/overview/) — full rule syntax reference
+- [Permissions/permission-modes.md](/claude-code-docs/permissions/overview/) — all 6 modes explained
+- [Permissions/rule-scopes.md](/claude-code-docs/permissions/overview/) — how managed/project/user rules interact
+- [Settings/permissions-security.md](/claude-code-docs/settings/permissions-security/) — all permission-related settings keys
 
 ---
 
-[← Back to GettingStarted/README.md](./README.md)
+[← Back to GettingStarted/README.md](/claude-code-docs/getting-started/overview/)

@@ -15,8 +15,8 @@ All mutating tools (Write, Edit, Bash, PowerShell, Monitor, Skill, ExitPlanMode)
   - `Edit: deny` — block all edits (use Write instead)
 - **Subagent permission inheritance**: Subagents inherit the main session's permission mode at spawn; you can change individual subagent modes afterward but not at spawn time.
 
-See [Permissions](/en/permissions) on code.claude.com for complete rules syntax and examples.
+See [Permissions](https://code.claude.com/docs/en/permissions) on code.claude.com for complete rules syntax and examples.
 
 ---
 
-[← Back to Tools/README.md](./README.md)
+[← Back to Tools/README.md](/claude-code-docs/tools/overview/)

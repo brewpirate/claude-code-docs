@@ -9,22 +9,22 @@ Per-section reference for every built-in tool dispatched by Claude Code.
 
 ## Table of Contents
 
-1. [How tools work](./how-tools-work.md)
-2. [Filesystem tools](./filesystem-tools.md)
-3. [Shell & code execution tools](./shell-code-execution-tools.md)
-4. [Network & web tools](./network-web-tools.md)
-5. [Orchestration & agent tools](./orchestration-agent-tools.md)
-6. [Scheduling & tasks](./scheduling-tasks.md)
-7. [Session & user interaction tools](./session-user-interaction-tools.md)
-8. [MCP (Model Context Protocol) tools](./mcp-tools.md)
-9. [Meta & search tools](./meta-search-tools.md)
-10. [Remote & entrypoint-specific tools](./remote-entrypoint-specific-tools.md)
-11. [Tools present in source but not in public docs](./tools-present-in-source-but-not-in-public-docs.md)
-12. [Feature-flag-gated tools summary](./feature-flag-gated-tools-summary.md)
-13. [Discrepancies & notes](./discrepancies-notes.md)
-14. [MCP tools — dynamic registration](./mcp-tools-dynamic-registration.md)
-15. [Permissions & tool access control](./permissions-tool-access-control.md)
-16. [Related references](./related-references.md)
+1. [How tools work](/claude-code-docs/tools/how-tools-work/)
+2. [Filesystem tools](/claude-code-docs/tools/filesystem-tools/)
+3. [Shell & code execution tools](/claude-code-docs/tools/shell-code-execution-tools/)
+4. [Network & web tools](/claude-code-docs/tools/network-web-tools/)
+5. [Orchestration & agent tools](/claude-code-docs/tools/orchestration-agent-tools/)
+6. [Scheduling & tasks](/claude-code-docs/tools/overview/)
+7. [Session & user interaction tools](/claude-code-docs/tools/overview/)
+8. [MCP (Model Context Protocol) tools](/claude-code-docs/tools/mcp-tools/)
+9. [Meta & search tools](/claude-code-docs/tools/overview/)
+10. [Remote & entrypoint-specific tools](/claude-code-docs/tools/overview/)
+11. [Tools present in source but not in public docs](/claude-code-docs/tools/overview/)
+12. [Feature-flag-gated tools summary](/claude-code-docs/tools/overview/)
+13. [Discrepancies & notes](/claude-code-docs/tools/overview/)
+14. [MCP tools — dynamic registration](/claude-code-docs/tools/overview/)
+15. [Permissions & tool access control](/claude-code-docs/tools/permissions-tool-access-control/)
+16. [Related references](/claude-code-docs/tools/overview/)
 
 ## Overview
 
@@ -32,22 +32,22 @@ Per-section reference for every built-in tool dispatched by Claude Code.
 
 | # | Section | Description | Entries |
 |---|---------|-------------|---------|
-| 1 | [How tools work](./how-tools-work.md) | How Claude dispatches tool calls, permissions, entrypoint gating, and MCP vs built-in distinction. | 0 |
-| 2 | [Filesystem tools](./filesystem-tools.md) | Read, Write, Edit, NotebookEdit, Glob, Grep — the file I/O and search primitives. | 6 |
-| 3 | [Shell & code execution tools](./shell-code-execution-tools.md) | Bash, PowerShell, LSP, Monitor — running commands and interacting with code intelligence. | 4 |
-| 4 | [Network & web tools](./network-web-tools.md) | WebFetch and WebSearch for retrieving external content. | 2 |
-| 5 | [Orchestration & agent tools](./orchestration-agent-tools.md) | Agent, Skill, SendMessage, TeamCreate/Delete — spawning and coordinating sub-agents. | 5 |
-| 6 | [Scheduling & tasks](./scheduling-tasks.md) | CronCreate/Delete/List plus TodoWrite and the Task* family for work tracking and cron-style scheduling. | 10 |
-| 7 | [Session & user interaction tools](./session-user-interaction-tools.md) | EnterPlanMode, ExitPlanMode, EnterWorktree, ExitWorktree, AskUserQuestion, Config — session-state primitives. | 6 |
-| 8 | [MCP (Model Context Protocol) tools](./mcp-tools.md) | ListMcpResources and ReadMcpResource — primitives for reading MCP server resources. | 2 |
-| 9 | [Meta & search tools](./meta-search-tools.md) | ToolSearch, BriefTool, SleepTool — meta operations on the tool catalog itself. | 3 |
-| 10 | [Remote & entrypoint-specific tools](./remote-entrypoint-specific-tools.md) | RemoteTrigger and other tools available only in specific entrypoints (SDK, remote). | 1 |
-| 11 | [Tools present in source but not in public docs](./tools-present-in-source-but-not-in-public-docs.md) | Internal / experimental tools from the source tree that aren't on the public tools-reference page. | 5 |
-| 12 | [Feature-flag-gated tools summary](./feature-flag-gated-tools-summary.md) | Tools gated by ENV-level feature flags, mapped to their enabling env vars. | 0 |
-| 13 | [Discrepancies & notes](./discrepancies-notes.md) | Known mismatches between public docs, source snapshot, and runtime behavior. | 0 |
-| 14 | [MCP tools — dynamic registration](./mcp-tools-dynamic-registration.md) | How MCP servers register tools dynamically as `mcp__<server>__<tool>`. | 0 |
-| 15 | [Permissions & tool access control](./permissions-tool-access-control.md) | Allow/ask/deny rules, the permission model, and per-tool gating via settings.json. | 0 |
-| 16 | [Related references](./related-references.md) | Cross-links to other docs in this repo (Commands, Skills, ENV, Settings). | 0 |
+| 1 | [How tools work](/claude-code-docs/tools/how-tools-work/) | How Claude dispatches tool calls, permissions, entrypoint gating, and MCP vs built-in distinction. | 0 |
+| 2 | [Filesystem tools](/claude-code-docs/tools/filesystem-tools/) | Read, Write, Edit, NotebookEdit, Glob, Grep — the file I/O and search primitives. | 6 |
+| 3 | [Shell & code execution tools](/claude-code-docs/tools/shell-code-execution-tools/) | Bash, PowerShell, LSP, Monitor — running commands and interacting with code intelligence. | 4 |
+| 4 | [Network & web tools](/claude-code-docs/tools/network-web-tools/) | WebFetch and WebSearch for retrieving external content. | 2 |
+| 5 | [Orchestration & agent tools](/claude-code-docs/tools/orchestration-agent-tools/) | Agent, Skill, SendMessage, TeamCreate/Delete — spawning and coordinating sub-agents. | 5 |
+| 6 | [Scheduling & tasks](/claude-code-docs/tools/overview/) | CronCreate/Delete/List plus TodoWrite and the Task* family for work tracking and cron-style scheduling. | 10 |
+| 7 | [Session & user interaction tools](/claude-code-docs/tools/overview/) | EnterPlanMode, ExitPlanMode, EnterWorktree, ExitWorktree, AskUserQuestion, Config — session-state primitives. | 6 |
+| 8 | [MCP (Model Context Protocol) tools](/claude-code-docs/tools/mcp-tools/) | ListMcpResources and ReadMcpResource — primitives for reading MCP server resources. | 2 |
+| 9 | [Meta & search tools](/claude-code-docs/tools/overview/) | ToolSearch, BriefTool, SleepTool — meta operations on the tool catalog itself. | 3 |
+| 10 | [Remote & entrypoint-specific tools](/claude-code-docs/tools/overview/) | RemoteTrigger and other tools available only in specific entrypoints (SDK, remote). | 1 |
+| 11 | [Tools present in source but not in public docs](/claude-code-docs/tools/overview/) | Internal / experimental tools from the source tree that aren't on the public tools-reference page. | 5 |
+| 12 | [Feature-flag-gated tools summary](/claude-code-docs/tools/overview/) | Tools gated by ENV-level feature flags, mapped to their enabling env vars. | 0 |
+| 13 | [Discrepancies & notes](/claude-code-docs/tools/overview/) | Known mismatches between public docs, source snapshot, and runtime behavior. | 0 |
+| 14 | [MCP tools — dynamic registration](/claude-code-docs/tools/overview/) | How MCP servers register tools dynamically as `mcp__<server>__<tool>`. | 0 |
+| 15 | [Permissions & tool access control](/claude-code-docs/tools/permissions-tool-access-control/) | Allow/ask/deny rules, the permission model, and per-tool gating via settings.json. | 0 |
+| 16 | [Related references](/claude-code-docs/tools/overview/) | Cross-links to other docs in this repo (Commands, Skills, ENV, Settings). | 0 |
 
 ## Quick reference — built-in tools
 
@@ -95,8 +95,8 @@ Per-section reference for every built-in tool dispatched by Claude Code.
 
 ## See Also
 
-- [../Commands/README.md](../Commands/README.md) — companion reference for built-in slash commands.
-- [../Skills/README.md](../Skills/README.md) — companion reference for bundled skills.
-- [../Skills/FRONTMATTER.md](../Skills/FRONTMATTER.md) — frontmatter schema for skills, agents, and commands.
-- [../ENV/README.md](../ENV/README.md) — environment variables (many tools are feature-flag gated here).
+- [../Commands/README.md](/claude-code-docs/cli/overview/) — companion reference for built-in slash commands.
+- [../Skills/README.md](/claude-code-docs/skills/overview/) — companion reference for bundled skills.
+- [../Skills/FRONTMATTER.md](/claude-code-docs/skills/overview/) — frontmatter schema for skills, agents, and commands.
+- [../ENV/README.md](/claude-code-docs/env/overview/) — environment variables (many tools are feature-flag gated here).
 - Official docs: <https://code.claude.com/docs/en/tools-reference>

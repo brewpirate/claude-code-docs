@@ -15,4 +15,4 @@ title: "How Tools Work"
 
 ---
 
-[← Back to Tools/README.md](./README.md)
+[← Back to Tools/README.md](/claude-code-docs/tools/overview/)

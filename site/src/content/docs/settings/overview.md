@@ -11,25 +11,25 @@ Compiled from: plugin refs (`claude-code-internals` v2.5.0), the CC binary bundl
 
 ## Table of Contents
 
-1. [Attribution & Output](./attribution-output.md)
-2. [Authentication & API](./authentication-api.md)
-3. [Channel & Communication](./channel-communication.md)
-4. [Configuration & Environment](./configuration-environment.md)
-5. [Development Tools & IDE](./development-tools-ide.md)
-6. [Enterprise & Organization](./enterprise-organization.md)
-7. [File & Directory Handling](./file-directory-handling.md)
-8. [File System Sandbox](./file-system-sandbox.md)
-9. [Hooks & Automation](./hooks-automation.md)
-10. [LLM & Model](./llm-model.md)
-11. [Memory & Context](./memory-context.md)
-12. [MCP Servers](./mcp-servers.md)
-13. [Network & Proxy](./network-proxy.md)
-14. [Permissions & Security](./permissions-security.md)
-15. [Plugins & Extensions](./plugins-extensions.md)
-16. [Subagents](./subagents.md)
-17. [UI & Display](./ui-display.md)
-18. [Worktree](./worktree.md)
-19. [Telemetry / Misc](./telemetry-misc.md)
+1. [Attribution & Output](/claude-code-docs/settings/overview/)
+2. [Authentication & API](/claude-code-docs/settings/authentication-api/)
+3. [Channel & Communication](/claude-code-docs/settings/overview/)
+4. [Configuration & Environment](/claude-code-docs/settings/overview/)
+5. [Development Tools & IDE](/claude-code-docs/settings/overview/)
+6. [Enterprise & Organization](/claude-code-docs/settings/overview/)
+7. [File & Directory Handling](/claude-code-docs/settings/overview/)
+8. [File System Sandbox](/claude-code-docs/settings/file-system-sandbox/)
+9. [Hooks & Automation](/claude-code-docs/settings/hooks-automation/)
+10. [LLM & Model](/claude-code-docs/settings/llm-model/)
+11. [Memory & Context](/claude-code-docs/settings/memory-context/)
+12. [MCP Servers](/claude-code-docs/settings/mcp-servers/)
+13. [Network & Proxy](/claude-code-docs/settings/overview/)
+14. [Permissions & Security](/claude-code-docs/settings/permissions-security/)
+15. [Plugins & Extensions](/claude-code-docs/settings/plugins-extensions/)
+16. [Subagents](/claude-code-docs/settings/subagents/)
+17. [UI & Display](/claude-code-docs/settings/ui-display/)
+18. [Worktree](/claude-code-docs/settings/worktree/)
+19. [Telemetry / Misc](/claude-code-docs/settings/overview/)
 
 ## Overview
 
@@ -37,25 +37,25 @@ Compiled from: plugin refs (`claude-code-internals` v2.5.0), the CC binary bundl
 
 | # | Section | Description | Keys |
 |---|---------|-------------|------|
-| 1 | [Attribution & Output](./attribution-output.md) | Git commit and PR attribution trailers (e.g., Co-Authored-By lines). | 3 |
-| 2 | [Authentication & API](./authentication-api.md) | API-key helpers, AWS credential refresh, forced login methods, and OTEL auth helpers. | 7 |
-| 3 | [Channel & Communication](./channel-communication.md) | Voice I/O and the managed channel-plugin allowlist. | 3 |
-| 4 | [Configuration & Environment](./configuration-environment.md) | Injected env vars, default shell, and UI language. | 3 |
-| 5 | [Development Tools & IDE](./development-tools-ide.md) | IDE auto-connect, extension install, editor mode, gitignore respect, and git instruction injection. | 5 |
-| 6 | [Enterprise & Organization](./enterprise-organization.md) | Managed-only lockdowns for hooks, MCP servers, permission rules, plus announcements and marketplace blocklists. | 6 |
-| 7 | [File & Directory Handling](./file-directory-handling.md) | Auto-memory and `/plan` output directories, plus custom `@`-mention file-suggestion commands. | 4 |
-| 8 | [File System Sandbox](./file-system-sandbox.md) | Read/write allow/deny paths, process sandbox toggles, and weaker-sandbox escape hatches for Docker/macOS. | 13 |
-| 9 | [Hooks & Automation](./hooks-automation.md) | PreToolUse/PostToolUse/SessionStart/Stop hook definitions and HTTP-hook URL/env allowlists. | 5 |
-| 10 | [LLM & Model](./llm-model.md) | Default model, enterprise model allowlist, per-tool overrides, thinking/effort tuning, and mode hard-disables. | 9 |
-| 11 | [Memory & Context](./memory-context.md) | Auto-memory, background consolidation, transcript retention, compaction thresholds, and edit checkpointing. | 5 |
-| 12 | [MCP Servers](./mcp-servers.md) | MCP server config, allow/deny lists, and `.mcp.json` enable/disable toggles. | 6 |
-| 13 | [Network & Proxy](./network-proxy.md) | Outbound domain allowlist, HTTP/SOCKS proxy ports, Unix socket access, and macOS Mach/XPC services. | 8 |
-| 14 | [Permissions & Security](./permissions-security.md) | Tool-use allow/deny/ask rules, default permission mode, auto-mode classifier, and danger-mode prompt skips. | 13 |
-| 15 | [Plugins & Extensions](./plugins-extensions.md) | Enabled plugins, extra marketplaces, plugin trust messaging, and plugin-only customization lock. | 4 |
-| 16 | [Subagents](./subagents.md) | Custom agent definitions and main-thread-as-subagent execution. | 2 |
-| 17 | [UI & Display](./ui-display.md) | Theme, status line, output/view mode, thinking summaries, spinner tips, progress bars, and update channel. | 16 |
-| 18 | [Worktree](./worktree.md) | Worktree symlink directories and Git sparse-checkout paths. | 2 |
-| 19 | [Telemetry / Misc](./telemetry-misc.md) | Feedback survey rate, teammate mode, deep-link registration, resource-unavailable behavior, and claude.ai linkage. | 5 |
+| 1 | [Attribution & Output](/claude-code-docs/settings/overview/) | Git commit and PR attribution trailers (e.g., Co-Authored-By lines). | 3 |
+| 2 | [Authentication & API](/claude-code-docs/settings/authentication-api/) | API-key helpers, AWS credential refresh, forced login methods, and OTEL auth helpers. | 7 |
+| 3 | [Channel & Communication](/claude-code-docs/settings/overview/) | Voice I/O and the managed channel-plugin allowlist. | 3 |
+| 4 | [Configuration & Environment](/claude-code-docs/settings/overview/) | Injected env vars, default shell, and UI language. | 3 |
+| 5 | [Development Tools & IDE](/claude-code-docs/settings/overview/) | IDE auto-connect, extension install, editor mode, gitignore respect, and git instruction injection. | 5 |
+| 6 | [Enterprise & Organization](/claude-code-docs/settings/overview/) | Managed-only lockdowns for hooks, MCP servers, permission rules, plus announcements and marketplace blocklists. | 6 |
+| 7 | [File & Directory Handling](/claude-code-docs/settings/overview/) | Auto-memory and `/plan` output directories, plus custom `@`-mention file-suggestion commands. | 4 |
+| 8 | [File System Sandbox](/claude-code-docs/settings/file-system-sandbox/) | Read/write allow/deny paths, process sandbox toggles, and weaker-sandbox escape hatches for Docker/macOS. | 13 |
+| 9 | [Hooks & Automation](/claude-code-docs/settings/hooks-automation/) | PreToolUse/PostToolUse/SessionStart/Stop hook definitions and HTTP-hook URL/env allowlists. | 5 |
+| 10 | [LLM & Model](/claude-code-docs/settings/llm-model/) | Default model, enterprise model allowlist, per-tool overrides, thinking/effort tuning, and mode hard-disables. | 9 |
+| 11 | [Memory & Context](/claude-code-docs/settings/memory-context/) | Auto-memory, background consolidation, transcript retention, compaction thresholds, and edit checkpointing. | 5 |
+| 12 | [MCP Servers](/claude-code-docs/settings/mcp-servers/) | MCP server config, allow/deny lists, and `.mcp.json` enable/disable toggles. | 6 |
+| 13 | [Network & Proxy](/claude-code-docs/settings/overview/) | Outbound domain allowlist, HTTP/SOCKS proxy ports, Unix socket access, and macOS Mach/XPC services. | 8 |
+| 14 | [Permissions & Security](/claude-code-docs/settings/permissions-security/) | Tool-use allow/deny/ask rules, default permission mode, auto-mode classifier, and danger-mode prompt skips. | 13 |
+| 15 | [Plugins & Extensions](/claude-code-docs/settings/plugins-extensions/) | Enabled plugins, extra marketplaces, plugin trust messaging, and plugin-only customization lock. | 4 |
+| 16 | [Subagents](/claude-code-docs/settings/subagents/) | Custom agent definitions and main-thread-as-subagent execution. | 2 |
+| 17 | [UI & Display](/claude-code-docs/settings/ui-display/) | Theme, status line, output/view mode, thinking summaries, spinner tips, progress bars, and update channel. | 16 |
+| 18 | [Worktree](/claude-code-docs/settings/worktree/) | Worktree symlink directories and Git sparse-checkout paths. | 2 |
+| 19 | [Telemetry / Misc](/claude-code-docs/settings/overview/) | Feedback survey rate, teammate mode, deep-link registration, resource-unavailable behavior, and claude.ai linkage. | 5 |
 
 ## Quick reference — all settings keys
 
@@ -177,8 +177,8 @@ Compiled from: plugin refs (`claude-code-internals` v2.5.0), the CC binary bundl
 
 ## See Also
 
-- [../ENV/README.md](../ENV/README.md) — companion reference for environment variables.
-- [../Commands/README.md](../Commands/README.md) — companion reference for built-in slash commands.
-- [../Skills/README.md](../Skills/README.md) — companion reference for bundled skills.
-- [../Tools/README.md](../Tools/README.md) — companion reference for built-in tools.
+- [../ENV/README.md](/claude-code-docs/env/overview/) — companion reference for environment variables.
+- [../Commands/README.md](/claude-code-docs/cli/overview/) — companion reference for built-in slash commands.
+- [../Skills/README.md](/claude-code-docs/skills/overview/) — companion reference for bundled skills.
+- [../Tools/README.md](/claude-code-docs/tools/overview/) — companion reference for built-in tools.
 - Official docs: <https://code.claude.com/docs/en/settings>

@@ -127,7 +127,7 @@ The most useful events for beginners:
 | `Stop` | When Claude finishes a response | Yes — exit 2 to continue |
 | `FileChanged` | When a watched file changes | No |
 
-For the full list of 26 events, see [Hooks/event-reference.md](../Hooks/event-reference.md).
+For the full list of 26 events, see [Hooks/event-reference.md](/claude-code-docs/hooks/event-reference/).
 
 ---
 
@@ -216,11 +216,11 @@ This hook runs after every `Write` tool call (not before, so it can't block — 
 
 ## Next steps
 
-- [Hooks/event-reference.md](../Hooks/event-reference.md) — all 26 events with matcher support
-- [Hooks/handler-types.md](../Hooks/handler-types.md) — `command`, `http`, `prompt`, `agent` handlers
-- [Hooks/security-model.md](../Hooks/security-model.md) — SSRF protection and env var allowlists for http hooks
-- [Hooks/how-event-hooks-work.md](../Hooks/how-event-hooks-work.md) — scope precedence and async execution
+- [Hooks/event-reference.md](/claude-code-docs/hooks/event-reference/) — all 26 events with matcher support
+- [Hooks/handler-types.md](/claude-code-docs/hooks/handler-types/) — `command`, `http`, `prompt`, `agent` handlers
+- [Hooks/security-model.md](/claude-code-docs/hooks/security-model/) — SSRF protection and env var allowlists for http hooks
+- [Hooks/how-event-hooks-work.md](/claude-code-docs/hooks/how-event-hooks-work/) — scope precedence and async execution
 
 ---
 
-[← Back to GettingStarted/README.md](./README.md)
+[← Back to GettingStarted/README.md](/claude-code-docs/getting-started/overview/)

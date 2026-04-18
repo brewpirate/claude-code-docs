@@ -9,21 +9,21 @@ Reference for the Claude Code plugin system — `plugin.json` manifest schema, d
 
 ## Table of Contents
 
-1. [How plugins work](./how-plugins-work.md)
-2. [Plugin directory layout](./plugin-directory-layout.md)
-3. [Manifest field reference](./manifest-field-reference.md)
-4. [Plugin lifecycle](./plugin-lifecycle.md)
-5. [Plugin directory structure conventions](./plugin-directory-structure-conventions.md)
-6. [Marketplace concept](./marketplace-concept.md)
-7. [Plugin policy](./plugin-policy.md)
-8. [Bundled plugins](./bundled-plugins.md)
-9. [Plugin-related CLI subcommands](./plugin-related-cli-subcommands.md)
-10. [Plugin-related slash commands](./plugin-related-slash-commands.md)
-11. [Plugin-related settings keys](./plugin-related-settings-keys.md)
-12. [Plugin-related environment variables](./plugin-related-environment-variables.md)
-13. [Related subsystems (referenced by name)](./related-subsystems.md)
-14. [Discrepancies & notes](./discrepancies-notes.md)
-15. [Additional resources](./additional-resources.md)
+1. [How plugins work](/claude-code-docs/plugins/overview/)
+2. [Plugin directory layout](/claude-code-docs/plugins/overview/)
+3. [Manifest field reference](/claude-code-docs/plugins/overview/)
+4. [Plugin lifecycle](/claude-code-docs/plugins/overview/)
+5. [Plugin directory structure conventions](/claude-code-docs/plugins/overview/)
+6. [Marketplace concept](/claude-code-docs/plugins/overview/)
+7. [Plugin policy](/claude-code-docs/plugins/overview/)
+8. [Bundled plugins](/claude-code-docs/plugins/overview/)
+9. [Plugin-related CLI subcommands](/claude-code-docs/plugins/overview/)
+10. [Plugin-related slash commands](/claude-code-docs/plugins/overview/)
+11. [Plugin-related settings keys](/claude-code-docs/plugins/overview/)
+12. [Plugin-related environment variables](/claude-code-docs/plugins/overview/)
+13. [Related subsystems (referenced by name)](/claude-code-docs/plugins/overview/)
+14. [Discrepancies & notes](/claude-code-docs/plugins/overview/)
+15. [Additional resources](/claude-code-docs/plugins/overview/)
 
 ## Overview
 
@@ -31,21 +31,21 @@ Reference for the Claude Code plugin system — `plugin.json` manifest schema, d
 
 | # | Section | Description | Entries |
 |---|---------|-------------|---------|
-| 1 | [How plugins work](./how-plugins-work.md) | Manifest-driven packaging of commands/skills/agents/hooks/MCP configs, marketplace discovery, install/load/enable lifecycle. | narrative |
-| 2 | [Plugin directory layout](./plugin-directory-layout.md) | Conventional directory tree for a plugin (plugin.json + commands/, skills/, agents/, hooks/, mcp-servers.json, output-styles/). | narrative |
-| 3 | [Manifest field reference](./manifest-field-reference.md) | Per-field reference for every `plugin.json` key — Identity, Content paths, Compatibility, Marketplace metadata, Gating, Permissions. | 28 entries |
-| 4 | [Plugin lifecycle](./plugin-lifecycle.md) | Discovery → install → validate → load → enable → reload → autoupdate → uninstall flow. | 8 entries |
-| 5 | [Plugin directory structure conventions](./plugin-directory-structure-conventions.md) | File naming and placement rules the loader enforces. | narrative |
-| 6 | [Marketplace concept](./marketplace-concept.md) | Official marketplace, custom marketplaces, marketplace.json index format, blocklisting, managed restrictions. | 3 entries |
-| 7 | [Plugin policy](./plugin-policy.md) | Managed-only policy gates from `pluginPolicy.ts`. | narrative |
-| 8 | [Bundled plugins](./bundled-plugins.md) | Catalog of plugins Anthropic ships in the CLI binary (from `builtinPlugins.ts`). | 1 entries |
-| 9 | [Plugin-related CLI subcommands](./plugin-related-cli-subcommands.md) | `claude plugin install/uninstall/list/enable/disable/update/validate/search/info` — cross-linked to CLI reference. | narrative |
-| 10 | [Plugin-related slash commands](./plugin-related-slash-commands.md) | `/plugin` and `/reload-plugins` — cross-linked to Commands reference. | narrative |
-| 11 | [Plugin-related settings keys](./plugin-related-settings-keys.md) | `enabledPlugins`, `extraKnownMarketplaces`, `pluginTrustMessage`, `strictPluginOnlyCustomization`, `blockedMarketplaces`, `strictKnownMarketplaces`. | narrative |
-| 12 | [Plugin-related environment variables](./plugin-related-environment-variables.md) | Plugin cache/seed dirs, git timeout, autoupdate, sync-install, cowork, official-marketplace autoinstall. | narrative |
-| 13 | [Related subsystems (referenced by name)](./related-subsystems.md) | Hedged pointers to internal files not inspected — reconciler, autoupdate, zip cache, dependency resolver, etc. | narrative |
-| 14 | [Discrepancies & notes](./discrepancies-notes.md) | Type/schema mismatches, `deprecated` dual-type, LSP binary requirement, managed-plugin read-only UI, symlink security. | narrative |
-| 15 | [Additional resources](./additional-resources.md) | Cross-references to sibling docs (Skills, Commands, Hooks, Settings, ENV, CLI) and official docs. | narrative |
+| 1 | [How plugins work](/claude-code-docs/plugins/overview/) | Manifest-driven packaging of commands/skills/agents/hooks/MCP configs, marketplace discovery, install/load/enable lifecycle. | narrative |
+| 2 | [Plugin directory layout](/claude-code-docs/plugins/overview/) | Conventional directory tree for a plugin (plugin.json + commands/, skills/, agents/, hooks/, mcp-servers.json, output-styles/). | narrative |
+| 3 | [Manifest field reference](/claude-code-docs/plugins/overview/) | Per-field reference for every `plugin.json` key — Identity, Content paths, Compatibility, Marketplace metadata, Gating, Permissions. | 28 entries |
+| 4 | [Plugin lifecycle](/claude-code-docs/plugins/overview/) | Discovery → install → validate → load → enable → reload → autoupdate → uninstall flow. | 8 entries |
+| 5 | [Plugin directory structure conventions](/claude-code-docs/plugins/overview/) | File naming and placement rules the loader enforces. | narrative |
+| 6 | [Marketplace concept](/claude-code-docs/plugins/overview/) | Official marketplace, custom marketplaces, marketplace.json index format, blocklisting, managed restrictions. | 3 entries |
+| 7 | [Plugin policy](/claude-code-docs/plugins/overview/) | Managed-only policy gates from `pluginPolicy.ts`. | narrative |
+| 8 | [Bundled plugins](/claude-code-docs/plugins/overview/) | Catalog of plugins Anthropic ships in the CLI binary (from `builtinPlugins.ts`). | 1 entries |
+| 9 | [Plugin-related CLI subcommands](/claude-code-docs/plugins/overview/) | `claude plugin install/uninstall/list/enable/disable/update/validate/search/info` — cross-linked to CLI reference. | narrative |
+| 10 | [Plugin-related slash commands](/claude-code-docs/plugins/overview/) | `/plugin` and `/reload-plugins` — cross-linked to Commands reference. | narrative |
+| 11 | [Plugin-related settings keys](/claude-code-docs/plugins/overview/) | `enabledPlugins`, `extraKnownMarketplaces`, `pluginTrustMessage`, `strictPluginOnlyCustomization`, `blockedMarketplaces`, `strictKnownMarketplaces`. | narrative |
+| 12 | [Plugin-related environment variables](/claude-code-docs/plugins/overview/) | Plugin cache/seed dirs, git timeout, autoupdate, sync-install, cowork, official-marketplace autoinstall. | narrative |
+| 13 | [Related subsystems (referenced by name)](/claude-code-docs/plugins/overview/) | Hedged pointers to internal files not inspected — reconciler, autoupdate, zip cache, dependency resolver, etc. | narrative |
+| 14 | [Discrepancies & notes](/claude-code-docs/plugins/overview/) | Type/schema mismatches, `deprecated` dual-type, LSP binary requirement, managed-plugin read-only UI, symlink security. | narrative |
+| 15 | [Additional resources](/claude-code-docs/plugins/overview/) | Cross-references to sibling docs (Skills, Commands, Hooks, Settings, ENV, CLI) and official docs. | narrative |
 
 ## Quick reference — plugin.json fields
 
@@ -79,12 +79,12 @@ Reference for the Claude Code plugin system — `plugin.json` manifest schema, d
 
 ## See Also
 
-- [../Skills/FRONTMATTER.md](../Skills/FRONTMATTER.md) — frontmatter schema used by plugin-provided skills, agents, and commands.
-- [../Skills/README.md](../Skills/README.md) — bundled skills catalog (skills delivered as plugins work identically).
-- [../Commands/README.md](../Commands/README.md) — `/plugin` and `/reload-plugins` slash commands.
-- [../CLI/README.md](../CLI/README.md) — `claude plugin <subcommand>` CLI reference.
-- [../Hooks/README.md](../Hooks/README.md) — plugin-provided event hooks.
-- [../Settings/plugins-extensions.md](../Settings/plugins-extensions.md) — settings.json keys for plugin configuration.
-- [../Settings/enterprise-organization.md](../Settings/enterprise-organization.md) — managed-only marketplace controls.
-- [../ENV/README.md](../ENV/README.md) — plugin-related environment variables.
+- [../Skills/FRONTMATTER.md](/claude-code-docs/skills/overview/) — frontmatter schema used by plugin-provided skills, agents, and commands.
+- [../Skills/README.md](/claude-code-docs/skills/overview/) — bundled skills catalog (skills delivered as plugins work identically).
+- [../Commands/README.md](/claude-code-docs/cli/overview/) — `/plugin` and `/reload-plugins` slash commands.
+- [../CLI/README.md](/claude-code-docs/cli/overview/) — `claude plugin <subcommand>` CLI reference.
+- [../Hooks/README.md](/claude-code-docs/hooks/overview/) — plugin-provided event hooks.
+- [../Settings/plugins-extensions.md](/claude-code-docs/settings/plugins-extensions/) — settings.json keys for plugin configuration.
+- [../Settings/enterprise-organization.md](/claude-code-docs/settings/overview/) — managed-only marketplace controls.
+- [../ENV/README.md](/claude-code-docs/env/overview/) — plugin-related environment variables.
 - Official docs: <https://code.claude.com/docs/en/plugins-reference> and <https://code.claude.com/docs/en/plugins>

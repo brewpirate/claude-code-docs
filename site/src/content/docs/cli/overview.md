@@ -9,13 +9,13 @@ Reference for the `claude` command-line interface — flags, subcommands, invoca
 
 ## Table of Contents
 
-1. [How CLI invocation works](./how-cli-invocation-works.md)
-2. [Subcommands](./subcommands.md)
-3. [Flag reference](./flag-reference.md)
-4. [Invocation modes](./invocation-modes.md)
-5. [Environment-driven behavior](./environment-driven-behavior.md)
-6. [Undocumented & internal flags](./undocumented-internal-flags.md)
-7. [Discrepancies & notes](./discrepancies-notes.md)
+1. [How CLI invocation works](/claude-code-docs/cli/how-cli-invocation-works/)
+2. [Subcommands](/claude-code-docs/cli/subcommands/)
+3. [Flag reference](/claude-code-docs/cli/flag-reference/)
+4. [Invocation modes](/claude-code-docs/cli/invocation-modes/)
+5. [Environment-driven behavior](/claude-code-docs/cli/environment-driven-behavior/)
+6. [Undocumented & internal flags](/claude-code-docs/cli/undocumented-internal-flags/)
+7. [Discrepancies & notes](/claude-code-docs/cli/overview/)
 
 ## Overview
 
@@ -23,13 +23,13 @@ Reference for the `claude` command-line interface — flags, subcommands, invoca
 
 | # | Section | Description | Entries |
 |---|---------|-------------|---------|
-| 1 | [How CLI invocation works](./how-cli-invocation-works.md) | Invocation patterns (interactive REPL, one-shot, piped stdin, subcommands), flag conventions, and precedence rules. | narrative |
-| 2 | [Subcommands](./subcommands.md) | `claude config`, `claude mcp`, `claude plugin`, `claude login/logout`, `claude doctor`, `claude update`, etc. | 20 entries |
-| 3 | [Flag reference](./flag-reference.md) | Detailed per-flag entries grouped by category (Model/Effort, Invocation, Session, Worktrees, Permissions, MCP, Plugins, Output, Debug, Help). | 61 flags / 14 categories |
-| 4 | [Invocation modes](./invocation-modes.md) | Interactive REPL, one-shot prompt, piped stdin, session resume/continue, fork-session, remote/teleport, SDK entrypoints. | 7 entries |
-| 5 | [Environment-driven behavior](./environment-driven-behavior.md) | Cross-links to ENV/README.md for env vars that modify CLI behavior (entrypoint, config dir, provider selection, auth). | narrative |
-| 6 | [Undocumented & internal flags](./undocumented-internal-flags.md) | Flags found in `main.tsx` with `hidden: true` or feature-gated that don't appear in public docs. | 15 entries |
-| 7 | [Discrepancies & notes](./discrepancies-notes.md) | Precedence puzzles, mutual exclusivity, deprecated-but-accepted flags, and feature-gate surprises. | narrative |
+| 1 | [How CLI invocation works](/claude-code-docs/cli/how-cli-invocation-works/) | Invocation patterns (interactive REPL, one-shot, piped stdin, subcommands), flag conventions, and precedence rules. | narrative |
+| 2 | [Subcommands](/claude-code-docs/cli/subcommands/) | `claude config`, `claude mcp`, `claude plugin`, `claude login/logout`, `claude doctor`, `claude update`, etc. | 20 entries |
+| 3 | [Flag reference](/claude-code-docs/cli/flag-reference/) | Detailed per-flag entries grouped by category (Model/Effort, Invocation, Session, Worktrees, Permissions, MCP, Plugins, Output, Debug, Help). | 61 flags / 14 categories |
+| 4 | [Invocation modes](/claude-code-docs/cli/invocation-modes/) | Interactive REPL, one-shot prompt, piped stdin, session resume/continue, fork-session, remote/teleport, SDK entrypoints. | 7 entries |
+| 5 | [Environment-driven behavior](/claude-code-docs/cli/environment-driven-behavior/) | Cross-links to ENV/README.md for env vars that modify CLI behavior (entrypoint, config dir, provider selection, auth). | narrative |
+| 6 | [Undocumented & internal flags](/claude-code-docs/cli/undocumented-internal-flags/) | Flags found in `main.tsx` with `hidden: true` or feature-gated that don't appear in public docs. | 15 entries |
+| 7 | [Discrepancies & notes](/claude-code-docs/cli/overview/) | Precedence puzzles, mutual exclusivity, deprecated-but-accepted flags, and feature-gate surprises. | narrative |
 
 ## Quick reference — flags
 
@@ -99,9 +99,9 @@ Reference for the `claude` command-line interface — flags, subcommands, invoca
 
 ## See Also
 
-- [../ENV/README.md](../ENV/README.md) — env vars (many CLI flags have env-var equivalents).
-- [../Settings/README.md](../Settings/README.md) — settings.json keys backing CLI flags.
-- [../Commands/README.md](../Commands/README.md) — `/slash commands` (some have CLI analogs like `claude login`).
-- [../Tools/README.md](../Tools/README.md) — tools available within a session.
-- [../Permissions/README.md](../Permissions/README.md) — rules that gate tool invocations.
+- [../ENV/README.md](/claude-code-docs/env/overview/) — env vars (many CLI flags have env-var equivalents).
+- [../Settings/README.md](/claude-code-docs/settings/overview/) — settings.json keys backing CLI flags.
+- [../Commands/README.md](/claude-code-docs/cli/overview/) — `/slash commands` (some have CLI analogs like `claude login`).
+- [../Tools/README.md](/claude-code-docs/tools/overview/) — tools available within a session.
+- [../Permissions/README.md](/claude-code-docs/permissions/overview/) — rules that gate tool invocations.
 - Official docs: <https://code.claude.com/docs/en/cli-reference>

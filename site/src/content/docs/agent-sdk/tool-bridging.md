@@ -6,7 +6,7 @@ title: "Tool Bridging"
 
 
 ### Built-in tools
-SDK inherits the CLI's built-in tool catalog: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, Monitor, Agent (for subagents), and others. See [Tools/README.md](../Tools/README.md) for full reference.
+SDK inherits the CLI's built-in tool catalog: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, AskUserQuestion, Monitor, Agent (for subagents), and others. See [Tools/README.md](/claude-code-docs/tools/overview/) for full reference.
 
 ### Custom tools via MCP
 SDK can instantiate MCP servers in-process (via `tool()` and `createSdkMcpServer()` functions) or connect to external stdio/HTTP/SSE servers.
@@ -51,4 +51,4 @@ canUseTool: async (toolName, input, context) => {
 
 ---
 
-[← Back to Agent SDK/README.md](./README.md)
+[← Back to Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/)

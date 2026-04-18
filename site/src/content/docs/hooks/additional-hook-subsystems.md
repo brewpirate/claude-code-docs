@@ -31,4 +31,4 @@ Behavior unverified without reading the files; use names as hints when hedging.
 
 ---
 
-[← Back to Hooks/README.md](./README.md)
+[← Back to Hooks/README.md](/claude-code-docs/hooks/overview/)

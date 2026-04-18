@@ -5,7 +5,7 @@ title: "Environment-Driven Behavior"
 # Environment-driven behavior
 
 
-Many environment variables modify CLI behavior without requiring explicit flags. See [ENV/README.md](../ENV/README.md) for the complete reference, but here are key variables that affect CLI invocation:
+Many environment variables modify CLI behavior without requiring explicit flags. See [ENV/README.md](/claude-code-docs/env/overview/) for the complete reference, but here are key variables that affect CLI invocation:
 
 - `CLAUDE_CODE_ENTRYPOINT` — identifies how Claude Code was launched (cli, sdk-ts, sdk-py, mcp, etc.)
 - `CLAUDE_CONFIG_DIR` — override config discovery path (default: `~/.claude`)
@@ -19,4 +19,4 @@ Many environment variables modify CLI behavior without requiring explicit flags.
 
 ---
 
-[← Back to CLI/README.md](./README.md)
+[← Back to CLI/README.md](/claude-code-docs/cli/overview/)

@@ -9,15 +9,15 @@ Reference for session initialization, transcript persistence, automatic compacti
 
 ## Table of Contents
 
-1. [How sessions work](./how-sessions-work.md)
-2. [Transcript storage](./transcript-storage.md)
-3. [Session resume](./session-resume.md)
-4. [Cleanup & retention](./cleanup-retention.md)
-5. [Context management](./context-management.md)
-6. [Auto-compaction](./auto-compaction.md)
-7. [Transcript entry types](./transcript-entry-types.md)
-8. [Startup recovery](./startup-recovery.md)
-9. [Discrepancies & notes](./discrepancies-notes.md)
+1. [How sessions work](/claude-code-docs/sessions/overview/)
+2. [Transcript storage](/claude-code-docs/sessions/overview/)
+3. [Session resume](/claude-code-docs/sessions/overview/)
+4. [Cleanup & retention](/claude-code-docs/sessions/overview/)
+5. [Context management](/claude-code-docs/sessions/overview/)
+6. [Auto-compaction](/claude-code-docs/sessions/overview/)
+7. [Transcript entry types](/claude-code-docs/sessions/overview/)
+8. [Startup recovery](/claude-code-docs/sessions/overview/)
+9. [Discrepancies & notes](/claude-code-docs/sessions/overview/)
 
 ## Overview
 
@@ -25,15 +25,15 @@ Reference for session initialization, transcript persistence, automatic compacti
 
 | # | Section | Description | Key files/paths |
 |---|---------|-------------|-----------------|
-| 1 | [How sessions work](./how-sessions-work.md) | Lifecycle stages: start → message turns → compact → persist → resume. Lazy materialization on first write. | `sessionStorage.ts`, `utils/cleanup.ts` |
-| 2 | [Transcript storage](./transcript-storage.md) | JSONL format, path structure (`~/.claude/sessions/projects/<sanitized>/<uuid>.jsonl`), metadata tail re-append. | `sessionStorage.ts:202-207`, `getProjectDir`, `sanitizePath` |
-| 3 | [Session resume](./session-resume.md) | `--resume`/`--continue` flag behavior, metadata reader (64KB tail), what's restored vs. dropped, pagination. | `sessionStorage.ts:448-461`, `sessionHistory.ts` |
-| 4 | [Cleanup & retention](./cleanup-retention.md) | 30-day default (`cleanupPeriodDays`), disabled via `--no-session-persistence`, test env, or `cleanupPeriodDays=0`. | `cleanup.ts:23-30`, settings keys |
-| 5 | [Context management](./context-management.md) | Git status snapshot (2k char cap, cached), CLAUDE.md auto-discovery, per-conversation memoization. | `context.ts:20-111`, `getSystemContext`, `getUserContext` |
-| 6 | [Auto-compaction](./auto-compaction.md) | Triggered at context-window-20k threshold, 20k output reserve, file+skill restoration, circuit breaker at 2 retries. | `autoCompact.ts:28-49`, `compact.ts:122-130` |
-| 7 | [Transcript entry types](./transcript-entry-types.md) | 17+ entry types: `TranscriptMessage`, `SummaryMessage`, `AiTitleMessage`, `CustomTitleMessage`, `TaskSummaryMessage`, etc. | `types/logs.ts:297-317` |
-| 8 | [Startup recovery](./startup-recovery.md) | Release notes cached to `~/.claude/cache/changelog.md`, terminal backup recovery from `~/.claude/backups/`. | `releaseNotes.ts`, `setup.ts:115-157` |
-| 9 | [Discrepancies & notes](./discrepancies-notes.md) | Known gaps: session state transience, task survival via transcript, metadata tail edge cases. | Gaps between docs and implementation |
+| 1 | [How sessions work](/claude-code-docs/sessions/overview/) | Lifecycle stages: start → message turns → compact → persist → resume. Lazy materialization on first write. | `sessionStorage.ts`, `utils/cleanup.ts` |
+| 2 | [Transcript storage](/claude-code-docs/sessions/overview/) | JSONL format, path structure (`~/.claude/sessions/projects/<sanitized>/<uuid>.jsonl`), metadata tail re-append. | `sessionStorage.ts:202-207`, `getProjectDir`, `sanitizePath` |
+| 3 | [Session resume](/claude-code-docs/sessions/overview/) | `--resume`/`--continue` flag behavior, metadata reader (64KB tail), what's restored vs. dropped, pagination. | `sessionStorage.ts:448-461`, `sessionHistory.ts` |
+| 4 | [Cleanup & retention](/claude-code-docs/sessions/overview/) | 30-day default (`cleanupPeriodDays`), disabled via `--no-session-persistence`, test env, or `cleanupPeriodDays=0`. | `cleanup.ts:23-30`, settings keys |
+| 5 | [Context management](/claude-code-docs/sessions/overview/) | Git status snapshot (2k char cap, cached), CLAUDE.md auto-discovery, per-conversation memoization. | `context.ts:20-111`, `getSystemContext`, `getUserContext` |
+| 6 | [Auto-compaction](/claude-code-docs/sessions/overview/) | Triggered at context-window-20k threshold, 20k output reserve, file+skill restoration, circuit breaker at 2 retries. | `autoCompact.ts:28-49`, `compact.ts:122-130` |
+| 7 | [Transcript entry types](/claude-code-docs/sessions/overview/) | 17+ entry types: `TranscriptMessage`, `SummaryMessage`, `AiTitleMessage`, `CustomTitleMessage`, `TaskSummaryMessage`, etc. | `types/logs.ts:297-317` |
+| 8 | [Startup recovery](/claude-code-docs/sessions/overview/) | Release notes cached to `~/.claude/cache/changelog.md`, terminal backup recovery from `~/.claude/backups/`. | `releaseNotes.ts`, `setup.ts:115-157` |
+| 9 | [Discrepancies & notes](/claude-code-docs/sessions/overview/) | Known gaps: session state transience, task survival via transcript, metadata tail edge cases. | Gaps between docs and implementation |
 
 ## Quick reference — session state by context
 
@@ -46,8 +46,8 @@ Reference for session initialization, transcript persistence, automatic compacti
 
 ## See Also
 
-- [../Settings/memory-context.md](../Settings/memory-context.md) — settings keys: `cleanupPeriodDays`, `autoCompactWindow`
-- [../Commands/session-management.md](../Commands/session-management.md) — `/resume`, `/continue`, `/clear`, `/compact`, `/rewind`, `/branch`, `/fork`
-- [../CLI/README.md](../CLI/README.md) — flags: `--resume`, `--continue`, `--no-session-persistence`, `--session-id`
-- [../ENV/README.md](../ENV/README.md) — env vars: `CLAUDE_CODE_AUTO_COMPACT_WINDOW`, `CLAUDE_CODE_SKIP_PROMPT_HISTORY`
-- [../Memory/README.md](../Memory/README.md) — context window sizing, token accounting
+- [../Settings/memory-context.md](/claude-code-docs/settings/memory-context/) — settings keys: `cleanupPeriodDays`, `autoCompactWindow`
+- [../Commands/session-management.md](/claude-code-docs/cli/overview/) — `/resume`, `/continue`, `/clear`, `/compact`, `/rewind`, `/branch`, `/fork`
+- [../CLI/README.md](/claude-code-docs/cli/overview/) — flags: `--resume`, `--continue`, `--no-session-persistence`, `--session-id`
+- [../ENV/README.md](/claude-code-docs/env/overview/) — env vars: `CLAUDE_CODE_AUTO_COMPACT_WINDOW`, `CLAUDE_CODE_SKIP_PROMPT_HISTORY`
+- [../Memory/README.md](/claude-code-docs/memory/overview/) — context window sizing, token accounting

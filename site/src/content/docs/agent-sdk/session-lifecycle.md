@@ -71,4 +71,4 @@ Session ends naturally when the agent finishes (no more user messages, max_turns
 
 ---
 
-[← Back to Agent SDK/README.md](./README.md)
+[← Back to Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/)

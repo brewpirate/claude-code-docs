@@ -33,14 +33,14 @@ graph TD
 
 | Feature | How to Enable | What It Does | Notes |
 |---------|--------------|-------------|-------|
-| **Persistent tasks** | `CLAUDE_CODE_ENABLE_TASKS=1` | Enables a task coordination system that persists across sessions | Behavior differs significantly from basic `/tasks` command — read [Commands/discrepancies-and-gaps.md](../Commands/discrepancies-and-gaps.md) item 10 before enabling |
+| **Persistent tasks** | `CLAUDE_CODE_ENABLE_TASKS=1` | Enables a task coordination system that persists across sessions | Behavior differs significantly from basic `/tasks` command — read [Commands/discrepancies-and-gaps.md](/claude-code-docs/cli/overview/) item 10 before enabling |
 | **Agent teams** | `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` | Enables `TeamCreate`/`TeamDelete` tools for coordinating groups of agents | Experimental — API subject to change |
-| **Coordinator mode** | `CLAUDE_CODE_COORDINATOR_MODE=1` | Enables full multi-agent orchestration mode | Changes Claude's entire workflow — read [Coordinator/README.md](../Coordinator/README.md) first |
+| **Coordinator mode** | `CLAUDE_CODE_COORDINATOR_MODE=1` | Enables full multi-agent orchestration mode | Changes Claude's entire workflow — read [Coordinator/README.md](/claude-code-docs/agents/overview/) first |
 | **Session memory** | `tengu_session_memory` (Statsig — Anthropic enables) | Background subagent extracts key notes from your session into `~/.claude/sessionMemory.md` | Enabled on some accounts automatically; you can disable with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1` |
 | **Scratchpad** | `tengu_scratch` (Statsig — Anthropic enables) | Enables `.claude/scratchpad/` shared directory between agents | Useful for multi-agent workflows; not available to all accounts |
 | **Team onboarding** | `CLAUDE_CODE_TEAM_ONBOARDING=1` **AND** `tengu_flint_harbor` (Statsig) | Enables `/team-onboarding` command | Dual-gate — both required; the Statsig flag cannot be set by you |
 | **Loop skill** | `CLAUDE_CODE_ENABLE_LOOP=1` | Enables `/loop` command for recurring scheduled prompts | Also requires the `loop` skill to be present |
-| **CFC** | `CLAUDE_CODE_ENABLE_CFC=1` | Unknown purpose | This env var exists in the source but its command surface is undocumented — see [Commands/discrepancies-and-gaps.md](../Commands/discrepancies-and-gaps.md) |
+| **CFC** | `CLAUDE_CODE_ENABLE_CFC=1` | Unknown purpose | This env var exists in the source but its command surface is undocumented — see [Commands/discrepancies-and-gaps.md](/claude-code-docs/cli/overview/) |
 
 ---
 
@@ -81,7 +81,7 @@ Some features are on by default and can be turned off:
 
 A few things to know:
 
-1. **Read the discrepancies doc first** — [Commands/discrepancies-and-gaps.md](../Commands/discrepancies-and-gaps.md) documents known gaps between env-var-gated features and their public docs. Item 10 (the `/tasks` system) is especially important.
+1. **Read the discrepancies doc first** — [Commands/discrepancies-and-gaps.md](/claude-code-docs/cli/overview/) documents known gaps between env-var-gated features and their public docs. Item 10 (the `/tasks` system) is especially important.
 
 2. **Experimental features can change behavior significantly** — `CLAUDE_CODE_COORDINATOR_MODE` doesn't just add new tools; it changes how Claude orchestrates work entirely. Don't enable it during a critical session without understanding what it does.
 
@@ -93,11 +93,11 @@ A few things to know:
 
 ## See also
 
-- [ENV/feature-disable-flags.md](../ENV/feature-disable-flags.md) — full list of disable flags
-- [Commands/experimental-unreleased-feature-flag-gated-commands.md](../Commands/experimental-unreleased-feature-flag-gated-commands.md) — gated slash commands
-- [Commands/discrepancies-and-gaps.md](../Commands/discrepancies-and-gaps.md) — known issues with gated features
-- [ENV/README.md](../ENV/README.md) — all environment variables
+- [ENV/feature-disable-flags.md](/claude-code-docs/env/overview/) — full list of disable flags
+- [Commands/experimental-unreleased-feature-flag-gated-commands.md](/claude-code-docs/cli/overview/) — gated slash commands
+- [Commands/discrepancies-and-gaps.md](/claude-code-docs/cli/overview/) — known issues with gated features
+- [ENV/README.md](/claude-code-docs/env/overview/) — all environment variables
 
 ---
 
-[← Back to GettingStarted/README.md](./README.md)
+[← Back to GettingStarted/README.md](/claude-code-docs/getting-started/overview/)

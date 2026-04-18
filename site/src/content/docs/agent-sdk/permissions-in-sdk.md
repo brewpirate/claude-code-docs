@@ -34,4 +34,4 @@ Can also return `{ behavior: "ask" }` to prompt the user (requires interactive c
 
 ---
 
-[← Back to Agent SDK/README.md](./README.md)
+[← Back to Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/)

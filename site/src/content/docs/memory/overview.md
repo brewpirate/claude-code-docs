@@ -9,13 +9,13 @@ Claude Code's memory architecture comprises four complementary systems: MEMORY.m
 
 ## Table of Contents
 
-1. [How memory works](./how-memory-works.md)
-2. [Storage paths](./storage-paths.md)
-3. [Auto-memory](./auto-memory.md)
-4. [Memory types](./memory-types.md)
-5. [Session memory](./session-memory.md)
-6. [History and pastes](./history-and-pastes.md)
-7. [Discrepancies & notes](./discrepancies-notes.md)
+1. [How memory works](/claude-code-docs/memory/overview/)
+2. [Storage paths](/claude-code-docs/memory/overview/)
+3. [Auto-memory](/claude-code-docs/memory/overview/)
+4. [Memory types](/claude-code-docs/memory/overview/)
+5. [Session memory](/claude-code-docs/memory/overview/)
+6. [History and pastes](/claude-code-docs/memory/overview/)
+7. [Discrepancies & notes](/claude-code-docs/memory/overview/)
 
 ## Overview
 
@@ -23,13 +23,13 @@ Claude Code's memory architecture comprises four complementary systems: MEMORY.m
 
 | # | Section | Description | Entries |
 |---|---------|-------------|---------|
-| 1 | [How memory works](./how-memory-works.md) | Architecture: MEMORY.md entrypoints, auto-memory daily logs, session memory extraction, and command history indexed by project. | narrative |
-| 2 | [Storage paths](./storage-paths.md) | Full path resolution: local ~/.claude/, remote CCR, team memory, agent memory (user/project/local), and session memory. | 8 paths |
-| 3 | [Auto-memory](./auto-memory.md) | Daily logs, 200-file scan cap with newest-first sort, 5-result Sonnet selector, 200-line / 25KB MEMORY.md caps, staleness warnings. | narrative |
-| 4 | [Memory types](./memory-types.md) | Frontmatter classification: `user`, `feedback`, `project`, `reference` with narrowing logic during recall. | 4 types |
-| 5 | [Session memory](./session-memory.md) | Background subagent extraction (feature gate `tengu_session_memory`), token budgets, initialization thresholds. | narrative |
-| 6 | [History and pastes](./history-and-pastes.md) | Global history.jsonl (100 items/project, indexed by name) and paste-store content-addressed cache for >1024 char pastes. | narrative |
-| 7 | [Discrepancies & notes](./discrepancies-notes.md) | Gaps between public docs and reality: feature gates, team memory gating, local-only agent memory, extraction behavior. | narrative |
+| 1 | [How memory works](/claude-code-docs/memory/overview/) | Architecture: MEMORY.md entrypoints, auto-memory daily logs, session memory extraction, and command history indexed by project. | narrative |
+| 2 | [Storage paths](/claude-code-docs/memory/overview/) | Full path resolution: local ~/.claude/, remote CCR, team memory, agent memory (user/project/local), and session memory. | 8 paths |
+| 3 | [Auto-memory](/claude-code-docs/memory/overview/) | Daily logs, 200-file scan cap with newest-first sort, 5-result Sonnet selector, 200-line / 25KB MEMORY.md caps, staleness warnings. | narrative |
+| 4 | [Memory types](/claude-code-docs/memory/overview/) | Frontmatter classification: `user`, `feedback`, `project`, `reference` with narrowing logic during recall. | 4 types |
+| 5 | [Session memory](/claude-code-docs/memory/overview/) | Background subagent extraction (feature gate `tengu_session_memory`), token budgets, initialization thresholds. | narrative |
+| 6 | [History and pastes](/claude-code-docs/memory/overview/) | Global history.jsonl (100 items/project, indexed by name) and paste-store content-addressed cache for >1024 char pastes. | narrative |
+| 7 | [Discrepancies & notes](/claude-code-docs/memory/overview/) | Gaps between public docs and reality: feature gates, team memory gating, local-only agent memory, extraction behavior. | narrative |
 
 ## Quick reference — memory locations
 
@@ -47,8 +47,8 @@ Claude Code's memory architecture comprises four complementary systems: MEMORY.m
 
 ## See Also
 
-- [../Settings/memory-context.md](../Settings/memory-context.md) — settings.json keys: `autoMemoryEnabled`, `autoDreamEnabled`, `cleanupPeriodDays`, `autoCompactWindow`
-- [../ENV/README.md](../ENV/README.md) — env vars: `CLAUDE_CODE_DISABLE_AUTO_MEMORY`, `CLAUDE_CODE_REMOTE_MEMORY_DIR`, `CLAUDE_CODE_SIMPLE`
-- [../Skills/FRONTMATTER.md](../Skills/FRONTMATTER.md) — `type:` frontmatter field for memory files
-- [../Commands/memory-context.md](../Commands/memory-context.md) — `/init`, `/memory`, `/context` slash commands
+- [../Settings/memory-context.md](/claude-code-docs/settings/memory-context/) — settings.json keys: `autoMemoryEnabled`, `autoDreamEnabled`, `cleanupPeriodDays`, `autoCompactWindow`
+- [../ENV/README.md](/claude-code-docs/env/overview/) — env vars: `CLAUDE_CODE_DISABLE_AUTO_MEMORY`, `CLAUDE_CODE_REMOTE_MEMORY_DIR`, `CLAUDE_CODE_SIMPLE`
+- [../Skills/FRONTMATTER.md](/claude-code-docs/skills/overview/) — `type:` frontmatter field for memory files
+- [../Commands/memory-context.md](/claude-code-docs/cli/overview/) — `/init`, `/memory`, `/context` slash commands
 - Official docs: <https://code.claude.com/docs/en/memory>

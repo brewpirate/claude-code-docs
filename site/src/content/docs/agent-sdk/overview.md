@@ -9,20 +9,20 @@ Reference for embedding Claude Code as a library via the Python or TypeScript Ag
 
 ## Table of Contents
 
-1. [How the Agent SDK works](./how-the-agent-sdk-works.md)
-2. [Session lifecycle](./session-lifecycle.md)
-3. [Message protocol](./message-protocol.md)
-4. [Content block types](./content-block-types.md)
-5. [Tool bridging](./tool-bridging.md)
-6. [Hook integration](./hook-integration.md)
-7. [MCP integration](./mcp-integration.md)
-8. [Configuration](./configuration.md)
-9. [Language bindings](./language-bindings.md)
-10. [Streaming & events](./streaming-events.md)
-11. [Permissions in SDK](./permissions-in-sdk.md)
-12. [Session management functions](./session-management-functions.md)
-13. [Additional SDK subsystems (by file name, unverified without inspection)](./additional-sdk-subsystems.md)
-14. [Discrepancies & notes](./discrepancies-notes.md)
+1. [How the Agent SDK works](/claude-code-docs/agent-sdk/how-the-agent-sdk-works/)
+2. [Session lifecycle](/claude-code-docs/agent-sdk/session-lifecycle/)
+3. [Message protocol](/claude-code-docs/agent-sdk/message-protocol/)
+4. [Content block types](/claude-code-docs/agent-sdk/content-block-types/)
+5. [Tool bridging](/claude-code-docs/agent-sdk/tool-bridging/)
+6. [Hook integration](/claude-code-docs/agent-sdk/hook-integration/)
+7. [MCP integration](/claude-code-docs/agent-sdk/mcp-integration/)
+8. [Configuration](/claude-code-docs/agent-sdk/configuration/)
+9. [Language bindings](/claude-code-docs/agent-sdk/language-bindings/)
+10. [Streaming & events](/claude-code-docs/agent-sdk/streaming-events/)
+11. [Permissions in SDK](/claude-code-docs/agent-sdk/permissions-in-sdk/)
+12. [Session management functions](/claude-code-docs/agent-sdk/overview/)
+13. [Additional SDK subsystems (by file name, unverified without inspection)](/claude-code-docs/agent-sdk/overview/)
+14. [Discrepancies & notes](/claude-code-docs/agent-sdk/overview/)
 
 ## Overview
 
@@ -30,20 +30,20 @@ Reference for embedding Claude Code as a library via the Python or TypeScript Ag
 
 | # | Section | Description | Entries |
 |---|---------|-------------|---------|
-| 1 | [How the Agent SDK works](./how-the-agent-sdk-works.md) | Two language bindings, entrypoint envs, data vs control plane, session identity, streaming, tool/hook/MCP bridging, permission callbacks. | narrative |
-| 2 | [Session lifecycle](./session-lifecycle.md) | Create, resume, abort, interrupt, set-mode — programmatic session control via the control-plane schema. | 6 entries |
-| 3 | [Message protocol](./message-protocol.md) | User / assistant / result / system / status / partial / rate_limit / streamlined_text message types and their shapes. | 4 entries |
-| 4 | [Content block types](./content-block-types.md) | text, thinking, tool_use, tool_result, image, document, redaction — the 7 content block kinds. | narrative |
-| 5 | [Tool bridging](./tool-bridging.md) | Built-in tool inheritance, SDK-registered custom tools, in-process MCP servers, and the `canUseTool` callback. | 3 entries |
-| 6 | [Hook integration](./hook-integration.md) | How SDK-registered hooks reuse the same 26 event types as CLI hooks; callback shape. | 3 entries |
-| 7 | [MCP integration](./mcp-integration.md) | `SdkControlTransport` for in-process MCP servers, per-session config, `CLAUDE_AGENT_SDK_MCP_NO_PREFIX`. | 4 entries |
-| 8 | [Configuration](./configuration.md) | Constructor options, env vars (`CLAUDE_AGENT_SDK_*`, `CLAUDE_CODE_ENTRYPOINT`), and inherited settings.json keys. | 4 entries |
-| 9 | [Language bindings](./language-bindings.md) | TypeScript (`@anthropic-ai/claude-code`) and Python (`claude-code`) — installation, minimal usage, key exports. | 2 entries |
-| 10 | [Streaming & events](./streaming-events.md) | Event protocol surface — message chunks, tool use start/stop, thinking, compaction, task events. | 3 entries |
-| 11 | [Permissions in SDK](./permissions-in-sdk.md) | `canUseTool` callback as the SDK's rule-system replacement; mid-session mode changes via control message. | 3 entries |
-| 12 | [Session management functions](./session-management-functions.md) | Programmatic entry points for session creation, resumption, abort, interrupt, and state queries. | 10 entries |
-| 13 | [Additional SDK subsystems (by file name, unverified without inspection)](./additional-sdk-subsystems.md) | Hedged references to internal files not inspected — `sdkEventQueue`, `sdkProgress`, `sdkMessageAdapter`, `SdkControlTransport`. | narrative |
-| 14 | [Discrepancies & notes](./discrepancies-notes.md) | Type/schema mismatches, SDK-only features (rewind, mcp_set_servers), CLI-only features absent from SDK. | narrative |
+| 1 | [How the Agent SDK works](/claude-code-docs/agent-sdk/how-the-agent-sdk-works/) | Two language bindings, entrypoint envs, data vs control plane, session identity, streaming, tool/hook/MCP bridging, permission callbacks. | narrative |
+| 2 | [Session lifecycle](/claude-code-docs/agent-sdk/session-lifecycle/) | Create, resume, abort, interrupt, set-mode — programmatic session control via the control-plane schema. | 6 entries |
+| 3 | [Message protocol](/claude-code-docs/agent-sdk/message-protocol/) | User / assistant / result / system / status / partial / rate_limit / streamlined_text message types and their shapes. | 4 entries |
+| 4 | [Content block types](/claude-code-docs/agent-sdk/content-block-types/) | text, thinking, tool_use, tool_result, image, document, redaction — the 7 content block kinds. | narrative |
+| 5 | [Tool bridging](/claude-code-docs/agent-sdk/tool-bridging/) | Built-in tool inheritance, SDK-registered custom tools, in-process MCP servers, and the `canUseTool` callback. | 3 entries |
+| 6 | [Hook integration](/claude-code-docs/agent-sdk/hook-integration/) | How SDK-registered hooks reuse the same 26 event types as CLI hooks; callback shape. | 3 entries |
+| 7 | [MCP integration](/claude-code-docs/agent-sdk/mcp-integration/) | `SdkControlTransport` for in-process MCP servers, per-session config, `CLAUDE_AGENT_SDK_MCP_NO_PREFIX`. | 4 entries |
+| 8 | [Configuration](/claude-code-docs/agent-sdk/configuration/) | Constructor options, env vars (`CLAUDE_AGENT_SDK_*`, `CLAUDE_CODE_ENTRYPOINT`), and inherited settings.json keys. | 4 entries |
+| 9 | [Language bindings](/claude-code-docs/agent-sdk/language-bindings/) | TypeScript (`@anthropic-ai/claude-code`) and Python (`claude-code`) — installation, minimal usage, key exports. | 2 entries |
+| 10 | [Streaming & events](/claude-code-docs/agent-sdk/streaming-events/) | Event protocol surface — message chunks, tool use start/stop, thinking, compaction, task events. | 3 entries |
+| 11 | [Permissions in SDK](/claude-code-docs/agent-sdk/permissions-in-sdk/) | `canUseTool` callback as the SDK's rule-system replacement; mid-session mode changes via control message. | 3 entries |
+| 12 | [Session management functions](/claude-code-docs/agent-sdk/overview/) | Programmatic entry points for session creation, resumption, abort, interrupt, and state queries. | 10 entries |
+| 13 | [Additional SDK subsystems (by file name, unverified without inspection)](/claude-code-docs/agent-sdk/overview/) | Hedged references to internal files not inspected — `sdkEventQueue`, `sdkProgress`, `sdkMessageAdapter`, `SdkControlTransport`. | narrative |
+| 14 | [Discrepancies & notes](/claude-code-docs/agent-sdk/overview/) | Type/schema mismatches, SDK-only features (rewind, mcp_set_servers), CLI-only features absent from SDK. | narrative |
 
 ## Quick reference — SDK types
 
@@ -68,11 +68,11 @@ Reference for embedding Claude Code as a library via the Python or TypeScript Ag
 
 ## See Also
 
-- [../Tools/README.md](../Tools/README.md) — built-in tools inherited by SDK sessions.
-- [../Hooks/README.md](../Hooks/README.md) — the 26 hook events also trigger in SDK sessions.
-- [../Permissions/README.md](../Permissions/README.md) — rules and modes honored by the SDK's `canUseTool` callback.
-- [../Settings/README.md](../Settings/README.md) — settings.json keys inherited by SDK.
-- [../ENV/README.md](../ENV/README.md) — `CLAUDE_AGENT_SDK_*` and `CLAUDE_CODE_ENTRYPOINT=sdk-ts|sdk-py` env vars.
-- [../CLI/README.md](../CLI/README.md) — `--print` / `-p` flag and other SDK-adjacent CLI options.
-- [../Plugins/README.md](../Plugins/README.md) — plugins work identically in SDK and CLI sessions.
+- [../Tools/README.md](/claude-code-docs/tools/overview/) — built-in tools inherited by SDK sessions.
+- [../Hooks/README.md](/claude-code-docs/hooks/overview/) — the 26 hook events also trigger in SDK sessions.
+- [../Permissions/README.md](/claude-code-docs/permissions/overview/) — rules and modes honored by the SDK's `canUseTool` callback.
+- [../Settings/README.md](/claude-code-docs/settings/overview/) — settings.json keys inherited by SDK.
+- [../ENV/README.md](/claude-code-docs/env/overview/) — `CLAUDE_AGENT_SDK_*` and `CLAUDE_CODE_ENTRYPOINT=sdk-ts|sdk-py` env vars.
+- [../CLI/README.md](/claude-code-docs/cli/overview/) — `--print` / `-p` flag and other SDK-adjacent CLI options.
+- [../Plugins/README.md](/claude-code-docs/plugins/overview/) — plugins work identically in SDK and CLI sessions.
 - Official docs: <https://code.claude.com/docs/en/agent-sdk/overview>

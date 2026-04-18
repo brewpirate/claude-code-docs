@@ -65,4 +65,4 @@ claude --remote-control "My Project"   # Enable Remote Control
 
 ---
 
-[← Back to CLI/README.md](./README.md)
+[← Back to CLI/README.md](/claude-code-docs/cli/overview/)

@@ -12,8 +12,8 @@ title: "Flag Reference"
 - **Argument:** `<model>` — required (alias or full model ID)
 - **Default:** Last selected model, or claude-sonnet-4-6
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
-- **Env var equivalent:** `ANTHROPIC_MODEL` — cross-ref to [../ENV/README.md](../ENV/README.md)
-- **Settings.json equivalent:** `model` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Env var equivalent:** `ANTHROPIC_MODEL` — cross-ref to [../ENV/README.md](/claude-code-docs/env/overview/)
+- **Settings.json equivalent:** `model` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Sets the model for the current session with an alias for the latest model (`sonnet`, `opus`, `haiku`) or a model's full name (e.g., `claude-opus-4-7-20250219`).
 - **Example:** `claude --model opus` or `claude --model claude-sonnet-4-6`
 - **Notes:** Aliases resolve to the latest stable version of that model tier.
@@ -24,7 +24,7 @@ title: "Flag Reference"
 - **Default:** Inherits from session settings
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `effort` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `effort` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Set the effort level (thinking depth) for the current session. Options: `low`, `medium`, `high`, `xhigh`, `max`. Available levels depend on the model. Session-scoped and does not persist to settings.
 - **Example:** `claude --effort high`
 - **Notes:** Unsupported values are logged as a warning and ignored.
@@ -157,7 +157,7 @@ title: "Flag Reference"
 - **Argument:** None (boolean flag)
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
-- **Env var equivalent:** `CLAUDE_CODE_SIMPLE` — cross-ref to [../ENV/README.md](../ENV/README.md)
+- **Env var equivalent:** `CLAUDE_CODE_SIMPLE` — cross-ref to [../ENV/README.md](/claude-code-docs/env/overview/)
 - **Settings.json equivalent:** None
 - **Description:** Minimal mode: skip auto-discovery of hooks, skills, plugins, MCP servers, auto memory, and CLAUDE.md. Claude has access to Bash, file read, and file edit tools only. Faster startup for scripted calls.
 - **Example:** `claude --bare -p "query"`
@@ -203,7 +203,7 @@ title: "Flag Reference"
 - **Argument:** `<prefix>` — required (string)
 - **Default:** Machine hostname
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
-- **Env var equivalent:** `CLAUDE_REMOTE_CONTROL_SESSION_NAME_PREFIX` — cross-ref to [../ENV/README.md](../ENV/README.md)
+- **Env var equivalent:** `CLAUDE_REMOTE_CONTROL_SESSION_NAME_PREFIX` — cross-ref to [../ENV/README.md](/claude-code-docs/env/overview/)
 - **Settings.json equivalent:** None
 - **Description:** Prefix for auto-generated Remote Control session names when no explicit name is set. Defaults to your machine's hostname, producing names like `myhost-graceful-unicorn`.
 - **Example:** `claude remote-control --remote-control-session-name-prefix dev-box`
@@ -276,7 +276,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `additionalDirectories` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `additionalDirectories` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Add additional working directories for Claude to read and edit files. Grants file access; most `.claude/` configuration is not discovered from these directories. Validates each path exists as a directory.
 - **Example:** `claude --add-dir ../apps ../lib`
 - **Notes:** Can be repeated for multiple directories. Does not auto-discover CLAUDE.md or other configs in added directories.
@@ -311,7 +311,7 @@ title: "Flag Reference"
 - **Default:** `default` (ask for permission)
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `defaultMode` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `defaultMode` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Begin in a specified permission mode. Accepts: `default` (ask for permission), `acceptEdits` (auto-accept file edits), `plan` (plan-then-execute mode), `auto` (auto-accept tool use), `dontAsk` (no notification), `bypassPermissions` (silent). Overrides `defaultMode` from settings files.
 - **Example:** `claude --permission-mode plan`
 - **Notes:** See [Permission modes](https://code.claude.com/docs/en/permission-modes) for detailed behavior of each mode.
@@ -344,7 +344,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `allowedTools` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `allowedTools` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Tools that execute without prompting for permission. Accepts permission rule syntax for pattern matching (e.g., `"Bash(git log *)"`, `"Read"`). To restrict which tools are available, use `--tools` instead.
 - **Example:** `claude --allowedTools "Bash(git log *)" "Bash(git diff *)" "Read"`
 - **Notes:** See [Permission rule syntax](https://code.claude.com/docs/en/settings#permission-rule-syntax) for pattern matching.
@@ -355,7 +355,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `disallowedTools` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `disallowedTools` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Tools that are removed from the model's context and cannot be used.
 - **Example:** `claude --disallowedTools "Bash(git log *)" "Bash(git diff *)" "Edit"`
 - **Notes:** See [Permission rule syntax](https://code.claude.com/docs/en/settings#permission-rule-syntax) for pattern matching.
@@ -377,7 +377,7 @@ title: "Flag Reference"
 - **Default:** All built-in tools
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `tools` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `tools` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Restrict which built-in tools Claude can use. Use `""` (empty string) to disable all, `"default"` for all, or tool names like `"Bash,Edit,Read"`. Comma-separated list of tool names.
 - **Example:** `claude --tools "Bash,Edit,Read"` or `claude --tools ""`
 - **Notes:** Different from `--disallowedTools`: this allowlist restricts availability, not permissions.
@@ -390,7 +390,7 @@ title: "Flag Reference"
 - **Default:** Claude Code's built-in system prompt
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `systemPrompt` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `systemPrompt` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Replace the entire system prompt with custom text. Mutually exclusive with `--system-prompt-file`.
 - **Example:** `claude --system-prompt "You are a Python expert"`
 - **Notes:** Use only when you need complete control over the system prompt. Consider `--append-system-prompt` to preserve built-in capabilities.
@@ -401,7 +401,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `systemPromptFile` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `systemPromptFile` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Load system prompt from a file, replacing the default prompt. Mutually exclusive with `--system-prompt`.
 - **Example:** `claude --system-prompt-file ./custom-prompt.txt`
 - **Notes:** File contents completely replace the default system prompt.
@@ -412,7 +412,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `appendSystemPrompt` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `appendSystemPrompt` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Append custom text to the end of the default system prompt. Can be combined with either replacement flag.
 - **Example:** `claude --append-system-prompt "Always use TypeScript"`
 - **Notes:** Recommended for most use cases; preserves Claude Code's built-in capabilities while adding your requirements.
@@ -423,7 +423,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `appendSystemPromptFile` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `appendSystemPromptFile` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Load additional system prompt text from a file and append to the default prompt. Can be combined with either replacement flag.
 - **Example:** `claude --append-system-prompt-file ./style-rules.txt`
 - **Notes:** Recommended for most use cases. File contents are appended to (not replacing) the default prompt.
@@ -447,7 +447,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `mcpServers` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `mcpServers` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Load MCP servers from JSON files or strings (space-separated). Each argument is either a file path or inline JSON configuration.
 - **Example:** `claude --mcp-config ./mcp.json` or `claude --mcp-config '{"server":{"command":"python","args":["script.py"]}}'`
 - **Notes:** None.
@@ -504,7 +504,7 @@ title: "Flag Reference"
 - **Default:** `general-purpose` (or last selected)
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `agent` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `agent` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Specify a custom subagent (from `.claude/agents/` or installed plugins) for the current session. Overrides the `agent` setting.
 - **Example:** `claude --agent my-custom-agent`
 - **Notes:** See [Subagents](https://code.claude.com/docs/en/sub-agents) documentation for defining custom agents.
@@ -526,7 +526,7 @@ title: "Flag Reference"
 - **Default:** `auto`
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `teammateMode` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `teammateMode` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Set how agent teammates display: `auto` (default), `in-process`, or `tmux`. See [Choose a display mode](https://code.claude.com/docs/en/agent-teams#choose-a-display-mode).
 - **Example:** `claude --teammate-mode in-process`
 - **Notes:** Only applies to agent teams; requires `AGENT_TEAMS` feature or similar.
@@ -618,7 +618,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `chrome` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `chrome` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Enable Chrome browser integration for web automation and testing.
 - **Example:** `claude --chrome`
 - **Notes:** See [Chrome extension documentation](https://code.claude.com/docs/en/chrome).
@@ -640,7 +640,7 @@ title: "Flag Reference"
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
 - **Env var equivalent:** None
-- **Settings.json equivalent:** `autoConnectIde` — cross-ref to [../Settings/README.md](../Settings/README.md)
+- **Settings.json equivalent:** `autoConnectIde` — cross-ref to [../Settings/README.md](/claude-code-docs/settings/overview/)
 - **Description:** Automatically connect to IDE on startup if exactly one valid IDE is available.
 - **Example:** `claude --ide`
 - **Notes:** Requires a supported IDE (VS Code, JetBrains, etc.) to be running.
@@ -663,7 +663,7 @@ title: "Flag Reference"
 - **Argument:** `[category]` — optional (comma-separated or negated)
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
-- **Env var equivalent:** `CLAUDE_CODE_DEBUG` — cross-ref to [../ENV/README.md](../ENV/README.md)
+- **Env var equivalent:** `CLAUDE_CODE_DEBUG` — cross-ref to [../ENV/README.md](/claude-code-docs/env/overview/)
 - **Settings.json equivalent:** None
 - **Description:** Enable debug mode with optional category filtering. Examples: `"api,hooks"` (only api and hooks), `"!statsig,!file"` (everything except statsig and file).
 - **Example:** `claude --debug "api,mcp"`
@@ -674,7 +674,7 @@ title: "Flag Reference"
 - **Argument:** `<path>` — required (file path)
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
-- **Env var equivalent:** `CLAUDE_CODE_DEBUG_LOGS_DIR` (directory, not file) — cross-ref to [../ENV/README.md](../ENV/README.md)
+- **Env var equivalent:** `CLAUDE_CODE_DEBUG_LOGS_DIR` (directory, not file) — cross-ref to [../ENV/README.md](/claude-code-docs/env/overview/)
 - **Settings.json equivalent:** None
 - **Description:** Write debug logs to a specific file path. Implicitly enables debug mode. Takes precedence over `CLAUDE_CODE_DEBUG_LOGS_DIR` env var.
 - **Example:** `claude --debug-file /tmp/claude-debug.log`
@@ -685,7 +685,7 @@ title: "Flag Reference"
 - **Argument:** None (boolean flag)
 - **Default:** None
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/cli-reference
-- **Env var equivalent:** `CLAUDE_CODE_VERBOSE` — cross-ref to [../ENV/README.md](../ENV/README.md)
+- **Env var equivalent:** `CLAUDE_CODE_VERBOSE` — cross-ref to [../ENV/README.md](/claude-code-docs/env/overview/)
 - **Settings.json equivalent:** None
 - **Description:** Enable verbose logging, shows full turn-by-turn output and intermediate steps.
 - **Example:** `claude --verbose`
@@ -706,4 +706,4 @@ title: "Flag Reference"
 
 ---
 
-[← Back to CLI/README.md](./README.md)
+[← Back to CLI/README.md](/claude-code-docs/cli/overview/)

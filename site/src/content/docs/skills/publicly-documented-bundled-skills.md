@@ -239,4 +239,4 @@ title: "Publicly Documented Bundled Skills"
 
 ---
 
-[← Back to Skills/README.md](./README.md)
+[← Back to Skills/README.md](/claude-code-docs/skills/overview/)

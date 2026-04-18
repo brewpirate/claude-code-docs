@@ -12,8 +12,8 @@ To create custom skills beyond the bundled set:
 - **Plugin skills:** `<plugin>/skills/<name>/SKILL.md` — bundled with plugins
 - **Managed skills:** Deploy org-wide via managed settings for enterprise deployments
 
-See [FRONTMATTER.md](FRONTMATTER.md) for the complete frontmatter schema and [the skills guide](https://code.claude.com/docs/en/skills) for detailed authoring patterns.
+See the [Skills Overview](/claude-code-docs/skills/overview/) for the complete frontmatter schema and [the skills guide](https://code.claude.com/docs/en/skills) for detailed authoring patterns.
 
 ---
 
-[← Back to Skills/README.md](./README.md)
+[← Back to Skills/README.md](/claude-code-docs/skills/overview/)
