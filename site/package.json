@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.38.3",
+    "@catppuccin/starlight": "^2.0.1",
     "@iconify-json/lucide": "^1.2.102",
     "@unocss/astro": "^66.6.8",
     "astro": "^6.1.8",
