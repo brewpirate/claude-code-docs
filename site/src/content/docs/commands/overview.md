@@ -4,7 +4,9 @@ title: "Claude Code Built-in Slash Commands"
 
 # Claude Code Built-in Slash Commands
 
-> **New here?** You don't need to know all 97 commands. The ★ markers below highlight the 15 commands you'll use most often as a junior developer. Start with `/help`, `/config`, and `/clear`.
+:::tip[New here?]
+You don't need to know all 97 commands. The ★ markers below highlight the 15 commands you'll use most often as a junior developer. Start with `/help`, `/config`, and `/clear`.
+:::
 
 Per-section reference for every built-in slash command dispatched by the Claude Code CLI.
 

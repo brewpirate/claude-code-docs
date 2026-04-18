@@ -25,7 +25,9 @@ graph TD
     E --> E1[Requires both — used for staged rollouts]
 ```
 
-> **Important about `tengu_*` flags:** These are internal Statsig identifiers. You cannot set them yourself — they are enabled by Anthropic on your account or team. If docs mention a `tengu_*` flag, it means the feature is controlled by Anthropic's rollout system, not by your configuration.
+:::note[About `tengu_*` flags]
+These are internal Statsig identifiers. You cannot set them yourself — they are enabled by Anthropic on your account or team. If docs mention a `tengu_*` flag, it means the feature is controlled by Anthropic's rollout system, not by your configuration.
+:::
 
 ---
 
@@ -79,8 +81,7 @@ Some features are on by default and can be turned off:
 
 ## Before enabling experimental features
 
-A few things to know:
-
+:::caution
 1. **Read the discrepancies doc first** — [Commands/discrepancies-and-gaps.md](/claude-code-docs/cli/overview/) documents known gaps between env-var-gated features and their public docs. Item 10 (the `/tasks` system) is especially important.
 
 2. **Experimental features can change behavior significantly** — `CLAUDE_CODE_COORDINATOR_MODE` doesn't just add new tools; it changes how Claude orchestrates work entirely. Don't enable it during a critical session without understanding what it does.
@@ -88,6 +89,7 @@ A few things to know:
 3. **Some gates require multiple conditions** — the `/team-onboarding` command requires both an env var *and* a Statsig flag. If only one is set, the command won't appear or won't work.
 
 4. **Statsig flags are not documented in advance** — `tengu_*` flags may appear in docs or source before they're rolled out to your account. If a feature sounds like it should work but doesn't, the Statsig flag may not be enabled for you.
+:::
 
 ---
 

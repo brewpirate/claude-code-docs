@@ -114,7 +114,9 @@ Agents run in parallel by default. The parent session receives results as `<task
 
 ## Plugin subagent restriction
 
-> **Important:** Subagents defined inside a **plugin** cannot use `hooks`, `mcpServers`, or `permissionMode` frontmatter fields. These fields are silently ignored for plugin-origin agents. Only standalone `.claude/agents/` files support the full set of agent frontmatter.
+:::caution[Plugin agent limitation]
+Subagents defined inside a **plugin** cannot use `hooks`, `mcpServers`, or `permissionMode` frontmatter fields. These fields are silently ignored for plugin-origin agents. Only standalone `.claude/agents/` files support the full set of agent frontmatter.
+:::
 
 ---
 

@@ -29,7 +29,9 @@ sequenceDiagram
     end
 ```
 
-> **What "blocking" means:** Exit code 0 = proceed normally. Exit code 2 = Claude stops and does not execute the tool. This is how you'd prevent Claude from running `rm -rf` commands or overwriting protected files. Any exit code other than 2 (including exit 1) is treated as "proceed."
+:::caution[Exit codes]
+Exit code 0 = proceed normally. Exit code 2 = Claude stops and does not execute the tool. This is how you'd prevent Claude from running `rm -rf` commands or overwriting protected files. Any exit code other than 2 (including exit 1) is treated as "proceed."
+:::
 
 - **Lifecycle events:** Hook events fire at specific points in the session—before/after tool use, permission checks, session start/end, file changes, subagent dispatch, compaction, and MCP elicitation. Each event is named after what triggered it (e.g., `PreToolUse` fires before any tool runs).
 
