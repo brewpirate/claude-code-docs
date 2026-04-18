@@ -1,5 +1,6 @@
 ---
 title: "Shell & Code Execution Tools"
+tags: [tools]
 ---
 
 # Shell & code execution tools

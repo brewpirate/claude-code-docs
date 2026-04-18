@@ -1,5 +1,6 @@
 ---
 title: "Additional / undocumented rule-related subsystems"
+tags: [permissions, settings]
 ---
 
 # Additional / undocumented rule-related subsystems

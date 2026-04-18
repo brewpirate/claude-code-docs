@@ -1,5 +1,6 @@
 ---
 title: "How Memory Works"
+tags: [settings]
 ---
 
 # How Memory Works

@@ -1,5 +1,6 @@
 ---
 title: "Related settings keys"
+tags: [permissions, settings]
 ---
 
 # Related settings keys

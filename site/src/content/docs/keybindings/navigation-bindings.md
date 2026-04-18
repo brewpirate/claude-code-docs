@@ -1,5 +1,6 @@
 ---
 title: "Navigation Bindings"
+tags: [cli]
 ---
 
 # Navigation Bindings

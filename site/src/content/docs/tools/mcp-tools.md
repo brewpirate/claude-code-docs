@@ -1,5 +1,6 @@
 ---
 title: "MCP Tools"
+tags: [tools]
 ---
 
 # MCP (Model Context Protocol) tools

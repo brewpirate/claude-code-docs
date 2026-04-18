@@ -1,5 +1,6 @@
 ---
 title: "Rule updates"
+tags: [permissions, settings]
 ---
 
 # Rule updates

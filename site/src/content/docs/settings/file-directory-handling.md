@@ -1,5 +1,6 @@
 ---
 title: "File & Directory Handling"
+tags: [settings]
 ---
 
 # File & Directory Handling

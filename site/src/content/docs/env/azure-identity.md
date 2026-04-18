@@ -1,5 +1,6 @@
 ---
 title: "Azure Identity"
+tags: [environment]
 ---
 
 # Azure Identity

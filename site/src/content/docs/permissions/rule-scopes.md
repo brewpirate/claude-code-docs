@@ -1,5 +1,6 @@
 ---
 title: "Rule scopes"
+tags: [permissions, settings]
 ---
 
 # Rule scopes

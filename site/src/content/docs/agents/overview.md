@@ -1,6 +1,7 @@
 ---
 title: "Agents Overview"
 description: "How subagents work in Claude Code"
+tags: [agent-sdk]
 ---
 
 # Claude Code Subagents

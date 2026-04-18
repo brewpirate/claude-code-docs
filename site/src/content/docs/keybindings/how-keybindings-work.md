@@ -1,5 +1,6 @@
 ---
 title: "How Keybindings Work"
+tags: [cli]
 ---
 
 # How Keybindings Work

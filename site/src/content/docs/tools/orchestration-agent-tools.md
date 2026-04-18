@@ -1,5 +1,6 @@
 ---
 title: "Orchestration & Agent Tools"
+tags: [tools]
 ---
 
 # Orchestration & agent tools

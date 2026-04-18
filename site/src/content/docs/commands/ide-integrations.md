@@ -1,5 +1,6 @@
 ---
 title: "IDE & Integrations"
+tags: [cli]
 ---
 
 # IDE & Integrations

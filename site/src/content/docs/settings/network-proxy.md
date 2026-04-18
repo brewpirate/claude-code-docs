@@ -1,5 +1,6 @@
 ---
 title: "Network & Proxy"
+tags: [settings]
 ---
 
 # Network & Proxy

@@ -1,5 +1,6 @@
 ---
 title: "Feature & Disable Flags"
+tags: [environment]
 ---
 
 # Feature & Disable Flags

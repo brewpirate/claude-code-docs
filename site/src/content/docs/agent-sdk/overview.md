@@ -1,6 +1,7 @@
 ---
 title: "Agent SDK Overview"
 description: "SDK for building custom agents"
+tags: [agent-sdk]
 ---
 
 # Claude Code Agent SDK

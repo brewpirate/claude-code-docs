@@ -1,5 +1,6 @@
 ---
 title: "Platform & CI Detection"
+tags: [environment]
 ---
 
 # Platform & CI Detection

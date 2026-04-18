@@ -1,5 +1,6 @@
 ---
 title: "Feature Gates Guide"
+tags: [getting-started]
 ---
 
 # Feature Gates Guide

@@ -1,5 +1,6 @@
 ---
 title: "Plugins & Extensions"
+tags: [settings]
 ---
 
 # Plugins & Extensions

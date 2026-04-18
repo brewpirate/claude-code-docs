@@ -1,5 +1,6 @@
 ---
 title: "Miscellaneous & Internal"
+tags: [environment]
 ---
 
 # Miscellaneous & Internal

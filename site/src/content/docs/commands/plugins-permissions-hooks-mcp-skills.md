@@ -1,5 +1,6 @@
 ---
 title: "Plugins, Permissions, Hooks, MCP, Skills"
+tags: [cli]
 ---
 
 # Plugins, Permissions, Hooks, MCP, Skills

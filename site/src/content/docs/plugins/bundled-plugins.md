@@ -1,5 +1,6 @@
 ---
 title: "Bundled plugins"
+tags: [plugins, settings]
 ---
 
 # Bundled plugins

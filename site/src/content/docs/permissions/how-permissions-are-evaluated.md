@@ -1,5 +1,6 @@
 ---
 title: "How permissions are evaluated"
+tags: [permissions, settings]
 ---
 
 # How permissions are evaluated

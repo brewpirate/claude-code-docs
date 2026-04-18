@@ -1,5 +1,6 @@
 ---
 title: "How Tools Work"
+tags: [tools]
 ---
 
 # How tools work

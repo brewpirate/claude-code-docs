@@ -1,6 +1,7 @@
 ---
 title: "Tools Overview"
 description: "Every tool available to Claude"
+tags: [tools]
 ---
 
 # Claude Code Built-in Tools

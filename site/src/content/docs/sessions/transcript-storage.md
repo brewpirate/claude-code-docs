@@ -1,5 +1,6 @@
 ---
 title: "Transcript Storage"
+tags: [cli]
 ---
 
 # Transcript Storage

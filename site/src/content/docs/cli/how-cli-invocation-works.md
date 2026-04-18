@@ -1,5 +1,6 @@
 ---
 title: "How CLI Invocation Works"
+tags: [cli]
 ---
 
 # How CLI invocation works

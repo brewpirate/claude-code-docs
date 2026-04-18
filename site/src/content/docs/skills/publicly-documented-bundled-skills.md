@@ -1,5 +1,6 @@
 ---
 title: "Publicly Documented Bundled Skills"
+tags: [skills, cli]
 ---
 
 # Publicly-documented bundled skills

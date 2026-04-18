@@ -1,5 +1,6 @@
 ---
 title: "Content Block Types"
+tags: [agent-sdk]
 ---
 
 # Content block types

@@ -1,5 +1,6 @@
 ---
 title: "Core Settings"
+tags: [environment]
 ---
 
 # Core Settings

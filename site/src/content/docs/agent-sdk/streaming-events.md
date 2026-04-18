@@ -1,5 +1,6 @@
 ---
 title: "Streaming Events"
+tags: [agent-sdk]
 ---
 
 # Streaming & events

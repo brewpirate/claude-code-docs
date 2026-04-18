@@ -1,5 +1,6 @@
 ---
 title: "Invocation Modes"
+tags: [cli]
 ---
 
 # Invocation modes

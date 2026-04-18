@@ -1,6 +1,7 @@
 ---
 title: "Environment Variables"
 description: "Every environment variable recognized by Claude Code"
+tags: [environment]
 ---
 
 # Environment Variables

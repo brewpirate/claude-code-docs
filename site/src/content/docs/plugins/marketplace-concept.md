@@ -1,5 +1,6 @@
 ---
 title: "Marketplace concept"
+tags: [plugins, settings]
 ---
 
 # Marketplace concept

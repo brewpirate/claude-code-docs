@@ -1,5 +1,6 @@
 ---
 title: "Memory Types"
+tags: [settings]
 ---
 
 # Memory Types

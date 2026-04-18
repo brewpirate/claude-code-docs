@@ -1,5 +1,6 @@
 ---
 title: "Development Tools & IDE"
+tags: [settings]
 ---
 
 # Development Tools & IDE

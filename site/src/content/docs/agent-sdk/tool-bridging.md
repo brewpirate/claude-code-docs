@@ -1,5 +1,6 @@
 ---
 title: "Tool Bridging"
+tags: [agent-sdk]
 ---
 
 # Tool bridging

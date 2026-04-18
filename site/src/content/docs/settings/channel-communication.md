@@ -1,5 +1,6 @@
 ---
 title: "Channel & Communication"
+tags: [settings]
 ---
 
 # Channel & Communication

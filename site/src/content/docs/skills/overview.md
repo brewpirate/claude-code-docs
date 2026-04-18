@@ -1,6 +1,7 @@
 ---
 title: "Skills Overview"
 description: "Built-in and custom skills for Claude Code"
+tags: [skills, cli]
 ---
 
 # Claude Code Skills

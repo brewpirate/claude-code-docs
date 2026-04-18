@@ -1,6 +1,7 @@
 ---
 title: "Sessions Overview"
 description: "How Claude Code sessions work"
+tags: [cli]
 ---
 
 # Claude Code Session Lifecycle

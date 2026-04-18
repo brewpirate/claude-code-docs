@@ -1,5 +1,6 @@
 ---
 title: "Auto-Memory"
+tags: [settings]
 ---
 
 # Auto-Memory

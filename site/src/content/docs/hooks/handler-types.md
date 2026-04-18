@@ -1,5 +1,6 @@
 ---
 title: "Handler Types"
+tags: [hooks, settings]
 ---
 
 # Handler types

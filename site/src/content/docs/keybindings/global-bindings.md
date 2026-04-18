@@ -1,5 +1,6 @@
 ---
 title: "Global Bindings"
+tags: [cli]
 ---
 
 # Global Bindings

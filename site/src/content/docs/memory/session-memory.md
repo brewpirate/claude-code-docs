@@ -1,5 +1,6 @@
 ---
 title: "Session Memory"
+tags: [settings]
 ---
 
 # Session Memory

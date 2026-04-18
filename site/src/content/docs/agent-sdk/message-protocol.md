@@ -1,5 +1,6 @@
 ---
 title: "Message Protocol"
+tags: [agent-sdk]
 ---
 
 # Message protocol

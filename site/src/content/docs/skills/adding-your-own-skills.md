@@ -1,5 +1,6 @@
 ---
 title: "Adding Your Own Skills"
+tags: [skills, cli]
 ---
 
 # Adding your own skills

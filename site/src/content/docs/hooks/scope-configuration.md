@@ -1,5 +1,6 @@
 ---
 title: "Scope & Configuration"
+tags: [hooks, settings]
 ---
 
 # Scope & configuration

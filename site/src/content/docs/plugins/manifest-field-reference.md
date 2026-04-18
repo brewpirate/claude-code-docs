@@ -1,5 +1,6 @@
 ---
 title: "Manifest field reference"
+tags: [plugins, settings]
 ---
 
 # Manifest field reference

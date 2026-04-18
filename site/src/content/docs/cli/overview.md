@@ -1,6 +1,7 @@
 ---
 title: "CLI Overview"
 description: "Claude command-line flags, subcommands, and invocation modes"
+tags: [cli]
 ---
 
 # Claude Code CLI Reference

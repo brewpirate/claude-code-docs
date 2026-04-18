@@ -1,5 +1,6 @@
 ---
 title: "Plugin-related environment variables"
+tags: [plugins, settings]
 ---
 
 # Plugin-related environment variables

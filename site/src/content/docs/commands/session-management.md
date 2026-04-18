@@ -1,5 +1,6 @@
 ---
 title: "Session Management"
+tags: [cli]
 ---
 
 # Session Management

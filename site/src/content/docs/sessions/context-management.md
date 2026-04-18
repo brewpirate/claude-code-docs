@@ -1,5 +1,6 @@
 ---
 title: "Context Management"
+tags: [cli]
 ---
 
 # Context Management

@@ -1,5 +1,6 @@
 ---
 title: "Cloud Platform Detection"
+tags: [environment]
 ---
 
 # Cloud Platform Detection

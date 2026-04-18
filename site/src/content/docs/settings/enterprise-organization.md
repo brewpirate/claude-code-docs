@@ -1,5 +1,6 @@
 ---
 title: "Enterprise & Organization"
+tags: [settings]
 ---
 
 # Enterprise & Organization

@@ -1,5 +1,6 @@
 ---
 title: "Worktree"
+tags: [settings]
 ---
 
 # Worktree

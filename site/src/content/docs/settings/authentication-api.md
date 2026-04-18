@@ -1,5 +1,6 @@
 ---
 title: "Authentication & API"
+tags: [settings]
 ---
 
 # Authentication & API

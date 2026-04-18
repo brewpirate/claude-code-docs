@@ -1,6 +1,7 @@
 ---
 title: "Plugins Overview"
 description: "Claude Code plugin system"
+tags: [plugins, settings]
 ---
 
 # Claude Code Plugins

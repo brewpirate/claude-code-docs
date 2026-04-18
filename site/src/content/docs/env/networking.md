@@ -1,5 +1,6 @@
 ---
 title: "Networking"
+tags: [environment]
 ---
 
 # Networking

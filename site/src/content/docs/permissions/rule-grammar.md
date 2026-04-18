@@ -1,5 +1,6 @@
 ---
 title: "Rule grammar"
+tags: [permissions, settings]
 ---
 
 # Rule grammar

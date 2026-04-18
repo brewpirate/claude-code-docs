@@ -1,6 +1,7 @@
 ---
 title: "Keybindings Overview"
 description: "Keyboard shortcuts for Claude Code"
+tags: [cli]
 ---
 
 # Claude Code Keybindings

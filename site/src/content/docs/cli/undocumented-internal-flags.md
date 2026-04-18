@@ -1,5 +1,6 @@
 ---
 title: "Undocumented Internal Flags"
+tags: [cli]
 ---
 
 # Undocumented & internal flags

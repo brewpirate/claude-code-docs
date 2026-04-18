@@ -1,5 +1,6 @@
 ---
 title: "Auto-Compaction"
+tags: [cli]
 ---
 
 # Auto-Compaction

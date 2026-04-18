@@ -1,6 +1,7 @@
 ---
 title: "Hooks Overview"
 description: "Event hooks system for Claude Code"
+tags: [hooks, settings]
 ---
 
 # Claude Code Hook Events

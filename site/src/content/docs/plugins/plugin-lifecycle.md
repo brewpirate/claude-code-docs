@@ -1,5 +1,6 @@
 ---
 title: "Plugin lifecycle"
+tags: [plugins, settings]
 ---
 
 # Plugin lifecycle

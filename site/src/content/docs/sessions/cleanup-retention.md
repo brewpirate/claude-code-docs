@@ -1,5 +1,6 @@
 ---
 title: "Cleanup & Retention"
+tags: [cli]
 ---
 
 # Cleanup & Retention

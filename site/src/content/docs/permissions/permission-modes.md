@@ -1,5 +1,6 @@
 ---
 title: "Permission modes"
+tags: [permissions, settings]
 ---
 
 # Permission modes

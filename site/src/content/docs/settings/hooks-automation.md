@@ -1,5 +1,6 @@
 ---
 title: "Hooks & Automation"
+tags: [settings]
 ---
 
 # Hooks & Automation

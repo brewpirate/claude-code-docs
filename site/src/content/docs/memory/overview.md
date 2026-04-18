@@ -1,6 +1,7 @@
 ---
 title: "Memory Overview"
 description: "How Claude Code remembers context across sessions"
+tags: [settings]
 ---
 
 # Claude Code Memory Subsystems

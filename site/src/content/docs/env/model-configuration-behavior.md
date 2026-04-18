@@ -1,5 +1,6 @@
 ---
 title: "Model Configuration & Behavior"
+tags: [environment]
 ---
 
 # Model Configuration & Behavior

@@ -1,5 +1,6 @@
 ---
 title: "Observability"
+tags: [environment]
 ---
 
 # Observability
