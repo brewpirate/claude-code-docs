@@ -15,7 +15,7 @@ const { title, description, icon, ...attributes } = Astro.props;
   <span class="sl-flex stack">
     <a {...attributes}>
       <span class="title">
-        {icon && <Icon name={icon as any} class="card-icon" />}
+        {icon && <span class:list={[icon, 'card-icon']} aria-hidden="true" />}
         <span set:html={title} />
       </span>
     </a>
@@ -65,7 +65,10 @@ const { title, description, icon, ...attributes } = Astro.props;
   .card-icon {
     flex-shrink: 0;
     color: var(--sl-color-text-accent);
-    font-size: 1.1em;
+    font-size: 1.25em;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
   }
 
   .description {
