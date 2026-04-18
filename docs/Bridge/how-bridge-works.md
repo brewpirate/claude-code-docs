@@ -4,39 +4,24 @@ The Bridge enables Claude Code to execute in remote environments (Cloud Containe
 
 ## Bridge transport protocols
 
-```mermaid
-sequenceDiagram
-    participant CL as Client\n(Browser/Viewer)
-    participant BR as Bridge Server\n(CCR)
-    participant CC as Claude Code\n(Remote Agent)
-    participant API as Claude API
+Two transport protocols connect the client (browser/viewer) to Claude Code running in CCR:
 
-    rect rgb(200, 230, 255)
-        Note over CL,CC: CCR v1 — WebSocket (legacy)
-        CL->>BR: WS /v1/sessions/ws/{id}/subscribe
-        BR-->>CL: auth handshake
-        loop Bidirectional frames
-            CC->>BR: text_delta, tool_use events
-            BR->>CL: forwarded frames
-            CL->>BR: control_request, interrupt
-            BR->>CC: forwarded commands
-        end
-    end
+**CCR v1 — WebSocket (legacy):**
 
-    rect rgb(220, 255, 220)
-        Note over CL,CC: CCR v2 — SSE + POST (modern)
-        CL->>BR: GET /v1/sessions/{id}/stream (SSE)
-        BR-->>CL: SSE stream open
-        loop Server pushes events
-            CC->>API: query
-            API-->>CC: response
-            CC->>BR: POST event
-            BR->>CL: SSE event frame
-        end
-        CL->>BR: POST /v1/sessions/{id}/event
-        BR->>CC: forwarded command
-    end
-```
+1. Client opens a WebSocket connection: `WS /v1/sessions/ws/{id}/subscribe`
+2. Bridge Server completes auth handshake
+3. Bidirectional frames flow in a loop:
+   - Claude Code → Bridge → Client: `text_delta`, `tool_use` events
+   - Client → Bridge → Claude Code: `control_request`, `interrupt` commands
+
+**CCR v2 — SSE + POST (modern):**
+
+1. Client opens an SSE stream: `GET /v1/sessions/{id}/stream`
+2. Bridge Server confirms stream open
+3. Server pushes events in a loop:
+   - Claude Code queries the API and receives a response
+   - Claude Code POSTs an event to the Bridge, which forwards it as an SSE frame to the client
+4. Client sends commands via `POST /v1/sessions/{id}/event` → Bridge → Claude Code
 
 ## CCR v1: WebSocket Transport
 

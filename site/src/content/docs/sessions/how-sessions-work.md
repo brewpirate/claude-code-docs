@@ -9,42 +9,14 @@ Session lifecycle from initialization through persistence, compaction, and resum
 
 ## Session lifecycle diagram
 
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant CC as Claude Code
-    participant FS as File System (Transcript)
-    participant API as Claude API
-
-    U->>CC: Start session (claude command)
-    CC->>CC: Generate session UUID
-    CC->>FS: Discover CLAUDE.md, snapshot git status
-    Note over FS: No file created yet (lazy)
-
-    U->>CC: First message
-    CC->>FS: Create transcript JSONL file
-    CC->>API: Send message + context
-    API-->>CC: Response + tool calls
-    CC->>FS: Append turn entries
-
-    loop Each conversation turn
-        U->>CC: Message
-        CC->>CC: Check token count vs. threshold
-        alt Approaching context limit
-            CC->>API: Compaction request
-            API-->>CC: Summary
-            CC->>FS: Write SummaryMessage entry
-        end
-        CC->>API: Send message
-        API-->>CC: Response
-        CC->>FS: Append entries
-    end
-
-    U->>CC: Exit session
-    CC->>FS: Flush entries, write metadata to EOF
-
-    Note over FS: 30-day cleanup on next startup
-```
+| Stage | What happens |
+|-------|-------------|
+| **1. Start** | Session UUID generated. CLAUDE.md discovered, git status snapshotted. No transcript file created yet (lazy). |
+| **2. First message** | Transcript JSONL file created at `~/.claude/sessions/projects/<cwd>/<session-id>.jsonl`. Message and response appended. |
+| **3. Each turn** | User message sent to API. Response and tool calls appended to transcript. Token count checked each turn. |
+| **4. Auto-compaction** (if needed) | When tokens approach the context limit, history is summarized via the compaction API and a `SummaryMessage` entry is written. Session continues with compressed history. |
+| **5. Exit** | Transcript entries flushed. Session metadata (title, tags) re-appended to EOF so `--resume` can find it. |
+| **6. Cleanup** (next startup) | Transcripts older than 30 days are deleted. Controlled by `settings.cleanupPeriodDays`. |
 
 ## Session initialization
 

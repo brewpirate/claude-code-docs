@@ -2,20 +2,24 @@
 
 ## Skill invocation flow
 
-```mermaid
-flowchart TD
-    A[User types /skill-name\nor Claude decides to invoke] --> B{Is skill user-invocable?\nor model-invocable?}
-    B -->|user-invocable: false\nand invoked by user| BLOCK[Skill not available\nin slash menu]
-    B -->|disable-model-invocation: true\nand invoked by model| BLOCK2[Model cannot invoke\nonly user can]
-    B -->|Available| C{Is skill gated?}
-    C -->|isEnabled returns false\ne.g. ant-only| HIDDEN[Hidden from UI]
-    C -->|isEnabled returns true| D[Load skill prompt\nfrom binary or disk]
-    D --> E{Has reference files?}
-    E -->|Yes| F[Extract files to temp cache\nprefix prompt with base dir]
-    E -->|No| G[Inject skill prompt\ninto Claude context]
-    F --> G
-    G --> H[Claude executes\nusing available tools]
-```
+1. **User types `/skill-name`** or Claude's model decides to invoke a skill
+
+2. **Invocability check:**
+   - `user-invocable: false` and invoked by user → skill not available in slash menu
+   - `disable-model-invocation: true` and invoked by model → model cannot invoke; only user can
+   - Otherwise → continue
+
+3. **Feature gate check:** If the skill's `isEnabled()` returns `false` (e.g. Anthropic-staff-only skills) → hidden from UI, not invokable
+
+4. **Skill prompt loaded** from binary (bundled skills) or disk (custom skills)
+
+5. **Reference files check:**
+   - If the skill has a `files` map → extract files to a temp cache directory; prefix the prompt with `Base directory: <dir>` so Claude can Read/Grep them
+   - If no reference files → skip extraction
+
+6. **Skill prompt injected into Claude's context**
+
+7. **Claude executes** using the tools available in this session
 
 - **Registered at startup**: Each bundled skill definition calls `registerBundledSkill({ name, description, ... })` once when the CLI initializes. The definition compiles into the binary—not markdown files on disk.
 - **Prompt builder pattern**: Unlike built-in commands that execute fixed logic, bundled skills use a `getPromptForCommand()` function that returns the skill's instructions as a dynamic prompt. Claude then orchestrates the work using tools.

@@ -4,23 +4,14 @@ Claude Code maintains memory across sessions through four complementary systems,
 
 ## The four memory systems
 
-```mermaid
-graph TD
-    A[Session starts] --> B[1 - MEMORY.md\n.claude/MEMORY.md\nProject-local, manual]
-    A --> C[2 - Auto-memory logs\n~/.claude/memory/YYYY/MM/\nUser-global, automatic]
-    A --> D[3 - Session memory\n~/.claude/sessionMemory.md\nCurrent session only\nRequires tengu_session_memory]
-    A --> E[4 - Command history\n~/.claude/history.jsonl\nLast 100 prompts per project]
+When a session starts, Claude Code loads context from up to four memory sources:
 
-    B -->|Read first\napplied to all reasoning| CTX[Claude context window]
-    C -->|Sonnet selects up to 5\nmost relevant files| CTX
-    D -->|Injected if flag enabled| CTX
-    E -->|Available for up-arrow recall| CTX
-
-    style B fill:#d4edda
-    style C fill:#cce5ff
-    style D fill:#fff3cd
-    style E fill:#f8d7da
-```
+| # | System | Storage path | Scope | How it gets into context |
+|---|--------|-------------|-------|--------------------------|
+| 1 | **MEMORY.md** | `.claude/MEMORY.md` | Project | Read first; applied to all reasoning |
+| 2 | **Auto-memory logs** | `~/.claude/memory/YYYY/MM/` | User-global | A Sonnet subagent selects up to 5 most relevant files |
+| 3 | **Session memory** | `~/.claude/sessionMemory.md` | User-global | Injected if `tengu_session_memory` flag is enabled |
+| 4 | **Command history** | `~/.claude/history.jsonl` | User-global | Last 100 prompts per project; accessible via up-arrow recall |
 
 | System | Scope | Lifespan | Manual or auto? |
 |--------|-------|----------|----------------|

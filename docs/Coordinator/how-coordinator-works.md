@@ -4,25 +4,16 @@ Coordinator mode is a multi-agent orchestration layer that transforms Claude Cod
 
 ## Coordinator architecture
 
-```mermaid
-graph LR
-    U[User] <-->|messages| COORD[Coordinator\nyou / Claude]
+The coordinator acts as a supervisor, dispatching work to workers and receiving results:
 
-    COORD -->|Agent tool\nself-contained prompt| W1[Worker A\nResearch]
-    COORD -->|Agent tool\nself-contained prompt| W2[Worker B\nImplementation]
-    COORD -->|Agent tool\nself-contained prompt| W3[Worker C\nVerification]
+| Role | Description | Communication |
+|------|-------------|---------------|
+| **Coordinator** (you / Claude) | Receives your requests, plans work, dispatches agents | Sends `Agent` tool calls to workers; receives `task-notification` results |
+| **Worker A** (Research) | Performs research tasks | Reports back via `task-notification`; reads/writes `.claude/scratchpad/` |
+| **Worker B** (Implementation) | Implements changes | Reports back via `task-notification`; can be stopped with `TaskStop` |
+| **Worker C** (Verification) | Verifies results | Reports back via `task-notification` |
 
-    W1 -->|task-notification| COORD
-    W2 -->|task-notification| COORD
-    W3 -->|task-notification| COORD
-
-    W1 <-.->|read/write| S[.claude/scratchpad/\nshared context\nrequires tengu_scratch]
-    W2 <-.->|read/write| S
-    W3 <-.->|read/write| S
-
-    COORD -->|SendMessage| W1
-    COORD -->|TaskStop| W2
-```
+Workers share context through `.claude/scratchpad/` (requires `tengu_scratch` flag). The coordinator can send mid-task instructions via `SendMessage` or cancel a worker with `TaskStop`.
 
 ## Activation flow
 

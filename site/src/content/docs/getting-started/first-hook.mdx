@@ -87,26 +87,19 @@ This is how you'd prevent Claude from running `rm -rf` commands, accidentally ov
 
 ## How hook events flow
 
-```mermaid
-sequenceDiagram
-    participant C as Claude
-    participant CC as Claude Code
-    participant H as Your Hook Script
-    participant T as Tool (e.g. Bash)
+<Steps>
 
-    C->>CC: "I want to run: rm -rf old_files/"
-    CC->>CC: Check PreToolUse hooks for Bash matcher
-    CC->>H: Run check-bash.sh with JSON input on stdin
-    H->>H: Parse command, check against deny list
-    alt Command is safe
-        H-->>CC: exit 0
-        CC->>T: Execute the bash command
-        T-->>C: Command output
-    else Command is dangerous
-        H-->>CC: exit 2 (with error message on stderr)
-        CC-->>C: Blocked: dangerous command detected
-    end
-```
+1. **Claude decides to run a tool** — e.g. `rm -rf old_files/`
+
+2. **Claude Code finds matching hooks** — checks `PreToolUse` handlers in `settings.json` for matchers that match `"Bash"`.
+
+3. **Your script runs with JSON on stdin** — Claude Code runs `check-bash.sh` and pipes the tool call JSON to its stdin. Your script parses the command and checks it against your deny list.
+
+4. **Your script exits with a decision:**
+   - **Exit 0 (safe):** Claude Code proceeds and runs the Bash command. The output is returned to Claude.
+   - **Exit 2 (dangerous):** Claude Code stops. Whatever your script wrote to stderr becomes the block message shown to Claude.
+
+</Steps>
 
 ---
 
