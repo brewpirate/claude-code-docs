@@ -64,78 +64,10 @@ export default defineConfig({
                 { label: 'Feature Gates Guide', slug: 'getting-started/feature-gates-guide' },
               ],
             },
-            {
-              label: '.claude Directory',
-              slug: 'claude-directory',
-            },
+
           ],
         },
-        {
-          label: 'Use Claude Code',
-          items: [
-            {
-              label: 'CLI',
-              collapsed: true,
-              items: [
-                { label: 'Overview', slug: 'cli/overview' },
-                { label: 'Flag Reference', slug: 'cli/flag-reference' },
-                { label: 'Subcommands', slug: 'cli/subcommands' },
-                { label: 'Invocation Modes', slug: 'cli/invocation-modes' },
-                { label: 'How CLI Invocation Works', slug: 'cli/how-cli-invocation-works' },
-                { label: 'Environment-Driven Behavior', slug: 'cli/environment-driven-behavior' },
-                { label: 'Undocumented Internal Flags', slug: 'cli/undocumented-internal-flags' },
-              ],
-            },
-            {
-              label: 'Commands',
-              collapsed: true,
-              items: [
-                { label: 'Overview', slug: 'commands/overview' },
-                { label: 'How Slash Commands Work', slug: 'commands/how-slash-commands-work' },
-                { label: 'Session Management', slug: 'commands/session-management' },
-                { label: 'Memory & Context', slug: 'commands/memory-context' },
-                { label: 'Help & Miscellaneous', slug: 'commands/help-miscellaneous' },
-                { label: 'Diagnostics & Health', slug: 'commands/diagnostics-health' },
-                { label: 'Account & Subscription', slug: 'commands/account-subscription' },
-                { label: 'IDE Integrations', slug: 'commands/ide-integrations' },
-                { label: 'Plugins, Permissions, Hooks, MCP & Skills', slug: 'commands/plugins-permissions-hooks-mcp-skills' },
-                { label: 'Team, Scheduling & Multi-Agent', slug: 'commands/team-scheduling-multi-agent' },
-                { label: 'Experimental & Feature-Gated', slug: 'commands/experimental-unreleased-feature-flag-gated-commands' },
-                { label: 'Additional Undocumented Commands', slug: 'commands/additional-undocumented-commands' },
-                { label: 'Removed & Deprecated', slug: 'commands/removed-deprecated-commands' },
-              ],
-            },
-            {
-              label: 'Keybindings',
-              collapsed: true,
-              items: [
-                { label: 'Overview', slug: 'keybindings/overview' },
-                { label: 'How Keybindings Work', slug: 'keybindings/how-keybindings-work' },
-                { label: 'Global Bindings', slug: 'keybindings/global-bindings' },
-                { label: 'Chat Bindings', slug: 'keybindings/chat-bindings' },
-                { label: 'Navigation Bindings', slug: 'keybindings/navigation-bindings' },
-                { label: 'Dialog Bindings', slug: 'keybindings/dialog-bindings' },
-                { label: 'Platform Quirks', slug: 'keybindings/platform-quirks' },
-                { label: 'Customization', slug: 'keybindings/customization' },
-              ],
-            },
-            {
-              label: 'Tools',
-              collapsed: true,
-              items: [
-                { label: 'Overview', slug: 'tools/overview' },
-                { label: 'How Tools Work', slug: 'tools/how-tools-work' },
-                { label: 'Filesystem Tools', slug: 'tools/filesystem-tools' },
-                { label: 'Shell & Code Execution', slug: 'tools/shell-code-execution-tools' },
-                { label: 'Network & Web Tools', slug: 'tools/network-web-tools' },
-                { label: 'MCP Tools', slug: 'tools/mcp-tools' },
-                { label: 'Orchestration & Agent Tools', slug: 'tools/orchestration-agent-tools' },
-                { label: 'Permissions & Tool Access Control', slug: 'tools/permissions-tool-access-control' },
-              ],
-            },
-          ],
-        },
-        {
+                {
           label: 'Configure & Secure',
           items: [
             {
@@ -221,8 +153,84 @@ export default defineConfig({
                 { label: 'Additional Hook Subsystems', slug: 'hooks/additional-hook-subsystems' },
               ],
             },
+            {
+              label: '.claude',
+              collapsed: false,
+              items:[
+                            {
+              label: '.claude Directory',
+              slug: 'claude-directory',
+            },
+              ]
+            }
           ],
         },
+        {
+          label: 'Use Claude Code',
+          items: [
+            {
+              label: 'CLI',
+              collapsed: true,
+              items: [
+                { label: 'Overview', slug: 'cli/overview' },
+                { label: 'Flag Reference', slug: 'cli/flag-reference' },
+                { label: 'Subcommands', slug: 'cli/subcommands' },
+                { label: 'Invocation Modes', slug: 'cli/invocation-modes' },
+                { label: 'How CLI Invocation Works', slug: 'cli/how-cli-invocation-works' },
+                { label: 'Environment-Driven Behavior', slug: 'cli/environment-driven-behavior' },
+                { label: 'Undocumented Internal Flags', slug: 'cli/undocumented-internal-flags' },
+              ],
+            },
+            {
+              label: 'Commands',
+              collapsed: true,
+              items: [
+                { label: 'Overview', slug: 'commands/overview' },
+                { label: 'How Slash Commands Work', slug: 'commands/how-slash-commands-work' },
+                { label: 'Session Management', slug: 'commands/session-management' },
+                { label: 'Memory & Context', slug: 'commands/memory-context' },
+                { label: 'Help & Miscellaneous', slug: 'commands/help-miscellaneous' },
+                { label: 'Diagnostics & Health', slug: 'commands/diagnostics-health' },
+                { label: 'Account & Subscription', slug: 'commands/account-subscription' },
+                { label: 'IDE Integrations', slug: 'commands/ide-integrations' },
+                { label: 'Plugins, Permissions, Hooks, MCP & Skills', slug: 'commands/plugins-permissions-hooks-mcp-skills' },
+                { label: 'Team, Scheduling & Multi-Agent', slug: 'commands/team-scheduling-multi-agent' },
+                { label: 'Experimental & Feature-Gated', slug: 'commands/experimental-unreleased-feature-flag-gated-commands' },
+                { label: 'Additional Undocumented Commands', slug: 'commands/additional-undocumented-commands' },
+                { label: 'Removed & Deprecated', slug: 'commands/removed-deprecated-commands' },
+              ],
+            },
+            {
+              label: 'Keybindings',
+              collapsed: true,
+              items: [
+                { label: 'Overview', slug: 'keybindings/overview' },
+                { label: 'How Keybindings Work', slug: 'keybindings/how-keybindings-work' },
+                { label: 'Global Bindings', slug: 'keybindings/global-bindings' },
+                { label: 'Chat Bindings', slug: 'keybindings/chat-bindings' },
+                { label: 'Navigation Bindings', slug: 'keybindings/navigation-bindings' },
+                { label: 'Dialog Bindings', slug: 'keybindings/dialog-bindings' },
+                { label: 'Platform Quirks', slug: 'keybindings/platform-quirks' },
+                { label: 'Customization', slug: 'keybindings/customization' },
+              ],
+            },
+            {
+              label: 'Tools',
+              collapsed: true,
+              items: [
+                { label: 'Overview', slug: 'tools/overview' },
+                { label: 'How Tools Work', slug: 'tools/how-tools-work' },
+                { label: 'Filesystem Tools', slug: 'tools/filesystem-tools' },
+                { label: 'Shell & Code Execution', slug: 'tools/shell-code-execution-tools' },
+                { label: 'Network & Web Tools', slug: 'tools/network-web-tools' },
+                { label: 'MCP Tools', slug: 'tools/mcp-tools' },
+                { label: 'Orchestration & Agent Tools', slug: 'tools/orchestration-agent-tools' },
+                { label: 'Permissions & Tool Access Control', slug: 'tools/permissions-tool-access-control' },
+              ],
+            },
+          ],
+        },
+
         {
           label: 'Build & Extend',
           items: [
