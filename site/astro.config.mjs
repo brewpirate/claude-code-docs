@@ -54,17 +54,11 @@ export default defineConfig({
         {
           label: 'Get Started',
           items: [
-            {
-              label: 'Getting Started',
-              items: [
                 { label: 'Overview', slug: 'getting-started/overview' },
                 { label: 'First Hook', slug: 'getting-started/first-hook' },
                 { label: 'First Permission Rule', slug: 'getting-started/first-permission-rule' },
                 { label: 'First Skill', slug: 'getting-started/first-skill' },
-                { label: 'Feature Gates Guide', slug: 'getting-started/feature-gates-guide' },
-              ],
-            },
-
+                { label: 'Feature Gates Guide', slug: 'getting-started/feature-gates-guide' }
           ],
         },
                 {
@@ -154,7 +148,7 @@ export default defineConfig({
               ],
             },
             {
-              label: '.claude',
+              label: 'Directory',
               collapsed: false,
               items:[
                             {
