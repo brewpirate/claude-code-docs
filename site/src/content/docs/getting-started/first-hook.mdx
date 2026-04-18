@@ -8,7 +8,9 @@ import { Steps } from '@astrojs/starlight/components';
 
 A **hook** runs a script automatically when something happens in Claude Code — like before Claude runs a bash command, or after Claude edits a file. Hooks let you enforce policies, log activity, validate changes, or integrate with external systems.
 
-> **Quick version:** Add a `hooks` entry to `.claude/settings.json` pointing to a shell script. The script runs before/after tool use and can allow or block the action based on exit code.
+:::tip[Quick version]
+Add a `hooks` entry to `.claude/settings.json` pointing to a shell script. The script runs before/after tool use and can allow or block the action based on exit code.
+:::
 
 ---
 

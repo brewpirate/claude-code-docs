@@ -4,7 +4,9 @@ title: "Discrepancies and Gaps"
 
 # Discrepancies and Gaps
 
-> **For junior developers:** Most of these issues won't affect your day-to-day use. Items 1 and 2 matter if you're an operator disabling commands. Item 9 matters if you're wondering why `/team-onboarding` isn't in your session. **Item 10 is the most important to read before enabling `CLAUDE_CODE_ENABLE_TASKS`** — the flag enables behavior significantly different from what the basic `/tasks` description implies.
+:::tip[For most users]
+Most of these issues won't affect your day-to-day use. Items 1 and 2 matter if you're an operator disabling commands. Item 9 matters if you're wondering why `/team-onboarding` isn't in your session. **Item 10 is the most important to read before enabling `CLAUDE_CODE_ENABLE_TASKS`** — the flag enables behavior significantly different from what the basic `/tasks` description implies.
+:::
 
 The following issues were identified during documentation research. These may affect operators and users relying on the commands reference:
 
