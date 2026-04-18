@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeFlexoki from 'starlight-theme-flexoki';
 import mermaid from 'astro-mermaid';
-import { starlightTagsPlugin } from 'starlight-tags';
+import starlightTagsPlugin from 'starlight-tags';
 
 export default defineConfig({
   site: 'https://brewpirate.github.io',
