@@ -12,9 +12,9 @@ export default defineConfig({
         alt: 'Zen Claude',
         src: './src/assets/logo.svg',
       },
-      social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/brewpirate/zen-claude' },
-      ],
+      social: {
+        github: 'https://github.com/brewpirate/zen-claude',
+      },
       editLink: {
         baseUrl: 'https://github.com/brewpirate/zen-claude/edit/main/docs/',
       },
