@@ -16,16 +16,44 @@ hero:
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-## Reference Hubs
+## Get Started
 
 <CardGrid>
   <LinkCard title="Getting Started" href="/claude-code-docs/getting-started/overview/" description="Tutorials for new users — learning paths, first skill, first permission rule, first hook, feature gates guide." />
-  <LinkCard title="CLI" href="/claude-code-docs/cli/overview/" description="claude command-line flags, subcommands, invocation modes. Includes hidden flags from the source tree." />
-  <LinkCard title="Environment Variables" href="/claude-code-docs/env/overview/" description="Every environment variable recognized by Claude Code — 500+ vars across 21 sections." />
-  <LinkCard title="Settings" href="/claude-code-docs/settings/overview/" description="settings.json key reference — auth, model, permissions, sandbox, plugins, MCP, hooks, UI, worktree." />
-  <LinkCard title="Hooks" href="/claude-code-docs/hooks/overview/" description="Event hooks system — how to wire shell commands to Claude Code lifecycle events." />
-  <LinkCard title="Skills" href="/claude-code-docs/skills/overview/" description="Built-in and custom skills — how bundled skills work and how to add your own." />
-  <LinkCard title="Tools" href="/claude-code-docs/tools/overview/" description="Every tool available to Claude — filesystem, shell, network, MCP, orchestration." />
-  <LinkCard title="Agent SDK" href="/claude-code-docs/agent-sdk/overview/" description="SDK for building custom agents — session lifecycle, message protocol, streaming events." />
   <LinkCard title=".claude Directory" href="/claude-code-docs/claude-directory/" description="Every file Claude Code reads from your project and home directory — CLAUDE.md, settings, skills, agents, memory, and more." />
+</CardGrid>
+
+## Use Claude Code
+
+<CardGrid>
+  <LinkCard title="CLI" href="/claude-code-docs/cli/overview/" description="claude command-line flags, subcommands, invocation modes. Includes hidden flags from the source tree." />
+  <LinkCard title="Commands" href="/claude-code-docs/commands/overview/" description="Built-in slash commands — documented, internal source-tree finds, tombstones, experimental, and feature-flag-gated. 97 commands across 14 sections." />
+  <LinkCard title="Keybindings" href="/claude-code-docs/keybindings/overview/" description="Every shipped keyboard shortcut across 18 contexts — global, chat, selection, dialogs, diff — plus platform quirks and custom-override config." />
+  <LinkCard title="Tools" href="/claude-code-docs/tools/overview/" description="Every tool available to Claude — filesystem, shell, network, MCP, orchestration. 44 tools across 16 sections." />
+</CardGrid>
+
+## Configure & Secure
+
+<CardGrid>
+  <LinkCard title="Settings" href="/claude-code-docs/settings/overview/" description="settings.json key reference — auth, model, permissions, sandbox, plugins, MCP, hooks, UI, worktree. 119 keys across 19 sections." />
+  <LinkCard title="Environment Variables" href="/claude-code-docs/env/overview/" description="Every environment variable recognized by Claude Code — 500+ vars across 21 sections." />
+  <LinkCard title="Permissions" href="/claude-code-docs/permissions/overview/" description="Rule grammar, evaluation model, permission modes, scope precedence, and auto-mode classifiers." />
+  <LinkCard title="Hooks" href="/claude-code-docs/hooks/overview/" description="Event-hook catalog — 26 events × 4 handler types × matcher syntax, plus the SSRF security model." />
+</CardGrid>
+
+## Build & Extend
+
+<CardGrid>
+  <LinkCard title="Skills" href="/claude-code-docs/skills/overview/" description="Built-in and custom skills — frontmatter schema (29 fields), bundled-skills catalog, and how to add your own." />
+  <LinkCard title="Plugins" href="/claude-code-docs/plugins/overview/" description="plugin.json manifest reference, directory layout, lifecycle, marketplace concept, and bundled-plugin catalog." />
+  <LinkCard title="Agent SDK" href="/claude-code-docs/agent-sdk/overview/" description="TypeScript/Python SDK for building custom agents — session lifecycle, message protocol, streaming events, tool bridging." />
+  <LinkCard title="Agents" href="/claude-code-docs/agents/overview/" description="Subagent overview — how Claude spawns and coordinates subagents, definition methods, and orchestration patterns." />
+</CardGrid>
+
+## Reference
+
+<CardGrid>
+  <LinkCard title="Sessions" href="/claude-code-docs/sessions/overview/" description="Transcript storage, 30-day cleanup, auto-compaction, context caching, 17 entry types, and session resume." />
+  <LinkCard title="Memory" href="/claude-code-docs/memory/overview/" description="Auto-memory layout, MEMORY.md caps, 200-file scan, type classification, and team + agent memory scopes." />
+  <LinkCard title="Changelog" href="/claude-code-docs/changelog/" description="Release history, silent model migrations, and deprecation notices." />
 </CardGrid>
