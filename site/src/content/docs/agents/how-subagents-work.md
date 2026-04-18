@@ -11,29 +11,16 @@ This page explains what happens under the hood when Claude Code spawns a subagen
 
 ## The spawning sequence
 
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant P as Parent Session (Claude)
-    participant CC as Claude Code Harness
-    participant S as Subagent (New Claude Instance)
-    participant T as Tools
-
-    U->>P: Request that requires delegation
-    P->>CC: Call Agent tool with task prompt + context
-    CC->>CC: Create new Claude session with scoped config
-    CC->>S: Inject: task prompt, allowed tools, permission mode, max turns
-    
-    loop Subagent turns (up to maxTurns)
-        S->>T: Call tools (Read, Bash, etc.)
-        T-->>S: Tool results
-        S->>S: Process results, plan next step
-    end
-    
-    S-->>CC: Final response (text + tool results)
-    CC-->>P: task-notification with result
-    P-->>U: Synthesized answer
-```
+1. **You → Parent Claude:** Make a request that requires delegating work.
+2. **Parent Claude → Claude Code:** Calls the `Agent` tool with a task prompt and context.
+3. **Claude Code:** Creates a new Claude session with scoped config (allowed tools, permission mode, max turns).
+4. **Claude Code → Subagent:** Injects the task prompt, tool whitelist, permission mode, and `maxTurns` limit.
+5. **Subagent runs** (up to `maxTurns` turns):
+   - Calls tools (Read, Bash, etc.) to work on the task
+   - Processes tool results and plans the next step
+6. **Subagent → Claude Code:** Returns final response (text + tool results).
+7. **Claude Code → Parent Claude:** Delivers the result as a `<task-notification>` message.
+8. **Parent Claude → You:** Synthesizes the result into a final answer.
 
 ---
 

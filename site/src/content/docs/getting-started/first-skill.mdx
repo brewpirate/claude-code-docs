@@ -79,21 +79,21 @@ A **skill** is a custom slash command you write as a markdown file. When you typ
 
 ## How skill discovery works
 
-```mermaid
-sequenceDiagram
-    participant U as You
-    participant CC as Claude Code
-    participant FS as File System
-    participant C as Claude
+When you type `/my-first-skill`, here is what Claude Code does:
 
-    U->>CC: Type /my-first-skill
-    CC->>FS: Scan .claude/skills/ for SKILL.md files
-    FS-->>CC: Found my-first-skill/SKILL.md
-    CC->>CC: Parse frontmatter (name, description, user-invocable)
-    CC->>C: Inject skill instructions into context
-    C->>C: Execute skill instructions
-    C-->>U: Response based on skill
-```
+<Steps>
+
+1. **Scans skills directories** — Claude Code walks `.claude/skills/` in your project, then `~/.claude/skills/` in your home directory, then any plugin skills, looking for `SKILL.md` files.
+
+2. **Parses the frontmatter** — For each file found, Claude Code reads the `name`, `description`, and `user-invocable` fields.
+
+3. **Matches your slash command** — `/my-first-skill` is matched to the skill whose `name` is `my-first-skill`.
+
+4. **Injects the skill instructions** — The body of `SKILL.md` (everything below the `---` frontmatter fence) is injected into Claude's context window as instructions.
+
+5. **Claude executes** — Claude reads the instructions and responds using available tools.
+
+</Steps>
 
 Skills are scanned from these locations (in priority order):
 1. `.claude/skills/` in your current project

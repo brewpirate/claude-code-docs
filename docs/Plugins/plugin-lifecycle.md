@@ -2,25 +2,27 @@
 
 ## Lifecycle flow
 
-```mermaid
-flowchart TD
-    A[User: claude plugin install name] --> B[Fetch from marketplace\nor seed directory]
-    B --> C{Validate manifest}
-    C -->|Invalid| ERR[Installation error]
-    C -->|Valid| D[Download to\n~/.claude/plugins/cache/]
-    D --> E[Add to enabledPlugins\nin settings.json]
-    E --> F[Session start or /reload-plugins]
-    F --> G[Parse and validate manifest]
-    G --> H[Register components:\ncommands, skills, agents, hooks]
-    H --> I[Start MCP servers\nas subprocesses]
-    I --> J[Start LSP servers\nif configured]
-    J --> K[Launch background monitors]
-    K --> READY[Plugin active]
+**Installation:**
 
-    READY --> L[User: claude plugin uninstall]
-    L --> M[Remove from enabledPlugins]
-    M --> N[Stop subprocesses\non next session start]
-```
+1. User runs `claude plugin install <name>`
+2. Claude Code fetches the plugin from the marketplace or seed directory
+3. Manifest is validated — if invalid, installation fails with an error
+4. Plugin downloaded to `~/.claude/plugins/cache/`
+5. Plugin ID added to `enabledPlugins` in `settings.json`
+
+**Activation (on session start or `/reload-plugins`):**
+
+6. Manifest is parsed and re-validated
+7. Components registered: commands, skills, agents, hooks
+8. MCP servers started as subprocesses
+9. LSP servers started (if configured)
+10. Background monitors launched
+11. **Plugin is now active**
+
+**Uninstall:**
+
+- `claude plugin uninstall <name>` removes the plugin from `enabledPlugins`
+- Subprocesses stop on the next session start
 
 ### Discovery
 Plugins are discovered from:

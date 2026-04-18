@@ -7,35 +7,20 @@ tags: [agent-sdk]
 
 ## SDK session flow
 
-```mermaid
-sequenceDiagram
-    participant App as Your Application
-    participant SDK as Agent SDK
-    participant CC as Claude Code Process
-    participant API as Claude API
+**Phase 1 — Starting a new session:**
 
-    App->>SDK: query({ prompt: "Read auth.py" })
-    SDK->>CC: Spawn Claude Code subprocess
-    CC-->>SDK: system init message with session_id
-    SDK-->>App: message: { type: "system", subtype: "init", session_id }
-    App->>App: Save session_id for resume
+1. Your app calls `query({ prompt: "Read auth.py" })`
+2. The SDK spawns a Claude Code subprocess
+3. Claude Code sends a `system` init message — your app receives `{ type: "system", subtype: "init", session_id }` — **save this ID**
+4. For each tool Claude needs to call:
+   - Your app receives `{ type: "tool_use", name, input }`
+   - Claude Code executes the tool internally
+   - Your app receives `{ type: "tool_result" }`
+5. Claude Code sends the final response — your app receives `{ type: "assistant" }` — query complete
 
-    loop Tool calls
-        CC->>API: Send message
-        API-->>CC: Response with tool use
-        CC-->>SDK: tool_use message
-        SDK-->>App: message: { type: "tool_use", name, input }
-        CC->>CC: Execute tool
-        CC-->>SDK: tool_result message
-        SDK-->>App: message: { type: "tool_result" }
-    end
+**Phase 2 — Resuming an existing session:**
 
-    CC-->>SDK: assistant message (final response)
-    SDK-->>App: message: { type: "assistant" }
-
-    Note over App,SDK: Later: resume with full context
-    App->>SDK: query({ prompt: "...", options: { resume: session_id } })
-```
+Call `query({ prompt: "...", options: { resume: session_id } })` with the ID saved in step 3. The session resumes with full conversation history, file read state, and session variables intact.
 
 ### Creation
 A query with no `session_id` in options creates a new session. The first message from the SDK yields a `system` message with subtype `init` containing the `session_id`. Capture this ID to resume later.

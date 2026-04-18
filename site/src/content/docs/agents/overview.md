@@ -90,26 +90,17 @@ Full field definitions: [Skills/FRONTMATTER.md](/claude-code-docs/skills/overvie
 
 ## Agent relationship diagram
 
-```mermaid
-graph TD
-    U[User / Parent Session] -->|spawns| A1[Subagent: code-reviewer]
-    U -->|spawns| A2[Subagent: test-runner]
-    U -->|spawns| A3[Subagent: doc-writer]
+The parent session spawns subagents in parallel. Each agent has a scoped tool set and returns its result as a `<task-notification>`:
 
-    A1 -->|uses| T1[Read, Grep tools]
-    A2 -->|uses| T2[Bash tool]
-    A3 -->|uses| T3[Read, Write tools]
+| Agent | Tools available | What it does |
+|-------|----------------|-------------|
+| `code-reviewer` | Read, Grep | Analyzes code for quality and security |
+| `test-runner` | Bash | Runs the test suite |
+| `doc-writer` | Read, Write | Writes or updates documentation |
 
-    A1 -->|returns result| U
-    A2 -->|returns result| U
-    A3 -->|returns result| U
+All three run simultaneously. The parent session waits for all notifications before synthesizing a final report.
 
-    S[.claude/scratchpad/] -.->|shared context| A1
-    S -.->|shared context| A2
-    S -.->|shared context| A3
-```
-
-Agents run in parallel by default. The parent session receives results as `<task-notification>` messages.
+**Shared context via scratchpad** (requires `tengu_scratch` flag): `.claude/scratchpad/` is readable and writable by all agents in the session.
 
 ---
 
