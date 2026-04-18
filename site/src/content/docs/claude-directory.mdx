@@ -8,7 +8,7 @@ import { FileTree } from '@astrojs/starlight/components';
 
 # .claude Directory
 
-Claude Code reads instructions, settings, skills, subagents, and memory from your **project directory** and from `~/.claude` in your home directory. Commit project files to git to share them with your team; files in `~/.claude` are personal and apply across all projects.
+Claude Code reads instructions, settings, skills, subagents, and memory from `~/.claude` in your home directory and from your **project directory**. Global files in `~/.claude` establish your personal baseline across all projects; project files override or extend them for a specific repo.
 
 Most users only need `CLAUDE.md` and `.claude/settings.json`. Everything else is optional — add skills, rules, or subagents as you need them.
 
@@ -16,9 +16,36 @@ If you set `CLAUDE_CONFIG_DIR`, every `~/.claude` path on this page lives under 
 
 ---
 
+## Global files (`~/.claude`)
+
+Files in your home directory. These form the base layer — they apply to every project and are never committed.
+
+<FileTree>
+
+- ~/
+  - .claude.json App state, UI toggles, OAuth session, personal MCP servers
+  - **.claude/**
+    - **CLAUDE.md** Personal preferences across all projects
+    - **settings.json** Default settings for all projects
+    - keybindings.json Custom keyboard shortcuts (hot-reloaded on edit)
+    - projects/ Auto memory — Claude writes and reads these
+      - project-name/memory/
+        - MEMORY.md Index loaded at session start (first 200 lines / 25 KB)
+        - debugging.md Topic file — read on demand when related task comes up
+    - rules/ User-level rules that apply everywhere
+    - skills/ Personal skills available in every project
+    - commands/ Personal single-file commands (all projects, legacy)
+    - output-styles/ Personal output styles (all projects)
+    - agents/ Personal subagents available in every project
+    - agent-memory/ User-scoped subagent persistent memory
+
+</FileTree>
+
+---
+
 ## Project files
 
-Files in your project root and `.claude/` folder. Commit most of these so your whole team shares them.
+Files in your project root and `.claude/` folder. These override or extend the global layer. Commit most of them so your whole team shares them.
 
 <FileTree>
 
@@ -49,51 +76,24 @@ Files in your project root and `.claude/` folder. Commit most of these so your w
 
 ---
 
-## Global files (`~/.claude`)
-
-Files in your home directory. These apply to every project and are never committed.
-
-<FileTree>
-
-- ~/
-  - .claude.json App state, UI toggles, OAuth session, personal MCP servers
-  - **.claude/**
-    - **CLAUDE.md** Personal preferences across all projects
-    - **settings.json** Default settings for all projects
-    - keybindings.json Custom keyboard shortcuts (hot-reloaded on edit)
-    - projects/ Auto memory — Claude writes and reads these
-      - project-name/memory/
-        - MEMORY.md Index loaded at session start (first 200 lines / 25 KB)
-        - debugging.md Topic file — read on demand when related task comes up
-    - rules/ User-level rules that apply everywhere
-    - skills/ Personal skills available in every project
-    - commands/ Personal single-file commands (all projects, legacy)
-    - output-styles/ Personal output styles (all projects)
-    - agents/ Personal subagents available in every project
-    - agent-memory/ User-scoped subagent persistent memory
-
-</FileTree>
-
----
-
 ## File reference
 
 | File | What it does | Hub |
 |------|--------------|-----|
-| `CLAUDE.md` | Instructions loaded every session | [Memory](/claude-code-docs/memory/overview/) |
+| `~/.claude.json` | App state, OAuth, UI toggles, personal MCP servers | [Settings](/claude-code-docs/settings/overview/) |
+| `~/.claude/projects/*/memory/` | Auto memory: Claude's notes across sessions | [Memory → Auto Memory](/claude-code-docs/memory/auto-memory/) |
+| `~/.claude/keybindings.json` | Custom keyboard shortcuts | [Keybindings](/claude-code-docs/keybindings/overview/) |
+| `CLAUDE.md` | Instructions loaded every session (global + project) | [Memory](/claude-code-docs/memory/overview/) |
 | `rules/*.md` | Topic-scoped instructions, optionally path-gated | [Memory](/claude-code-docs/memory/overview/) |
 | `settings.json` | Permissions, hooks, env vars, model defaults | [Settings](/claude-code-docs/settings/overview/) |
-| `settings.local.json` | Personal overrides, auto-gitignored | [Settings](/claude-code-docs/settings/overview/) |
-| `.mcp.json` | Team-shared MCP servers (project root) | [Settings → MCP](/claude-code-docs/settings/mcp-servers/) |
-| `.worktreeinclude` | Gitignored files copied into new worktrees | [Sessions](/claude-code-docs/sessions/overview/) |
 | `skills/<name>/SKILL.md` | Reusable prompts invoked with `/name` or auto-invoked | [Skills](/claude-code-docs/skills/overview/) |
 | `commands/*.md` | Single-file prompts — same as skills (legacy) | [Skills](/claude-code-docs/skills/adding-your-own-skills/) |
 | `output-styles/*.md` | Custom system-prompt sections | [Settings](/claude-code-docs/settings/overview/) |
 | `agents/*.md` | Subagent definitions with their own prompt and tools | [Agents](/claude-code-docs/agents/overview/) |
 | `agent-memory/<name>/` | Persistent memory for subagents | [Agents](/claude-code-docs/agents/how-subagents-work/) |
-| `~/.claude.json` | App state, OAuth, UI toggles, personal MCP servers | [Settings](/claude-code-docs/settings/overview/) |
-| `~/.claude/projects/*/memory/` | Auto memory: Claude's notes across sessions | [Memory → Auto Memory](/claude-code-docs/memory/auto-memory/) |
-| `~/.claude/keybindings.json` | Custom keyboard shortcuts | [Keybindings](/claude-code-docs/keybindings/overview/) |
+| `settings.local.json` | Personal overrides, auto-gitignored (project only) | [Settings](/claude-code-docs/settings/overview/) |
+| `.mcp.json` | Team-shared MCP servers, project root | [Settings → MCP](/claude-code-docs/settings/mcp-servers/) |
+| `.worktreeinclude` | Gitignored files copied into new worktrees | [Sessions](/claude-code-docs/sessions/overview/) |
 
 :::note[Settings precedence]
 Managed settings deployed by your organization take precedence over everything. CLI flags like `--permission-mode` override `settings.json` for that session. See the [Settings overview](/claude-code-docs/settings/overview/) for the full precedence order.
