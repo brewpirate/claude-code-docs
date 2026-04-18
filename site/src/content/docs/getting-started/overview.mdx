@@ -9,7 +9,7 @@ Claude Code is a CLI tool that puts an AI coding assistant directly in your term
 
 If you're coming from a web-based AI chat tool, the big difference is that Claude Code lives in your project. It reads your codebase, respects your `.gitignore`, and saves memory across sessions.
 
-> **Already know what you're looking for?** The full reference is at [../README.md](../README.md). Every env var, flag, setting, and command is cross-referenced there.
+> **Already know what you're looking for?** Browse the reference hubs in the sidebar — every env var, flag, setting, and command is cross-referenced there.
 
 ---
 
@@ -41,26 +41,26 @@ graph TD
 
 You want to control Claude's model, API key, verbosity, or session behavior.
 
-1. [CLI flags](../CLI/README.md) — flags you pass when starting Claude (`--model`, `--verbose`, `--print`)
-2. [Settings](../Settings/README.md) — persistent config in `.claude/settings.json`
-3. [Environment variables](../ENV/README.md) — env vars that override settings (start with the top-5 list at the top of that page)
+1. [CLI flags](/cli/flag-reference/) — flags you pass when starting Claude (`--model`, `--verbose`, `--print`)
+2. [Settings](/settings/overview/) — persistent config in `.claude/settings.json`
+3. [Environment variables](/env/overview/) — env vars that override settings (start with the top-5 list at the top of that page)
 
 ### Path B — Extend Claude with custom skills
 
 You want to add slash commands, automate workflows, or control what Claude is allowed to do.
 
-1. [Your first skill](./first-skill.md) — create a `/slash-command` in 5 minutes
-2. [Your first permission rule](./first-permission-rule.md) — stop Claude from asking you every time it edits a file
-3. [Your first hook](./first-hook.md) — run a script automatically before or after Claude uses a tool
-4. [Plugins](../Plugins/README.md) — package skills, hooks, and MCP servers together for sharing
+1. [Your first skill](/getting-started/first-skill/) — create a `/slash-command` in 5 minutes
+2. [Your first permission rule](/getting-started/first-permission-rule/) — stop Claude from asking you every time it edits a file
+3. [Your first hook](/getting-started/first-hook/) — run a script automatically before or after Claude uses a tool
+4. [Plugins](/plugins/overview/) — package skills, hooks, and MCP servers together for sharing
 
 ### Path C — Understand what Claude can do in a session
 
 You want to know what slash commands exist, what tools Claude can call, or how memory works.
 
-1. [Slash commands](../Commands/README.md) — all 97 built-in `/commands`
-2. [Built-in tools](../Tools/README.md) — filesystem, shell, web, and orchestration tools Claude can call
-3. [Memory](../Memory/README.md) — how Claude remembers things across sessions
+1. [Slash commands](/cli/subcommands/) — all built-in `/commands`
+2. [Built-in tools](/tools/overview/) — filesystem, shell, web, and orchestration tools Claude can call
+3. [Memory](/memory/overview/) — how Claude remembers things across sessions
 
 ---
 
@@ -85,21 +85,16 @@ Before diving into the reference docs, these 5 concepts cover 90% of day-to-day 
 
 | Concept | What it is | Where to learn more |
 |---------|-----------|---------------------|
-| **CLAUDE.md** | A markdown file Claude reads as project context. Put architecture notes, conventions, and "don'ts" here. | [Memory/memory-types.md](../Memory/memory-types.md) |
-| **Skills** | Custom slash commands you write as markdown files. Put them in `.claude/skills/`. | [first-skill.md](./first-skill.md) |
-| **Permissions** | Rules that control which files, commands, and tools Claude can use without asking. | [first-permission-rule.md](./first-permission-rule.md) |
-| **Hooks** | Shell scripts or webhooks that run automatically at lifecycle events (before/after tool use, etc.). | [first-hook.md](./first-hook.md) |
-| **Settings** | `.claude/settings.json` — your project's config file. Checked into git; shared with your team. | [Settings/README.md](../Settings/README.md) |
+| **CLAUDE.md** | A markdown file Claude reads as project context. Put architecture notes, conventions, and "don'ts" here. | [Memory overview](/memory/overview/) |
+| **Skills** | Custom slash commands you write as markdown files. Put them in `.claude/skills/`. | [First skill](/getting-started/first-skill/) |
+| **Permissions** | Rules that control which files, commands, and tools Claude can use without asking. | [First permission rule](/getting-started/first-permission-rule/) |
+| **Hooks** | Shell scripts or webhooks that run automatically at lifecycle events (before/after tool use, etc.). | [First hook](/getting-started/first-hook/) |
+| **Settings** | `.claude/settings.json` — your project's config file. Checked into git; shared with your team. | [Settings overview](/settings/overview/) |
 
 ---
 
 ## See Also
 
-- [Full reference index](../README.md) — all 18 hubs with entry counts
-- [Feature gates guide](./feature-gates-guide.md) — experimental features that are off by default
-- [Commands](../Commands/README.md) — all slash commands
-- [ENV](../ENV/README.md) — all environment variables
-
----
-
-[← Back to docs/README.md](../README.md)
+- [Feature gates guide](/getting-started/feature-gates-guide/) — experimental features that are off by default
+- [CLI subcommands](/cli/subcommands/) — all slash commands
+- [Environment variables](/env/overview/) — all environment variables
