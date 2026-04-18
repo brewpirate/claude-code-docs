@@ -1,0 +1,105 @@
+---
+title: "Getting Started"
+description: "Tutorials and learning paths for new Claude Code users"
+---
+
+# Getting Started with Claude Code
+
+Claude Code is a CLI tool that puts an AI coding assistant directly in your terminal. You type messages, Claude reads your files, runs commands, and edits code — all with your approval. It's configurable at every level: you can write custom skills (like slash commands), set rules for what Claude can and can't touch, and automate actions with hooks.
+
+If you're coming from a web-based AI chat tool, the big difference is that Claude Code lives in your project. It reads your codebase, respects your `.gitignore`, and saves memory across sessions.
+
+> **Already know what you're looking for?** The full reference is at [../README.md](../README.md). Every env var, flag, setting, and command is cross-referenced there.
+
+---
+
+## Choose Your Learning Path
+
+Not sure where to start? Pick the path that matches what you want to do:
+
+```mermaid
+graph TD
+    A[What do you want to do?] --> B[Configure how Claude behaves]
+    A --> C[Extend Claude with custom skills]
+    A --> D[Understand what Claude can do]
+
+    B --> B1[CLI flags → ../CLI/README.md]
+    B --> B2[settings.json → ../Settings/README.md]
+    B --> B3[Environment variables → ../ENV/README.md]
+
+    C --> C1[Write a skill → first-skill.md]
+    C --> C2[Add permission rules → first-permission-rule.md]
+    C --> C3[Create hooks → first-hook.md]
+    C --> C4[Build plugins → ../Plugins/README.md]
+
+    D --> D1[Slash commands → ../Commands/README.md]
+    D --> D2[Built-in tools → ../Tools/README.md]
+    D --> D3[Memory system → ../Memory/README.md]
+```
+
+### Path A — Configure how Claude behaves
+
+You want to control Claude's model, API key, verbosity, or session behavior.
+
+1. [CLI flags](../CLI/README.md) — flags you pass when starting Claude (`--model`, `--verbose`, `--print`)
+2. [Settings](../Settings/README.md) — persistent config in `.claude/settings.json`
+3. [Environment variables](../ENV/README.md) — env vars that override settings (start with the top-5 list at the top of that page)
+
+### Path B — Extend Claude with custom skills
+
+You want to add slash commands, automate workflows, or control what Claude is allowed to do.
+
+1. [Your first skill](./first-skill.md) — create a `/slash-command` in 5 minutes
+2. [Your first permission rule](./first-permission-rule.md) — stop Claude from asking you every time it edits a file
+3. [Your first hook](./first-hook.md) — run a script automatically before or after Claude uses a tool
+4. [Plugins](../Plugins/README.md) — package skills, hooks, and MCP servers together for sharing
+
+### Path C — Understand what Claude can do in a session
+
+You want to know what slash commands exist, what tools Claude can call, or how memory works.
+
+1. [Slash commands](../Commands/README.md) — all 97 built-in `/commands`
+2. [Built-in tools](../Tools/README.md) — filesystem, shell, web, and orchestration tools Claude can call
+3. [Memory](../Memory/README.md) — how Claude remembers things across sessions
+
+---
+
+## First 10 Minutes Checklist
+
+Work through these in order to get oriented:
+
+- [ ] Install: `npm install -g @anthropic/claude-code` (or follow the [official install guide](https://claude.ai/code))
+- [ ] Set your API key: `export ANTHROPIC_API_KEY=sk-ant-...`
+- [ ] Start a session: `claude` in any project directory
+- [ ] Type a message — try "what files are in this project?"
+- [ ] Try `/help` to see all available commands
+- [ ] Try `/config` to see your current settings
+- [ ] Create a `CLAUDE.md` in your project root — Claude reads it automatically as project context
+- [ ] Try `/memory` to see what Claude remembers about your project
+
+---
+
+## Key Concepts
+
+Before diving into the reference docs, these 5 concepts cover 90% of day-to-day use:
+
+| Concept | What it is | Where to learn more |
+|---------|-----------|---------------------|
+| **CLAUDE.md** | A markdown file Claude reads as project context. Put architecture notes, conventions, and "don'ts" here. | [Memory/memory-types.md](../Memory/memory-types.md) |
+| **Skills** | Custom slash commands you write as markdown files. Put them in `.claude/skills/`. | [first-skill.md](./first-skill.md) |
+| **Permissions** | Rules that control which files, commands, and tools Claude can use without asking. | [first-permission-rule.md](./first-permission-rule.md) |
+| **Hooks** | Shell scripts or webhooks that run automatically at lifecycle events (before/after tool use, etc.). | [first-hook.md](./first-hook.md) |
+| **Settings** | `.claude/settings.json` — your project's config file. Checked into git; shared with your team. | [Settings/README.md](../Settings/README.md) |
+
+---
+
+## See Also
+
+- [Full reference index](../README.md) — all 18 hubs with entry counts
+- [Feature gates guide](./feature-gates-guide.md) — experimental features that are off by default
+- [Commands](../Commands/README.md) — all slash commands
+- [ENV](../ENV/README.md) — all environment variables
+
+---
+
+[← Back to docs/README.md](../README.md)
