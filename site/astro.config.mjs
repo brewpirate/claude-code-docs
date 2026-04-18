@@ -1,11 +1,16 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeFlexoki from 'starlight-theme-flexoki';
+import mermaid from 'astro-mermaid';
+import { starlightTagsPlugin } from 'starlight-tags';
 
 export default defineConfig({
   site: 'https://brewpirate.github.io',
   base: '/claude-code-docs',
   integrations: [
+    mermaid({
+      autoTheme: true,
+    }),
     starlight({
       title: 'Claude Code Docs',
       description: 'Comprehensive reference for Claude Code CLI — every env var, setting, hook, skill, tool, and more.',
@@ -17,6 +22,7 @@ export default defineConfig({
         starlightThemeFlexoki({
           accentColor: 'orange',
         }),
+        starlightTagsPlugin(),
       ],
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/brewpirate/claude-code-docs' },

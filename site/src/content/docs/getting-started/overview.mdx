@@ -13,29 +13,29 @@ If you're coming from a web-based AI chat tool, the big difference is that Claud
 
 ---
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
-
 ## Choose Your Learning Path
 
 Not sure where to start? Pick the path that matches what you want to do:
 
-<CardGrid>
-  <LinkCard
-    title="Configure how Claude behaves"
-    description="CLI flags, settings.json keys, and environment variables that control Claude's behavior."
-    href="/claude-code-docs/cli/overview/"
-  />
-  <LinkCard
-    title="Extend Claude with custom skills"
-    description="Write slash commands, add permission rules, create hooks, and build plugins."
-    href="/claude-code-docs/skills/overview/"
-  />
-  <LinkCard
-    title="Understand what Claude can do"
-    description="Slash commands, built-in tools, and the memory system."
-    href="/claude-code-docs/tools/overview/"
-  />
-</CardGrid>
+```mermaid
+graph TD
+    A[What do you want to do?] --> B[Configure how Claude behaves]
+    A --> C[Extend Claude with custom skills]
+    A --> D[Understand what Claude can do]
+
+    B --> B1[CLI flags → ../CLI/README.md]
+    B --> B2[settings.json → ../Settings/README.md]
+    B --> B3[Environment variables → ../ENV/README.md]
+
+    C --> C1[Write a skill → first-skill.md]
+    C --> C2[Add permission rules → first-permission-rule.md]
+    C --> C3[Create hooks → first-hook.md]
+    C --> C4[Build plugins → ../Plugins/README.md]
+
+    D --> D1[Slash commands → ../Commands/README.md]
+    D --> D2[Built-in tools → ../Tools/README.md]
+    D --> D3[Memory system → ../Memory/README.md]
+```
 
 ### Path A — Configure how Claude behaves
 
