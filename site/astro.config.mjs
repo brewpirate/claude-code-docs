@@ -25,7 +25,11 @@ export default defineConfig({
         src: './src/assets/logo.svg',
       },
       plugins: [
-        starlightRosePine(),
+        starlightRosePine({
+          dark:{
+            accent: 'gold'
+          }
+        }),
         starlightIconsPlugin({ sidebar: false }),
 //        starlightThemeFlexoki({
 //          accentColor: 'orange',
