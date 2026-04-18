@@ -1,0 +1,6 @@
+/* Make wide tables scroll horizontally on small screens instead of overflowing */
+.sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
