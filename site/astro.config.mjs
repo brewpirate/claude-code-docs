@@ -4,11 +4,15 @@ import starlightThemeFlexoki from 'starlight-theme-flexoki';
 import mermaid from 'astro-mermaid';
 import starlightTagsPlugin from 'starlight-tags';
 import starlightLinksValidator from 'starlight-links-validator';
+import UnoCSS from 'unocss/astro';
+import { starlightIconsPlugin, starlightIconsIntegration } from 'starlight-plugin-icons';
 
 export default defineConfig({
   site: 'https://brewpirate.github.io',
   base: '/claude-code-docs',
   integrations: [
+    UnoCSS(),
+    starlightIconsIntegration({ extractSafelist: true }),
     mermaid({
       autoTheme: true,
     }),
@@ -20,6 +24,7 @@ export default defineConfig({
         src: './src/assets/logo.svg',
       },
       plugins: [
+        starlightIconsPlugin({ sidebar: false }),
         starlightThemeFlexoki({
           accentColor: 'orange',
         }),
