@@ -4,21 +4,19 @@ Automatic conversation compression when context window approaches capacity.
 
 ## Compaction flow
 
-```mermaid
-flowchart TD
-    A[New turn: count tokens] --> B{conversation_tokens +\nreserved_output_tokens\n> effective_window?}
-    B -->|No| CONTINUE[Continue normally]
-    B -->|Yes| C[Pause user input]
-    C --> D[Call compaction API\nto summarize history]
-    D --> E{Success?}
-    E -->|No| F{Retry count\n>= 2?}
-    F -->|No| D
-    F -->|Yes| ABANDON[Abandon compaction\nSession continues without it]
-    E -->|Yes| G[Restore up to 5 recent files\n5k tokens each]
-    G --> H[Restore skill and MCP definitions\nup to 25k tokens total]
-    H --> I[Write SummaryMessage\nto transcript JSONL]
-    I --> J[Resume session\nwith compressed history]
-```
+**Trigger check (each turn):**
+
+If `conversation_tokens + reserved_output_tokens > effective_context_window` → compaction runs. Otherwise → continue normally.
+
+**Compaction steps:**
+
+1. Pause user input temporarily
+2. Call the compaction API to summarize conversation history
+   - If it fails: retry up to 2 times total. After 2 failures → **abandon** (session continues without compaction)
+3. Restore up to 5 recent files (5k tokens each)
+4. Restore skill and MCP definitions (up to 25k tokens total)
+5. Write a `SummaryMessage` entry to the transcript JSONL
+6. Resume the session with compressed history
 
 ## Compaction trigger
 

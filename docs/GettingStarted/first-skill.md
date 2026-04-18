@@ -79,21 +79,13 @@ Claude will run a `git diff`, then summarize it according to your instructions.
 
 ## How skill discovery works
 
-```mermaid
-sequenceDiagram
-    participant U as You
-    participant CC as Claude Code
-    participant FS as File System
-    participant C as Claude
+When you type `/my-first-skill`:
 
-    U->>CC: Type /my-first-skill
-    CC->>FS: Scan .claude/skills/ for SKILL.md files
-    FS-->>CC: Found my-first-skill/SKILL.md
-    CC->>CC: Parse frontmatter (name, description, user-invocable)
-    CC->>C: Inject skill instructions into context
-    C->>C: Execute skill instructions
-    C-->>U: Response based on skill
-```
+1. Claude Code scans `.claude/skills/`, then `~/.claude/skills/`, then plugin skills, for `SKILL.md` files.
+2. Each file's frontmatter is parsed for `name`, `description`, and `user-invocable`.
+3. Your slash command is matched to the skill with a matching `name`.
+4. The skill body (everything below the `---` fence) is injected into Claude's context as instructions.
+5. Claude executes the instructions using its available tools.
 
 Skills are scanned from these locations (in priority order):
 1. `.claude/skills/` in your current project

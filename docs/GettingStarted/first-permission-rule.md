@@ -40,26 +40,19 @@ Claude wants to edit src/utils/format.ts
 
 ## How permission evaluation works
 
-```mermaid
-flowchart TD
-    A[Claude wants to use a tool] --> B{Dangerous pattern?\ne.g. rm -rf /}
-    B -->|Yes| BLOCK[Hard block — no override]
-    B -->|No| C{PreToolUse hook\nreturns block?}
-    C -->|Yes| BLOCK2[Blocked by hook]
-    C -->|No| D{Matching deny rule?}
-    D -->|Yes| BLOCK3[Denied]
-    D -->|No| E{Matching allow rule?}
-    E -->|Yes| ALLOW[Allowed — proceed silently]
-    E -->|No| F{Default mode?}
-    F -->|auto| G{Auto-mode classifier\nsays safe?}
-    G -->|Yes| ALLOW
-    G -->|No| ASK[Ask user]
-    F -->|default| ASK
-    F -->|bypassPermissions| ALLOW
-    F -->|dontAsk| ALLOW
-```
+Rules are checked in this order — **the first matching condition wins**:
 
-Rules are checked in this order: **deny first, then allow, then default mode**. The first matching rule wins.
+1. **Hard block?** — Is this a hardcoded dangerous pattern (e.g. `rm -rf /`)? If yes → blocked with no override possible.
+2. **Hook block?** — Does a `PreToolUse` hook return exit `2`? If yes → blocked by hook.
+3. **Deny rule match?** — Does a `deny` rule in settings match this tool call? If yes → denied.
+4. **Allow rule match?** — Does an `allow` rule match? If yes → allowed silently, no prompt shown.
+5. **Default mode fallback** (no rule matched):
+
+| Mode | What happens |
+|------|-------------|
+| `auto` | Classifier decides: safe actions auto-approved, risky ones prompt you |
+| `default` | Ask you every time |
+| `bypassPermissions` or `dontAsk` | Allowed silently |
 
 ---
 

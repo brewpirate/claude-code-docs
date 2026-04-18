@@ -2,28 +2,30 @@
 
 ## Hook event lifecycle
 
-```mermaid
-sequenceDiagram
-    participant C as Claude
-    participant CC as Claude Code
-    participant H as Hook Handler
-    participant T as Tool
+**Normal flow (no block):**
 
-    C->>CC: Request tool call (e.g. Bash)
-    CC->>CC: Find matching PreToolUse hooks
-    CC->>H: Run handler with JSON input on stdin
-    alt Handler exits 2 (block)
-        H-->>CC: exit 2
-        CC-->>C: Tool call blocked
-    else Handler exits 0 (proceed)
-        H-->>CC: exit 0
-        CC->>T: Execute tool
-        T-->>CC: Tool result
-        CC->>H: Run PostToolUse handlers
-        H-->>CC: exit 0
-        CC-->>C: Tool result returned
-    end
-```
+1. Claude requests a tool call (e.g. Bash)
+2. Claude Code finds matching `PreToolUse` hooks in settings
+3. Claude Code runs the handler, piping JSON to stdin
+4. Handler exits `0` → Claude Code executes the tool
+5. Tool returns a result to Claude Code
+6. Claude Code runs any matching `PostToolUse` handlers
+7. Handler exits `0` → Claude receives the tool result
+
+**When a handler blocks:**
+
+1. Claude requests a tool call
+2. Claude Code runs the `PreToolUse` handler
+3. Handler exits `2` → Claude Code does **not** execute the tool
+4. Claude receives a "tool call blocked" message instead
+
+**Exit code reference:**
+
+| Exit code | Meaning |
+|-----------|---------|
+| `0` | Proceed — tool executes (PreToolUse) or result is returned (PostToolUse) |
+| `2` | Block — tool is not executed; Claude receives blocked message |
+| Any other | Treated as `0` — proceed |
 
 > **What "blocking" means:** Exit code 0 = proceed normally. Exit code 2 = Claude stops and does not execute the tool. This is how you'd prevent Claude from running `rm -rf` commands or overwriting protected files. Any exit code other than 2 (including exit 1) is treated as "proceed."
 

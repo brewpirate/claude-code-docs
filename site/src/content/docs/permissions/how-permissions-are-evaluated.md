@@ -7,25 +7,26 @@ tags: [permissions, settings]
 
 ## Evaluation flowchart
 
-```mermaid
-flowchart TD
-    A[Claude requests a tool call] --> B{Hard dangerous\npattern match?\ne.g. rm -rf /}
-    B -->|Yes| BLOCK1[Hard blocked\nno override possible]
-    B -->|No| C{PreToolUse hook\nreturns block?}
-    C -->|Yes| BLOCK2[Blocked by hook]
-    C -->|No| D{Scope precedence:\nCheck managed rules first\nthen project, then user}
-    D --> E{Deny rule\nmatches?}
-    E -->|Yes| BLOCK3[Denied]
-    E -->|No| F{Allow rule\nmatches?}
-    F -->|Yes| ALLOW[Allowed — tool runs silently]
-    F -->|No| G{Default mode?}
-    G -->|auto| H{Auto-mode classifier\nsays safe?}
-    H -->|Yes| ALLOW
-    H -->|No| ASK[Ask user]
-    G -->|acceptEdits\nand tool is file edit| ALLOW
-    G -->|dontAsk or\nbypassPermissions| ALLOW
-    G -->|default or plan| ASK
-```
+Every tool request passes through these checks in order. The first matching condition terminates evaluation:
+
+1. **Hard dangerous pattern?** (e.g. `rm -rf /`, `curl | sh`) → **Hard blocked.** Cannot be overridden by any rule.
+
+2. **PreToolUse hook returns block?** → **Blocked by hook.** Downstream handlers for this event are skipped.
+
+3. **Scope resolution** — Rules are evaluated in precedence order: managed settings → local project settings → project settings → user settings. Within each scope, **deny rules are evaluated before allow rules.**
+
+4. **Deny rule matches?** → **Denied.**
+
+5. **Allow rule matches?** → **Allowed** — tool runs silently.
+
+6. **Default mode fallback** (no rule matched):
+
+   | Mode | Outcome |
+   |------|---------|
+   | `auto` | Classifier decides: safe → allow; risky → ask |
+   | `acceptEdits` (file edit tool) | Allowed |
+   | `dontAsk` or `bypassPermissions` | Allowed |
+   | `default` or `plan` | Ask user |
 
 - When Claude requests a tool invocation, the harness matches applicable permission rules against the tool name and optional pattern (e.g., command text, file path, domain).
 - Rules are evaluated in precedence order: **deny rules first** → ask rules → allow rules → default mode fallback.

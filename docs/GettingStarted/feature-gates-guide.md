@@ -8,18 +8,12 @@ This guide covers the gates most likely to affect you as you explore Claude Code
 
 ## Types of feature gates
 
-```mermaid
-graph TD
-    A[Feature Gate Types] --> B[Environment variable\ne.g. CLAUDE_CODE_ENABLE_TASKS=1]
-    A --> C[Statsig flag\ne.g. tengu_session_memory]
-    A --> D[Plan tier\ne.g. Max plan required]
-    A --> E[Dual-gate\nRequires BOTH env var AND Statsig flag]
-
-    B --> B1[You can set these yourself]
-    C --> C1[Set by Anthropic on your account — you cannot set these]
-    D --> D1[Enabled when you upgrade your subscription]
-    E --> E1[Requires both — used for staged rollouts]
-```
+| Gate type | Example | How it's activated | Can you set it? |
+|-----------|---------|-------------------|-----------------|
+| **Environment variable** | `CLAUDE_CODE_ENABLE_TASKS=1` | Set it in your shell | Yes |
+| **Statsig flag** | `tengu_session_memory` | Enabled by Anthropic on your account | No |
+| **Plan tier** | Max plan required | Upgrade your subscription | Yes, via your account |
+| **Dual-gate** | `/team-onboarding` | Requires both an env var AND a Statsig flag | Partially — you set the env var, Anthropic sets the flag |
 
 > **Important about `tengu_*` flags:** These are internal Statsig identifiers. You cannot set them yourself — they are enabled by Anthropic on your account or team. If docs mention a `tengu_*` flag, it means the feature is controlled by Anthropic's rollout system, not by your configuration.
 

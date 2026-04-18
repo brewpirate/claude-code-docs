@@ -152,7 +152,7 @@ Claude Code: Task backgrounded
 
 2. **Rebind tmux prefix** if you prefer (in `~/.tmux.conf`):
 
-```tmux
+```sh
 unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
