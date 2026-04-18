@@ -4,3 +4,20 @@
   overflow-x: auto;
   max-width: 100%;
 }
+
+/* Breadcrumbs */
+.c-breadcrumbs {
+  --color-link-breadcrumbs: var(--sl-color-gray-3);
+  --size-font-breadcrumbs: var(--sl-text-xs, 0.8125rem);
+  --spacing-vertical-separator-breadcrumbs: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.c-breadcrumbs__link:hover {
+  color: var(--sl-color-text-accent);
+}
+
+.c-breadcrumbs__link[aria-current="page"] {
+  color: var(--sl-color-text);
+  pointer-events: none;
+}
