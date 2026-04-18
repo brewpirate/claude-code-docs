@@ -1,0 +1,88 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'title'> {
+  title: string;
+  description?: string;
+  icon?: string;
+}
+
+const { title, description, icon, ...attributes } = Astro.props;
+---
+
+<div class="sl-link-card">
+  <span class="sl-flex stack">
+    <a {...attributes}>
+      <span class="title">
+        {icon && <Icon name={icon as any} class="card-icon" />}
+        <span set:html={title} />
+      </span>
+    </a>
+    {description && <span class="description" set:html={description} />}
+  </span>
+  <Icon name="right-arrow" size="1.333em" class="arrow rtl:flip" />
+</div>
+
+<style>
+  .sl-link-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: var(--sl-shadow-sm);
+    position: relative;
+  }
+
+  a {
+    text-decoration: none;
+    line-height: var(--sl-line-height-headings);
+  }
+
+  /* makes the entire card surface clickable */
+  a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .stack {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .title {
+    color: var(--sl-color-white);
+    font-weight: 600;
+    font-size: var(--sl-text-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-icon {
+    flex-shrink: 0;
+    color: var(--sl-color-text-accent);
+    font-size: 1.1em;
+  }
+
+  .description {
+    color: var(--sl-color-gray-3);
+    line-height: 1.5;
+  }
+
+  .arrow {
+    color: var(--sl-color-gray-3);
+  }
+
+  .sl-link-card:hover {
+    background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+    border-color: var(--sl-color-gray-2);
+  }
+
+  .sl-link-card:hover .arrow {
+    color: var(--sl-color-white);
+  }
+</style>
