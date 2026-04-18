@@ -277,6 +277,10 @@ export default defineConfig({
           slug: 'changelog',
         },
       ],
+      components: {
+        PageTitle: './src/components/PageTitle.astro',
+        Sidebar: './src/components/Sidebar.astro',
+      },
       customCss: ['./src/styles/custom.css'],
     }),
   ],
