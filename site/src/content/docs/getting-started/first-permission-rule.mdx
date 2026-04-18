@@ -2,6 +2,8 @@
 title: "Your First Permission Rule"
 ---
 
+import { Steps } from '@astrojs/starlight/components';
+
 # Your First Permission Rule
 
 By default, Claude asks for your approval before editing files, running commands, or fetching URLs. Permission rules let you pre-approve (or permanently block) specific actions so Claude can work without interrupting you every time.
@@ -10,22 +12,30 @@ By default, Claude asks for your approval before editing files, running commands
 
 ---
 
-## The two-minute answer
+## The two-minute setup
 
-Open (or create) `.claude/settings.json` in your project root and add:
+<Steps>
 
-```json
-{
-  "permissions": {
-    "allow": [
-      "Write(src/**)",
-      "Bash(npm run *)"
-    ]
-  }
-}
-```
+1. **Open (or create) `.claude/settings.json`** in your project root.
 
-Now Claude can edit any file under `src/` and run any `npm run` script without asking you first.
+2. **Add your allow rules:**
+
+   ```json
+   {
+     "permissions": {
+       "allow": [
+         "Write(src/**)",
+         "Bash(npm run *)"
+       ]
+     }
+   }
+   ```
+
+3. **Claude now works without interrupting you.**
+
+   Any file under `src/` can be edited silently. Any `npm run` script can be executed without a prompt.
+
+</Steps>
 
 ---
 

@@ -2,6 +2,8 @@
 title: "Your First Hook"
 ---
 
+import { Steps } from '@astrojs/starlight/components';
+
 # Your First Hook
 
 A **hook** runs a script automatically when something happens in Claude Code — like before Claude runs a bash command, or after Claude edits a file. Hooks let you enforce policies, log activity, validate changes, or integrate with external systems.
@@ -14,43 +16,55 @@ A **hook** runs a script automatically when something happens in Claude Code —
 
 Block Claude from running dangerous shell commands, even if you accidentally approve them:
 
-**`.claude/hooks/check-bash.sh`**
-```bash
-#!/bin/bash
-# Read the hook input (JSON with tool name and command details)
-INPUT=$(cat)
+<Steps>
 
-# Extract the command being run
-COMMAND=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input', {}).get('command', ''))")
+1. **Create the hook script**
 
-# Block dangerous patterns
-if echo "$COMMAND" | grep -qE '(rm -rf /|DROP TABLE|> /dev/sda)'; then
-  echo "Blocked: dangerous command detected" >&2
-  exit 2
-fi
+   Create `.claude/hooks/check-bash.sh`:
 
-# Allow everything else
-exit 0
-```
+   ```bash
+   #!/bin/bash
+   # Read the hook input (JSON with tool name and command details)
+   INPUT=$(cat)
 
-**`.claude/settings.json`**
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "handler": {
-          "type": "command",
-          "command": ".claude/hooks/check-bash.sh"
-        }
-      }
-    ]
-  }
-}
-```
+   # Extract the command being run
+   COMMAND=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input', {}).get('command', ''))")
 
-Now every time Claude wants to run a bash command, your script runs first. If it exits with code 2, Claude stops. If it exits with code 0, Claude proceeds.
+   # Block dangerous patterns
+   if echo "$COMMAND" | grep -qE '(rm -rf /|DROP TABLE|> /dev/sda)'; then
+     echo "Blocked: dangerous command detected" >&2
+     exit 2
+   fi
+
+   # Allow everything else
+   exit 0
+   ```
+
+2. **Register the hook in settings**
+
+   Add to `.claude/settings.json`:
+
+   ```json
+   {
+     "hooks": {
+       "PreToolUse": [
+         {
+           "matcher": "Bash",
+           "handler": {
+             "type": "command",
+             "command": ".claude/hooks/check-bash.sh"
+           }
+         }
+       ]
+     }
+   }
+   ```
+
+3. **Claude now checks every bash command**
+
+   Every time Claude wants to run a bash command, your script runs first. If it exits with code `2`, Claude stops. If it exits with code `0`, Claude proceeds.
+
+</Steps>
 
 ---
 
