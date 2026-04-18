@@ -9,13 +9,13 @@ Reference for keyboard shortcuts shipped with Claude Code, platform quirks, and 
 
 ## Table of Contents
 
-1. [How keybindings work](/claude-code-docs/keybindings/overview/)
-2. [Global bindings](/claude-code-docs/keybindings/overview/)
-3. [Chat bindings](/claude-code-docs/keybindings/overview/)
-4. [Navigation bindings](/claude-code-docs/keybindings/overview/)
-5. [Dialog & menu bindings](/claude-code-docs/keybindings/overview/)
-6. [Platform quirks](/claude-code-docs/keybindings/overview/)
-7. [Customization](/claude-code-docs/keybindings/overview/)
+1. [How keybindings work](/claude-code-docs/keybindings/how-keybindings-work/)
+2. [Global bindings](/claude-code-docs/keybindings/global-bindings/)
+3. [Chat bindings](/claude-code-docs/keybindings/chat-bindings/)
+4. [Navigation bindings](/claude-code-docs/keybindings/navigation-bindings/)
+5. [Dialog & Menu Bindings](/claude-code-docs/keybindings/dialog-bindings/)
+6. [Platform quirks](/claude-code-docs/keybindings/platform-quirks/)
+7. [Customization](/claude-code-docs/keybindings/customization/)
 8. [Discrepancies & notes](/claude-code-docs/keybindings/overview/)
 
 ## Overview

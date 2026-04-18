@@ -11,7 +11,7 @@ Think of subagents as workers: the main session is the manager, subagents are sp
 
 ## Table of Contents
 
-1. [How subagents work](/claude-code-docs/agents/overview/)
+1. [How subagents work](/claude-code-docs/agents/how-subagents-work/)
 
 ## Overview
 
@@ -120,7 +120,7 @@ Agents run in parallel by default. The parent session receives results as `<task
 
 ## See also
 
-- [How subagents work](/claude-code-docs/agents/overview/) — spawning, context, and result flow
+- [How subagents work](/claude-code-docs/agents/how-subagents-work/) — spawning, context, and result flow
 - [Skills/FRONTMATTER.md](/claude-code-docs/skills/overview/) — all 29 frontmatter fields (agents share the same schema)
 - [Coordinator/README.md](/claude-code-docs/agents/overview/) — multi-agent coordinator mode (advanced)
 - [Agent SDK/README.md](/claude-code-docs/agent-sdk/overview/) — embedding agents in external apps

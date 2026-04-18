@@ -11,15 +11,15 @@ Reference for the permission rule grammar, evaluation model, and related subsyst
 
 ## Table of Contents
 
-1. [How permissions are evaluated](/claude-code-docs/permissions/overview/)
-2. [Rule grammar](/claude-code-docs/permissions/overview/)
-3. [Permission modes](/claude-code-docs/permissions/overview/)
-4. [Rule scopes](/claude-code-docs/permissions/overview/)
-5. [Auto-mode classifiers](/claude-code-docs/permissions/overview/)
-6. [Rule updates](/claude-code-docs/permissions/overview/)
-7. [Related settings keys](/claude-code-docs/permissions/overview/)
-8. [Hooks and permissions](/claude-code-docs/permissions/overview/)
-9. [Additional / undocumented rule-related subsystems](/claude-code-docs/permissions/overview/)
+1. [How permissions are evaluated](/claude-code-docs/permissions/how-permissions-are-evaluated/)
+2. [Rule grammar](/claude-code-docs/permissions/rule-grammar/)
+3. [Permission modes](/claude-code-docs/permissions/permission-modes/)
+4. [Rule scopes](/claude-code-docs/permissions/rule-scopes/)
+5. [Auto-mode classifiers](/claude-code-docs/permissions/auto-mode-classifiers/)
+6. [Rule updates](/claude-code-docs/permissions/rule-updates/)
+7. [Related settings keys](/claude-code-docs/permissions/related-settings-keys/)
+8. [Hooks and permissions](/claude-code-docs/permissions/hooks-and-permissions/)
+9. [Additional / undocumented rule-related subsystems](/claude-code-docs/permissions/additional-undocumented-rule-related-subsystems/)
 10. [Discrepancies & notes](/claude-code-docs/permissions/overview/)
 
 ## Overview
@@ -28,15 +28,15 @@ Reference for the permission rule grammar, evaluation model, and related subsyst
 
 | # | Section | Description | Entries |
 |---|---------|-------------|---------|
-| 1 | [How permissions are evaluated](/claude-code-docs/permissions/overview/) | Evaluation order (dangerous patterns → hooks → deny → allow → default mode), scope precedence, and classifier sub-layer. | narrative |
-| 2 | [Rule grammar](/claude-code-docs/permissions/overview/) | Rule forms (`Tool`, `Tool(pattern)`, `mcp__server__tool`), per-tool pattern syntax, and what the parser rejects. | 8 entries |
-| 3 | [Permission modes](/claude-code-docs/permissions/overview/) | The six permission modes — `default`, `acceptEdits`, `plan`, `auto`, `dontAsk`, `bypassPermissions` — with behavior and use cases. | 6 entries |
-| 4 | [Rule scopes](/claude-code-docs/permissions/overview/) | Managed → project → user → session precedence and how conflicts are resolved across layers. | narrative |
-| 5 | [Auto-mode classifiers](/claude-code-docs/permissions/overview/) | `bashClassifier`, `yoloClassifier`, `classifierDecision` — the heuristic auto-approval subsystem. | narrative |
-| 6 | [Rule updates](/claude-code-docs/permissions/overview/) | Mutation types emitted by `/permissions` and runtime callers (`addRules`, `removeRules`, `setMode`, etc.). | narrative |
-| 7 | [Related settings keys](/claude-code-docs/permissions/overview/) | Cross-links to the `permissions.*`, `autoMode`, and `skip*PermissionPrompt` keys documented in Settings. | narrative |
-| 8 | [Hooks and permissions](/claude-code-docs/permissions/overview/) | How `PreToolUse` hooks can approve or block tool calls before permission evaluation runs. | narrative |
-| 9 | [Additional / undocumented rule-related subsystems](/claude-code-docs/permissions/overview/) | Source-tree files whose names hint at features not in public docs (dangerousPatterns, shadowedRuleDetection, bypassPermissionsKillswitch, denialTracking). | narrative |
+| 1 | [How permissions are evaluated](/claude-code-docs/permissions/how-permissions-are-evaluated/) | Evaluation order (dangerous patterns → hooks → deny → allow → default mode), scope precedence, and classifier sub-layer. | narrative |
+| 2 | [Rule grammar](/claude-code-docs/permissions/rule-grammar/) | Rule forms (`Tool`, `Tool(pattern)`, `mcp__server__tool`), per-tool pattern syntax, and what the parser rejects. | 8 entries |
+| 3 | [Permission modes](/claude-code-docs/permissions/permission-modes/) | The six permission modes — `default`, `acceptEdits`, `plan`, `auto`, `dontAsk`, `bypassPermissions` — with behavior and use cases. | 6 entries |
+| 4 | [Rule scopes](/claude-code-docs/permissions/rule-scopes/) | Managed → project → user → session precedence and how conflicts are resolved across layers. | narrative |
+| 5 | [Auto-mode classifiers](/claude-code-docs/permissions/auto-mode-classifiers/) | `bashClassifier`, `yoloClassifier`, `classifierDecision` — the heuristic auto-approval subsystem. | narrative |
+| 6 | [Rule updates](/claude-code-docs/permissions/rule-updates/) | Mutation types emitted by `/permissions` and runtime callers (`addRules`, `removeRules`, `setMode`, etc.). | narrative |
+| 7 | [Related settings keys](/claude-code-docs/permissions/related-settings-keys/) | Cross-links to the `permissions.*`, `autoMode`, and `skip*PermissionPrompt` keys documented in Settings. | narrative |
+| 8 | [Hooks and permissions](/claude-code-docs/permissions/hooks-and-permissions/) | How `PreToolUse` hooks can approve or block tool calls before permission evaluation runs. | narrative |
+| 9 | [Additional / undocumented rule-related subsystems](/claude-code-docs/permissions/additional-undocumented-rule-related-subsystems/) | Source-tree files whose names hint at features not in public docs (dangerousPatterns, shadowedRuleDetection, bypassPermissionsKillswitch, denialTracking). | narrative |
 | 10 | [Discrepancies & notes](/claude-code-docs/permissions/overview/) | Known gaps between public docs and source — hidden `bubble` mode, symlink asymmetry, compound command expansion, escaping order. | narrative |
 
 ## Quick reference — rule pattern by tool
