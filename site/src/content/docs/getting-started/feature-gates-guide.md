@@ -34,16 +34,102 @@ These are internal Statsig identifiers. You cannot set them yourself — they ar
 
 ## Feature gates relevant to junior developers
 
-| Feature | How to Enable | What It Does | Notes |
-|---------|--------------|-------------|-------|
-| **Persistent tasks** | `CLAUDE_CODE_ENABLE_TASKS=1` | Enables a task coordination system that persists across sessions | Behavior differs significantly from basic `/tasks` command — read [Commands/discrepancies-and-gaps.md](/claude-code-docs/cli/overview/) item 10 before enabling |
-| **Agent teams** | `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` | Enables `TeamCreate`/`TeamDelete` tools for coordinating groups of agents | Experimental — API subject to change |
-| **Coordinator mode** | `CLAUDE_CODE_COORDINATOR_MODE=1` | Enables full multi-agent orchestration mode | Changes Claude's entire workflow — read [Coordinator/README.md](/claude-code-docs/agents/overview/) first |
-| **Session memory** | `tengu_session_memory` (Statsig — Anthropic enables) | Background subagent extracts key notes from your session into `~/.claude/sessionMemory.md` | Enabled on some accounts automatically; you can disable with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1` |
-| **Scratchpad** | `tengu_scratch` (Statsig — Anthropic enables) | Enables `.claude/scratchpad/` shared directory between agents | Useful for multi-agent workflows; not available to all accounts |
-| **Team onboarding** | `CLAUDE_CODE_TEAM_ONBOARDING=1` **AND** `tengu_flint_harbor` (Statsig) | Enables `/team-onboarding` command | Dual-gate — both required; the Statsig flag cannot be set by you |
-| **Loop skill** | `CLAUDE_CODE_ENABLE_LOOP=1` | Enables `/loop` command for recurring scheduled prompts | Also requires the `loop` skill to be present |
-| **CFC** | `CLAUDE_CODE_ENABLE_CFC=1` | Unknown purpose | This env var exists in the source but its command surface is undocumented — see [Commands/discrepancies-and-gaps.md](/claude-code-docs/cli/overview/) |
+#### Persistent tasks
+
+```bash
+CLAUDE_CODE_ENABLE_TASKS=1
+```
+
+Enables a task coordination system that persists across sessions.
+
+:::caution
+Behavior differs significantly from the basic `/tasks` command — read [item 10 in Discrepancies and Gaps](/claude-code-docs/commands/discrepancies-and-gaps/) before enabling.
+:::
+
+#### Agent teams
+
+```bash
+CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+```
+
+Enables `TeamCreate`/`TeamDelete` tools for coordinating groups of agents.
+
+:::note
+Experimental — API subject to change.
+:::
+
+#### Coordinator mode
+
+```bash
+CLAUDE_CODE_COORDINATOR_MODE=1
+```
+
+Enables full multi-agent orchestration mode.
+
+:::caution
+Changes Claude's entire workflow — read the [Agents overview](/claude-code-docs/agents/overview/) before enabling during a critical session.
+:::
+
+#### Session memory
+
+```
+tengu_session_memory  (Statsig — Anthropic enables this, not you)
+```
+
+A background subagent extracts key notes from your session into `~/.claude/sessionMemory.md`.
+
+:::note
+Enabled on some accounts automatically. Disable with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`.
+:::
+
+#### Scratchpad
+
+```
+tengu_scratch  (Statsig — Anthropic enables this, not you)
+```
+
+Enables a `.claude/scratchpad/` shared directory between agents.
+
+:::note
+Useful for multi-agent workflows; not available to all accounts.
+:::
+
+#### Team onboarding
+
+```bash
+CLAUDE_CODE_TEAM_ONBOARDING=1
+# AND tengu_flint_harbor Statsig flag (Anthropic enables)
+```
+
+Enables the `/team-onboarding` command.
+
+:::caution[Dual-gate]
+Both the env var AND the Statsig flag are required. If only one is set, the command won't appear. The Statsig flag cannot be set by you.
+:::
+
+#### Loop skill
+
+```bash
+CLAUDE_CODE_ENABLE_LOOP=1
+```
+
+Enables the `/loop` command for recurring scheduled prompts.
+
+:::note
+Also requires the `loop` skill to be present in your skills directory.
+:::
+
+#### CFC
+
+```bash
+CLAUDE_CODE_ENABLE_CFC=1
+```
+
+Purpose unknown — this env var exists in the source but its command surface is undocumented.
+
+:::note
+See [Discrepancies and Gaps](/claude-code-docs/commands/discrepancies-and-gaps/) for details.
+:::
 
 ---
 
