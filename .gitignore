@@ -1,3 +1,4 @@
-memory/
-!site/src/content/docs/memory/
-!docs/Memory/
+dist/
+node_modules/
+.astro/
+.local/
