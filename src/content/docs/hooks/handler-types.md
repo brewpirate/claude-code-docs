@@ -167,4 +167,72 @@ hooks:
 
 ---
 
+## Response format (JSON emitted by handlers)
+
+All four handler types can return a JSON object on stdout (command, prompt, agent) or in the HTTP response body (http). The schema is defined in `claude-code-main/types/hooks.ts` (`syncHookResponseSchema`) and `schemas/hooks.ts`.
+
+### Common fields (any event)
+
+| Field | Type | Purpose |
+|---|---|---|
+| `continue` | `boolean` (default `true`) | `false` stops Claude from continuing after the hook. |
+| `stopReason` | `string` | Message shown to the user when `continue: false`. |
+| `suppressOutput` | `boolean` (default `false`) | Hide the hook's stdout from the transcript (the decision is still applied). |
+| `decision` | `"approve" \| "block"` | Legacy approve/block signal, accepted on all events. |
+| `reason` | `string` | Explanation for `decision` — shown alongside the block/approve. |
+| `systemMessage` | `string` | Warning message surfaced to the user as a system notice (non-blocking). Use for alerts that don't need to stop execution. |
+
+### Event-specific fields (`hookSpecificOutput`)
+
+Some events accept an additional `hookSpecificOutput` object keyed by `hookEventName`. Shape varies per event:
+
+| Event | Fields | Purpose |
+|---|---|---|
+| `PreToolUse` | `permissionDecision` (`"allow"\|"deny"\|"ask"\|"defer"`), `permissionDecisionReason`, `updatedInput`, `additionalContext` | Modern permission gate. `updatedInput` lets you rewrite the tool's arguments before it runs. |
+| `UserPromptSubmit` | `additionalContext` | Inject text into the model's context before it sees the prompt. |
+| `SessionStart` | `additionalContext`, `initialUserMessage`, `watchPaths` | Seed context, pre-fill the first user message, or register paths for `FileChanged`. |
+| `Setup` | `additionalContext` | Same semantics as `SessionStart`; fires alongside it. |
+| `SubagentStart` | `additionalContext` | Inject context into a newly spawned subagent. |
+| `PostToolUse` | `additionalContext`, `updatedMCPToolOutput` | Annotate or replace an MCP tool's output before the model sees it. |
+| `PostToolUseFailure` | `additionalContext` | Inject context on tool failure. |
+| `Notification` | `additionalContext` | Inject context on notification events. |
+| `PermissionRequest` | `decision: { behavior: "allow" \| "deny", updatedInput?, updatedPermissions?, message?, interrupt? }` | Grant or refuse a permission request; `deny.interrupt: true` aborts the current tool call. |
+| `PermissionDenied` | `retry: boolean` | Ask Claude to retry after a denial. |
+| `Elicitation` / `ElicitationResult` | `action: "accept" \| "decline" \| "cancel"`, `content` | Respond to MCP elicitation requests. |
+| `CwdChanged` / `FileChanged` | `watchPaths: string[]` | (Re)register paths to watch. |
+| `WorktreeCreate` | `worktreePath: string` | Report the path of the created worktree. |
+
+**Full source of truth:** `claude-code-main/types/hooks.ts:50–166`.
+
+### `additionalContext` in plain terms
+
+`additionalContext` is the most useful field for the common "I want to inject information into the model's context" case. When emitted:
+- `UserPromptSubmit` / `SessionStart` / `Setup` — prepended before the model processes the prompt/session.
+- `PreToolUse` / `PostToolUse` / `PostToolUseFailure` / `SubagentStart` / `Notification` — injected alongside the relevant event in the transcript.
+
+### Async hooks (fire-and-forget)
+
+Instead of a sync response, a handler may return:
+
+```json
+{ "async": true, "asyncTimeout": 30 }
+```
+
+The hook runs in the background and its decision (if any) arrives later via an `asyncRewake` flow. Async hooks cannot block the event inline — use them for logging, enrichment, or slow network calls.
+
+### Shell-contract shortcut (`command` handlers only)
+
+A `command` handler doesn't need to emit JSON if you only need approve/block:
+- Exit `0` → success (continue).
+- Exit `2` → blocking error; stderr is shown to Claude and the current operation is blocked.
+- Any other non-zero exit → non-blocking error (logged, execution continues).
+
+JSON on stdout is still parsed when present, even on exit `0`.
+
+### What you can **not** emit from JSON
+
+`blockingError` appears in source (`types/hooks.ts:243–246`, `HookResult.blockingError`) but is an **internal runtime type** representing a hook that blocked — it is not a field handlers emit. To block from a handler, return `decision: "block"` (or use exit code 2 for command handlers, or `hookSpecificOutput.permissionDecision: "deny"` for `PreToolUse`).
+
+---
+
 [← Back to Hooks/README.md](/claude-code-docs/hooks/overview/)

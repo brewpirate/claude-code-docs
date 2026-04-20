@@ -12,9 +12,9 @@ tags: [hooks, settings]
 
 - **File events** (`FileChanged`): Matcher is a file glob pattern (not regex). Examples: `"*.json"`, `".env*"`, `".claude/hooks/**"`.
 
-- **Config events** (`ConfigChange`): Matcher is config key name or regex. Examples: `"hooks"`, `"permissions"`, `"hooks|allowedHttpHookUrls"`.
+- **Config events** (`ConfigChange`): Matcher is config key name or regex. Examples: `"hooks"`, `"permissions"`, `"hooks|allowedHttpHookUrls"`. Omit the matcher (or use `""`) to fire on every config key change.
 
-- **Events without matcher support** (`SessionStart`, `SessionEnd`, `UserPromptSubmit`, `Stop`, `CwdChanged`, `ConfigChange` without key, `PreCompact`, `PostCompact`, `Notification`, `TaskCreated`, `TaskCompleted`, `Elicitation`, `ElicitationResult`): No matcher field. Hook fires for all occurrences of the event.
+- **Events without matcher support** (`SessionStart`, `Setup`, `SessionEnd`, `UserPromptSubmit`, `Stop`, `StopFailure`, `CwdChanged`, `PreCompact`, `PostCompact`, `Notification`, `TaskCreated`, `TaskCompleted`, `Elicitation`, `ElicitationResult`, `InstructionsLoaded`): No matcher field. Hook fires for all occurrences of the event.
 
 **Matcher syntax:**
 - Empty `matcher: ""` or omitted: match all

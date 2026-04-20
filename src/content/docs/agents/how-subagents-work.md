@@ -24,7 +24,7 @@ This page explains what happens under the hood when Claude Code spawns a subagen
 
 ## What context the subagent receives
 
-When a subagent is spawned, it gets:
+When a regular subagent is spawned (any `subagent_type`), it gets:
 
 - **The task prompt** — either the inline prompt from the `Agent` tool call, or the content of the AGENT.md file
 - **Its allowed tools** — from the `tools` field in frontmatter, or the `Agent` tool call's tools list
@@ -32,10 +32,32 @@ When a subagent is spawned, it gets:
 - **Its memory scope** — if `memory` is set, the agent reads from that memory scope at startup
 - **MCP servers** — if `mcpServers` is set, those servers are available to the agent
 
-The subagent does **not** receive:
+A regular subagent does **not** receive:
 - The parent session's conversation history (it starts fresh)
 - The parent session's permission rules (it uses its own `permissionMode`)
 - Variables or state from the parent (only what's in files or the task prompt)
+
+> Fork subagents are the exception — they inherit the full parent context. See [Fork subagents](#fork-subagents) below.
+
+---
+
+## Fork subagents
+
+When the `FORK_SUBAGENT` feature gate is enabled, calling the `Agent` tool **without** a `subagent_type` triggers an implicit fork instead of the normal spawn path. The fork child differs from a regular subagent in several ways:
+
+- **Inherits the parent's full conversation context** — including message history, thinking blocks, and every prior tool use. The child reads the same bytes the parent has been working with.
+- **Inherits the parent's rendered system prompt** — threaded as bytes rather than re-rendered, to keep the prompt cache prefix byte-identical across siblings.
+- **Uses the parent's exact tool pool** (`tools: ['*']` with `useExactTools`) — the child can call any tool the parent can, again for cache prefix parity.
+- **`model: 'inherit'`** — keeps the parent's model so context length matches.
+- **`permissionMode: 'bubble'`** — permission prompts surface to the parent terminal rather than being handled by the child.
+- **Runs in the background** — all forks (and all other agent spawns, when this gate is on) execute asynchronously and return via `<task-notification>` for a unified interaction model.
+- **`/fork <directive>` slash command** is also available when the gate is on.
+
+A fork child cannot recursively fork — the system detects the fork boilerplate in inherited history and rejects nested fork attempts.
+
+**Mutually exclusive with coordinator mode.** If `CLAUDE_CODE_COORDINATOR_MODE=1`, fork is disabled — coordinator already owns orchestration. Fork is also disabled in non-interactive sessions.
+
+Use fork when you want a worker that shares your current context (to act on something visible in this conversation) rather than a clean-slate agent spawning on a defined task.
 
 ---
 

@@ -317,21 +317,30 @@ tags: [plugins, settings]
 - **Notes:** Individual plugin setting overrides the global `FORCE_AUTOUPDATE_PLUGINS` environment variable.
 
 ### `dependencies`
-- **Type:** array of objects or strings
+- **Type:** array of strings or objects
 - **Required:** No
 - **Default:** None
-- **Validation:** Each entry is either a string (plugin name) or an object with `name` (string, required) and `version` (string, optional, semver range).
-- **Description:** Other plugins this plugin requires. Declared dependencies are loaded before the dependent plugin. Version constraints use standard npm semver syntax (^, ~, ==, >=, etc.).
+- **Validation:** Each entry is one of:
+  - `"plugin-name"` — bare name, resolved against the declaring plugin's own marketplace.
+  - `"plugin-name@marketplace-name"` — qualified name.
+  - `"plugin-name@marketplace@^1.2"` — trailing `@^version` is **accepted and silently stripped** for forwards-compatibility; versions are not currently enforced (see Notes).
+  - `{"name": "plugin-name", "marketplace": "marketplace-name"}` — object form. Additional fields (e.g., `version`) are accepted and ignored.
+- **Description:** Plugins that must be enabled for this plugin to function. Declared dependencies are loaded before the dependent plugin. Bare names resolve against the declaring plugin's own marketplace; use the `@marketplace` suffix to pin a dependency to a specific marketplace.
 - **Example:**
   ```json
   {
     "dependencies": [
       "shared-utilities",
-      {"name": "secrets-vault", "version": "~2.1.0"}
+      "secrets-vault@anthropic-tools",
+      {"name": "formatter", "marketplace": "community-tools"}
     ]
   }
   ```
-- **Notes:** If a dependency is not installed or disabled, the plugin will not load. The resolver respects version constraints and fails if versions are unsatisfied.
+- **Notes:**
+  - **Version constraints are not currently enforced.** The schema accepts `@^version` suffixes and object `version` fields for forwards-compatibility but strips them before resolution. A future release (tracked internally as CC-993) will add version-range support; until then, any version string is silently ignored.
+  - Auto-installation of missing dependencies is gated by the consuming marketplace's allowlist — only the root marketplace's `allowlist` applies (no transitive trust).
+  - If a required dependency is not available, the plugin will not load.
+- **Source:** `claude-code-main/utils/plugins/schemas.ts` — `DependencyRefSchema` (line 1367), `dependencies` field on manifest (line 313).
 
 ---
 

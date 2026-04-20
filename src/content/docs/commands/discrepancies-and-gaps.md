@@ -17,7 +17,7 @@ The following issues were identified during documentation research. These may af
 
 4. **`CLAUDE_CODE_ENABLE_CFC` has no associated slash command in any public source**: The env var exists in ENV.md but no slash command, feature page, or community post can be found to explain what interface it exposes. This is the one enable flag with no citable command surface.
 
-5. **`/vim` was removed in v2.1.92**: The commands table includes a tombstone entry: "Removed in v2.1.92. To toggle between Vim and Normal editing modes, use `/config` → Editor mode." This was a formerly documented slash command now replaced by a settings panel sub-option.
+5. **`/vim` was deprecated (not removed) in v2.1.92**: The commands table lists a tombstone — "Removed in v2.1.92. To toggle between Vim and Normal editing modes, use `/config` → Editor mode" — but the source tree still imports and registers `vim` in `commands.ts` (see `commands/vim/index.ts`, `commands.ts:58,319,626`). The deprecation is real; the removal is not. New guidance should direct users to `/config`, but the command continues to work for users who invoke it directly.
 
 6. **`/pr-comments` was removed in v2.1.91**: "Removed in v2.1.91. Ask Claude directly to view pull request comments instead." Similar tombstone pattern. Two removed commands total.
 
@@ -28,6 +28,8 @@ The following issues were identified during documentation research. These may af
 9. **`/team-onboarding` is in the public commands table but requires two gatekeepers**: The command appears in the public docs yet requires both `CLAUDE_CODE_TEAM_ONBOARDING` env var AND the internal `tengu_flint_harbor` Statsig feature flag. This dual-gate pattern means the public listing can create confusion — users may see the command in docs but not in their session.
 
 10. **`/tasks` full system vs basic listing**: The docs list `/tasks` as "List and manage background tasks" (public). The `CLAUDE_CODE_ENABLE_TASKS` flag enables a deeper persistent task system with cross-session coordination via `CLAUDE_CODE_TASK_LIST_ID`. The docs do not explain this distinction; a user who enables the flag will find behavior meaningfully different from what the one-line command description implies.
+
+11. **Public-docs commands with stub or missing source in the current snapshot**: Several commands appear in the official `code.claude.com/docs/en/commands` list and are documented here with citations, but the `claude-code-main` source snapshot we diff against shows either a stub (`{ isEnabled: () => false, isHidden: true, name: 'stub' }`) or no registration at all. Confirmed cases: `/teleport` (source: `commands/teleport/index.js` is a stub), `/focus`, `/powerup`, `/recap` (no command files or skill files found). The most likely explanation is that the public source snapshot is scrubbed relative to the shipped binary — these commands are still available to users on recent versions. Treat the public docs as authoritative for availability; treat this repo's cross-references as "source location in the scrubbed tree, if present." If you are writing new documentation and the source snapshot disagrees with the public commands table, prefer the public docs and add a note rather than deleting the entry.
 
 ---
 

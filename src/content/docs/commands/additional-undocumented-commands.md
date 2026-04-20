@@ -80,9 +80,9 @@ The following commands exist as source files in the Claude Code distribution (`c
 - **Inferred purpose:** Show available options when a rate limit is reached, likely used internally to present upgrade or extra-usage options.
 - **Notes:** Hidden from help (`isHidden: true`). Only enabled for Claude AI subscribers (`isClaudeAISubscriber()`). Not intended for direct user invocation.
 
-### Likely Removed / Disabled Commands (Stubs)
+### Stubbed Commands (in the public source snapshot)
 
-The following commands exist in the source tree but are currently **disabled as stubs** (return `{ isEnabled: () => false, isHidden: true, name: 'stub' }`). They are not accessible in normal operation:
+The following commands are **registered** in `commands.ts` but their module exports are stubs in the public source snapshot (`{ isEnabled: () => false, isHidden: true, name: 'stub' }`). In the scrubbed tree they are inert and not accessible — but the shipped binary may include fuller implementations, so treat "stub" as "no implementation visible to us," not "removed from the product." Some of these names (e.g. `/teleport`) appear in the public commands table with full descriptions:
 
 - **`/ant-trace`** (`ant-trace/index.js`) — Purpose unclear; likely internal tracing/debugging
 - **`/break-cache`** (`break-cache/index.js`) — Possibly cache invalidation; currently disabled
