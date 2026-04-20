@@ -42,13 +42,14 @@ tags: [settings]
 ### `advisorModel`
 - **Type:** string
 - **Default:** unspecified
-- **Description:** Secondary advisor model for secondary analysis or specialized tasks (available in v2.1.90+). Examples: `"claude-opus-4-6"`, `"claude-sonnet-4-6"`.
+- **Description:** Model consulted by the server-side advisor tool — a second-opinion model the main loop can invoke alongside the primary model. Managed interactively via `/advisor <model>` (set) or `/advisor unset` (clear). Has no effect unless the current main-loop model supports the advisor feature (see `modelSupportsAdvisor`). Configurability is further gated by `canUserConfigureAdvisor`.
 - **Example:**
   ```json
   {
-    "advisorModel": "claude-haiku-3-5"
+    "advisorModel": "claude-opus-4-6"
   }
   ```
+- **Source:** `claude-code-main/utils/settings/types.ts:712-715`; `commands/advisor.ts`.
 
 ### `alwaysThinkingEnabled`
 - **Type:** boolean
@@ -62,15 +63,19 @@ tags: [settings]
   ```
 
 ### `effortLevel`
-- **Type:** string
+- **Type:** string enum
 - **Default:** unspecified
-- **Description:** Persist the effort level across sessions. Accepts `"low"`, `"medium"`, `"high"`, or `"xhigh"` (also accepts `"fast"`, `"balanced"`, `"thorough"` as aliases). Written automatically when you run `/effort`.
+- **Valid values (per public docs):** `"low"`, `"medium"`, `"high"`, `"xhigh"`, `"max"`. Available values depend on the model. `"max"` is **session-only** and not persisted (setting it via `/effort max` applies to this session only).
+- **Valid values (in the `claude-code-main` source snapshot):** `"low"`, `"medium"`, `"high"` (public builds) or `"low"`, `"medium"`, `"high"`, `"max"` (ant-only builds). `"xhigh"` does not appear in this scrubbed source — same public-docs-vs-source pattern documented in [commands/discrepancies-and-gaps](/claude-code-docs/commands/discrepancies-and-gaps/). Trust the public docs for availability; the schema is guarded with `.catch(undefined)` so unknown values are silently ignored.
+- **Description:** Persisted effort level for supported models. Written by `/effort <level>` and cleared by `/effort unset`. `/effort auto` clears the setting to fall back to the default for the current model.
+- **Overridden by:** `CLAUDE_CODE_EFFORT_LEVEL` environment variable. When set, it takes effect for the current session and the settings value is not applied until the env var is unset.
 - **Example:**
   ```json
   {
-    "effortLevel": "xhigh"
+    "effortLevel": "high"
   }
   ```
+- **Source:** `claude-code-main/utils/settings/types.ts:703-711`; `commands/effort/effort.tsx`. Public reference: https://code.claude.com/docs/en/commands (entry for `/effort`).
 
 ### `fastModePerSessionOptIn`
 - **Type:** boolean

@@ -19,7 +19,7 @@ tags: [tools]
   - `disallowedTools` (string, optional) — Tools to deny
   - `model` (string, optional) — Model for the subagent (e.g., `haiku`, `sonnet`)
 - **Returns:** Subagent's response and result.
-- **Notes:** Subagents have their own context windows and do not inherit the main conversation history. Built-in agents: `general-purpose`, `Explore`, `Plan`. Load project or user-defined subagents by name. Subagents can use Agent tool to spawn nested agents, but cannot use TeamCreate.
+- **Notes:** Subagents have their own context windows and do not inherit the main conversation history (exception: fork subagents — see [agents/how-subagents-work#fork-subagents](/claude-code-docs/agents/how-subagents-work/)). Built-in agents: `general-purpose`, `Explore`, `Plan`, plus helpers (`statusline-setup`, `Claude Code Guide`). Load project or user-defined subagents by name. **Subagents cannot spawn other subagents** — `Agent(...)` restrictions in a subagent's `tools` field have no effect; only main-thread agents (those running via `claude --agent`) can spawn subagents. Subagents also cannot use `TeamCreate`.
 
 ### `Skill`
 - **Invoked as:** `Skill`

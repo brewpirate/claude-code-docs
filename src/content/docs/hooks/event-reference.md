@@ -15,7 +15,19 @@ tags: [hooks, settings]
 - **Scope:** settings.json, skill frontmatter, agent frontmatter, plugin.
 - **Source:** `claude-code-main/entrypoints/sdk/coreTypes.ts` (HOOK_EVENTS array).
 - **Documented in public docs?:** Yes — https://code.claude.com/docs/en/hooks#session-lifecycle
-- **Notes:** `Setup` is a synonym internal event, always emitted alongside `SessionStart`. Handler receives writable `$CLAUDE_ENV_FILE` path via env var; can write `export VAR=value` lines to inject variables into the session environment.
+- **Notes:** See also [`Setup`](#setup), a companion event always emitted alongside `SessionStart`.
+
+#### `Setup`
+- **Fires when:** Session begins. Always emitted alongside `SessionStart` — one of the two always-emitted hook events, regardless of `includeHookEvents`.
+- **Matcher:** Not supported.
+- **Payload:** `{ session_id, transcript_path, cwd, permission_mode, hook_event_name: "Setup", agent_id?, agent_type? }`
+- **Decisions accepted:** None. Output ignored (handler communicates via `$CLAUDE_ENV_FILE`, not stdout).
+- **Blockable:** No.
+- **Scope:** settings.json, skill frontmatter, agent frontmatter, plugin.
+- **Handler constraints:** HTTP hooks are **not supported** for `Setup` (nor `SessionStart`). Use `command`, `prompt`, or `agent` handlers.
+- **Source:** `claude-code-main/utils/hooks.ts` (`executeSetupHooks`, `SetupHookInput`); `utils/hooks/hookEvents.ts` (`ALWAYS_EMITTED_HOOK_EVENTS`).
+- **Documented in public docs?:** No — distinct from `SessionStart` at the runtime level but not broken out in the public reference.
+- **Notes:** Handler receives a writable `$CLAUDE_ENV_FILE` path via environment variable. Writing `export VAR=value` lines to that file injects variables into the session environment. Use `Setup` for environment setup work that `SessionStart` handlers cannot do (e.g., seeding secrets before tools run).
 
 #### `InstructionsLoaded`
 - **Fires when:** CLAUDE.md or project rules file loads (at startup and on reload via `/reload` or file watch).

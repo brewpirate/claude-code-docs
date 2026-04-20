@@ -128,6 +128,12 @@ tags: [environment]
 - **Example:** `/tmp/claude-code-messaging-<pid>.sock` (auto-generated)
 - **Related:** `UDS_INBOX`
 
+### `USER_TYPE`
+- **Type:** String (`"ant"` is the only load-bearing value)
+- **Default:** unset
+- **Description:** Build-time/runtime flag identifying Anthropic-internal builds. When set to `"ant"`, the binary enables ANT-ONLY features — additional slash commands (e.g. `/bughunter`, `/ctx_viz`, `/good-claude`), extra flags (`--afk`, `--agent-teams`, `--tasks`, `--delegate-permissions`, `--dangerously-skip-permissions-with-classifiers`), and extended enum values (e.g. `effortLevel: "max"`). This is **not a user-configurable setting** — setting it in a public build does not unlock those features, because the surrounding code paths are compiled out or guarded by additional gates. Referenced across the codebase as `process.env.USER_TYPE === 'ant'`.
+- **Example:** (N/A — not user-configurable)
+
 ---
 
 [← Back to env/README.md](/claude-code-docs/env/overview/)
