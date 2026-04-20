@@ -8,12 +8,14 @@ import UnoCSS from 'unocss/astro';
 import { starlightIconsPlugin, starlightIconsIntegration } from 'starlight-plugin-icons';
 import starlightRosePine from 'starlight-theme-rose-pine'
 import starlightCatppuccin from "@catppuccin/starlight";
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://brewpirate.github.io',
   base: '/claude-code-docs',
   integrations: [
     UnoCSS(),
+    sitemap(),
     starlightIconsIntegration({ extractSafelist: true }),
     mermaid({
       autoTheme: true,
@@ -323,7 +325,13 @@ export default defineConfig({
               label: 'Changelog',
               slug: 'changelog',
             },
+
           ],
+        },
+        {
+          label: 'Browse Tags',
+          link: '/tags/',
+          badge: { text: 'All', variant: 'tip' },
         },
       ],
       components: {
