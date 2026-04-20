@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brewpirate.github.io/claude-code-docs/sitemap-index.xml
