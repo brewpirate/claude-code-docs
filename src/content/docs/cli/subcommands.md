@@ -90,6 +90,30 @@ Subcommands are standalone workflows that don't launch the interactive REPL (exc
 - **Source URL:** https://code.claude.com/docs/en/mcp
 - **Example:** `claude mcp remove my-server --scope user`
 
+### `claude mcp get`
+- **Purpose:** Get details about a configured MCP server.
+- **Usage:** `claude mcp get <name>`
+- **Flags:** None.
+- **Source:** `main.tsx:3930`
+- **Example:** `claude mcp get my-server`
+- **Notes:** The workspace-trust dialog is skipped and stdio servers from `.mcp.json` are spawned for health checks. Only run this in directories you trust.
+
+### `claude mcp add-from-claude-desktop`
+- **Purpose:** Import MCP servers from your Claude Desktop configuration (Mac and WSL only).
+- **Usage:** `claude mcp add-from-claude-desktop [-s <scope>]`
+- **Flags:**
+  - `-s, --scope <scope>` — Configuration scope: local, user, or project (default: local).
+- **Source:** `main.tsx:3945`
+- **Example:** `claude mcp add-from-claude-desktop --scope user`
+
+### `claude mcp reset-project-choices`
+- **Purpose:** Reset all approved/rejected project-scoped (`.mcp.json`) servers for the current project.
+- **Usage:** `claude mcp reset-project-choices`
+- **Flags:** None.
+- **Source:** `main.tsx:3953`
+- **Example:** `claude mcp reset-project-choices`
+- **Notes:** Clears the approval/rejection state for project-level MCP servers. Next time Claude encounters one, it will prompt again.
+
 ### `claude plugin install`
 - **Purpose:** Install a plugin from available marketplaces.
 - **Usage:** `claude plugin install <plugin> [-s <scope>]`
@@ -148,6 +172,29 @@ Subcommands are standalone workflows that don't launch the interactive REPL (exc
 - **Source URL:** https://code.claude.com/docs/en/plugins-reference
 - **Example:** `claude plugin marketplace add https://github.com/user/plugins --sparse .claude-plugin plugins`
 
+### `claude plugin marketplace list`
+- **Purpose:** List all configured marketplaces.
+- **Usage:** `claude plugin marketplace list [--json]`
+- **Flags:**
+  - `--json` — Output as JSON.
+- **Source:** `main.tsx:4182`
+- **Example:** `claude plugin marketplace list --json`
+
+### `claude plugin marketplace remove`
+- **Purpose:** Remove a configured marketplace.
+- **Usage:** `claude plugin marketplace remove <name>`
+- **Aliases:** `rm`
+- **Flags:** None.
+- **Source:** `main.tsx:4191`
+- **Example:** `claude plugin marketplace remove community-tools`
+
+### `claude plugin marketplace update`
+- **Purpose:** Pull the latest marketplace manifest(s) from their sources.
+- **Usage:** `claude plugin marketplace update [name]`
+- **Flags:** None.
+- **Source:** `main.tsx:4199`
+- **Example:** `claude plugin marketplace update` (updates all) or `claude plugin marketplace update community-tools`
+
 ### `claude remote-control`
 - **Purpose:** Start a Remote Control server to control Claude Code from claude.ai or the Claude app.
 - **Usage:** `claude remote-control [--name <name>]`
@@ -165,6 +212,28 @@ Subcommands are standalone workflows that don't launch the interactive REPL (exc
 - **Note:** Prints the token to the terminal without saving it.
 - **Source URL:** https://code.claude.com/docs/en/authentication#generate-a-long-lived-token
 - **Example:** `claude setup-token`
+
+### `claude ssh`
+- **Purpose:** Run Claude Code on a remote Linux host over SSH. Deploys the binary and tunnels API auth back through your local machine — no remote setup needed.
+- **Usage:** `claude ssh <user@host | ssh-config-alias> [dir]`
+- **Flags:**
+  - `--permission-mode <mode>` — Permission mode for the remote session.
+  - `--dangerously-skip-permissions` — Skip all permission prompts on the remote (dangerous).
+  - `--local` — e2e test mode: spawn the child CLI locally without SSH. Exercises the auth proxy and unix-socket plumbing without needing a remote host.
+- **Gating:** `SSH_REMOTE` feature flag.
+- **Source:** `main.tsx:4046`
+- **Example:** `claude ssh user@example.com /srv/app`
+
+### `claude open`
+- **Purpose:** Connect to a Claude Code server via a `cc://` URL (internal).
+- **Usage:** `claude open <cc-url> [-p [prompt]] [--output-format <format>]`
+- **Flags:**
+  - `-p, --print [prompt]` — Headless mode; optionally provide a prompt.
+  - `--output-format <format>` — `text` (default), `json`, or `stream-json`.
+- **Gating:** `DIRECT_CONNECT` feature flag.
+- **Source:** `main.tsx:4059`
+- **Example:** `claude open cc://host.example.com:8443?token=...`
+- **Notes:** Interactive mode (no `-p`) is handled by early argv rewriting and delegates to the main command with full TUI support; the subcommand itself only runs the headless path.
 
 ### `claude update`
 - **Purpose:** Check for updates and install if available.

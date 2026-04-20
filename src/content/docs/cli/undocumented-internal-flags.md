@@ -106,6 +106,69 @@ The following flags were found in the source code but are not publicly documente
 - **Purpose:** Opt in to auto mode. Removed in v2.1.111.
 - **Notes:** Auto mode is now in the `Shift+Tab` cycle by default; use `--permission-mode auto` instead.
 
+### `--thinking`
+- **Source:** `main.tsx:976`
+- **Status:** Internal / Thinking control
+- **Argument:** `<mode>` — required (`enabled`, `adaptive`, or `disabled`)
+- **Purpose:** Thinking mode for models that support extended thinking. `enabled` is equivalent to `adaptive`; `disabled` turns thinking off.
+- **Notes:** Hidden from help. Successor to `--max-thinking-tokens` for newer models.
+
+### `--max-thinking-tokens`
+- **Source:** `main.tsx:976`
+- **Status:** Internal / Deprecated
+- **Argument:** `<tokens>` — required (integer)
+- **Purpose:** Maximum thinking tokens for models that support extended thinking. Print mode only.
+- **Notes:** `[DEPRECATED. Use --thinking instead for newer models]` per the source help text. Env var equivalent: `MAX_THINKING_TOKENS`. Hidden from help.
+
+### `--prefill`
+- **Source:** `main.tsx:988`
+- **Status:** Internal
+- **Argument:** `<text>` — required (string)
+- **Purpose:** Pre-fill the prompt input with text without submitting it. The user can then edit before pressing Enter.
+- **Notes:** Hidden from help.
+
+### `--workload`
+- **Source:** `main.tsx:1000`
+- **Status:** Internal / SDK billing
+- **Argument:** `<tag>` — required (string)
+- **Purpose:** Workload tag for billing-header attribution (sets the `cc_workload` API header). Process-scoped — the tag applies for the lifetime of this process only.
+- **Notes:** Print mode only (`-p`). Hidden from help. Set by SDK daemon callers that spawn subprocesses for cron-style scheduled work so each call bills against the correct workload.
+
+### `--enable-auth-status`
+- **Source:** `main.tsx:988`
+- **Status:** Internal / SDK
+- **Argument:** None (boolean)
+- **Purpose:** Emit auth-status stream messages in SDK mode so callers can observe authentication state transitions.
+- **Notes:** Print mode only. Hidden from help. Default `false`.
+
+### `--teleport`
+- **Source:** `main.tsx:3864`
+- **Status:** Internal (pre-GA)
+- **Argument:** `[session]` — optional session ID
+- **Purpose:** Resume a teleport session, optionally specifying a session ID.
+- **Notes:** Hidden from help — kept undocumented in the source until the feature goes GA. See the `/teleport` slash command for the user-facing entry point.
+
+### `--remote`
+- **Source:** `main.tsx:3865`
+- **Status:** Internal (pre-GA)
+- **Argument:** `[description]` — optional
+- **Purpose:** Create a remote session with the given description.
+- **Notes:** Hidden from help — kept undocumented until the feature goes GA.
+
+### `--remote-control`, `--rc`
+- **Source:** `main.tsx:3867-3868`
+- **Status:** Internal / Feature-gated
+- **Argument:** `[name]` — optional session name
+- **Purpose:** Start an interactive session with Remote Control enabled (optionally named). `--rc` is an alias.
+- **Notes:** Hidden from help. Gated by the `BRIDGE_MODE` feature flag.
+
+### `--teammate-mode`
+- **Source:** `main.tsx:3857`
+- **Status:** Internal / Teammate spawning
+- **Argument:** `<mode>` — required (`auto`, `tmux`, or `in-process`)
+- **Purpose:** Controls how teammates are spawned in multi-agent coordination.
+- **Notes:** Hidden from help.
+
 ---
 
 [← Back to CLI/README.md](/claude-code-docs/cli/overview/)

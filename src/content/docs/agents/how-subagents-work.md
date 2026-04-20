@@ -108,15 +108,17 @@ The parent session (and any agent) can read all scratchpad files. This is the co
 
 ## Agent isolation levels
 
-The `isolation` field controls how isolated the agent's filesystem view is:
+The `isolation` field controls how isolated the agent's filesystem view is. It is optional — **omit it and the agent shares the parent's filesystem (no isolation)**. There is no `none` value; there is no `container` value.
 
-| Level | What it means |
-|-------|--------------|
-| `none` (default) | Agent sees the same filesystem as the parent session |
-| `worktree` | Agent gets a separate git worktree (isolated from your working changes) |
-| `container` | Agent runs in a container (most isolated; requires container support) |
+| Value | Availability | What it means |
+|-------|--------------|--------------|
+| *(omitted)* | Public & ant | Agent sees the same filesystem as the parent session. The default. |
+| `worktree` | Public & ant | Agent gets a temporary git worktree — an isolated copy of the repo. Auto-cleaned if the agent makes no changes; if changes are made, the worktree path and branch are returned in the result. Mutually exclusive with an explicit `cwd` override. |
+| `remote` | **Ant-only** | Agent runs in a remote CCR environment and is always a background task. Intended for long-running work that needs a fresh sandbox. |
 
 For agents doing risky or experimental work, `worktree` isolation means their changes don't affect your main branch until you merge them.
+
+**Source:** `claude-code-main/tools/AgentTool/AgentTool.tsx:99` (schema), `loadAgentsDir.ts:94,611` (parsing). The `remote` variant is parse-rejected in public (non-ant) builds.
 
 ---
 

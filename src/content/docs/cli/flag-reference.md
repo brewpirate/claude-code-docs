@@ -302,6 +302,17 @@ tags: [cli]
 - **Example:** `claude --settings ./settings.json` or `claude --settings '{"model":"opus"}'`
 - **Notes:** Settings from this flag merge with and override persisted settings.
 
+#### `--file`
+- **Short form:** None
+- **Argument:** `<specs...>` — required (space-separated `file_id:relative_path` pairs)
+- **Default:** None
+- **Documented in public docs?:** No (SDK feature; visible in `--help`)
+- **Env var equivalent:** None
+- **Settings.json equivalent:** None
+- **Description:** File resources to download from the Anthropic Files API at session start. Each spec is a pair `file_id:relative_path` that tells Claude Code which file to fetch and where to place it in the working directory.
+- **Example:** `claude --file file_abc:doc.txt file_def:img.png`
+- **Notes:** Requires Files API access. Primarily used by SDK callers that pre-stage resources for a session. Source: `main.tsx:1006`.
+
 ### Permissions flags
 
 #### `--permission-mode`
